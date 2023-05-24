@@ -4,6 +4,7 @@ module "eks_cluster_autoscaler" {
   enabled                    = var.enable_cluster_autoscaler
   cluster_name               = var.cluster_name
   cluster_autoscaler_version = "9.29.0"
+  region                     = var.region
 
   oidc_providers = {
     main = {

@@ -32,6 +32,11 @@ resource "helm_release" "cluster_autoscaler" {
     value = "cluster-autoscaler"
   }
 
+  set {
+    name  = "awsRegion"
+    value = var.region
+  }
+
   dynamic "set" {
     for_each = var.create_role && var.create_service_account ? [aws_iam_role.this[0].arn] : [var.role_arn]
     content {
