@@ -37,6 +37,26 @@ resource "helm_release" "cluster_autoscaler" {
     value = var.region
   }
 
+    set {
+    name  = "extraArgs.balance-similar-node-groups"
+    value = "false"
+  }
+  
+  set {
+    name  = "extraArgs.skip-nodes-with-system-pods"
+    value = "false"
+  }
+
+  set {
+    name = "extraArgs.scan-interval"
+    value = "30s"
+  }
+
+  set {
+    name = "extraArgs.skip-nodes-with-local-storage"
+    value = "false"
+  }
+
   dynamic "set" {
     for_each = var.create_role && var.create_service_account ? [aws_iam_role.this[0].arn] : [var.role_arn]
     content {
@@ -45,5 +65,4 @@ resource "helm_release" "cluster_autoscaler" {
       type  = "string"
     }
   }
-
 }
