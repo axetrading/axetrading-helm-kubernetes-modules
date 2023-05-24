@@ -35,7 +35,7 @@ resource "helm_release" "cluster_autoscaler" {
   dynamic "set" {
     for_each = var.create_role && var.create_service_account ? [aws_iam_role.this[0].arn] : [var.role_arn]
     content {
-      name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+      name  = "rbac.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
       value = set.value
       type  = "string"
     }
