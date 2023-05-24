@@ -37,28 +37,28 @@ resource "helm_release" "cluster_autoscaler" {
     value = var.region
   }
 
-    set {
+  set {
     name  = "extraArgs.balance-similar-node-groups"
     value = "true"
   }
-  
+
   set {
     name  = "extraArgs.skip-nodes-with-system-pods"
     value = "false"
   }
 
   set {
-    name = "extraArgs.scan-interval"
+    name  = "extraArgs.scan-interval"
     value = "10s"
   }
 
   set {
-    name = "extraArgs.scale-down-enabled"
+    name  = "extraArgs.scale-down-enabled"
     value = "true"
   }
 
   set {
-    name = "extraArgs.skip-nodes-with-local-storage"
+    name  = "extraArgs.skip-nodes-with-local-storage"
     value = "false"
   }
 
