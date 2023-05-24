@@ -49,7 +49,12 @@ resource "helm_release" "cluster_autoscaler" {
 
   set {
     name = "extraArgs.scan-interval"
-    value = "30s"
+    value = "10s"
+  }
+
+  set {
+    name = "extraArgs.scale-down-enabled"
+    value = "10m"
   }
 
   set {
