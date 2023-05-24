@@ -54,7 +54,7 @@ resource "helm_release" "cluster_autoscaler" {
 
   set {
     name = "extraArgs.scale-down-enabled"
-    value = "10m"
+    value = "true"
   }
 
   set {
