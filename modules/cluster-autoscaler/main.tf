@@ -1,3 +1,13 @@
+/*
+Resource: Helm Release - cluster_autoscaler
+
+Description: The Helm Release resource manages the installation and configuration of the cluster-autoscaler chart for Kubernetes clusters.
+
+The cluster-autoscaler is an open-source tool that automatically adjusts the size of an Amazon EKS cluster based on the workload demand. It scales the number of worker nodes up or down to optimize resource utilization and maintain efficient cluster performance.
+
+This resource sets up the cluster-autoscaler with the specified version and configuration options, including the cluster name, namespace, service account, and IAM role. It leverages the Helm package manager to install and manage the cluster-autoscaler chart, which is fetched from the official Kubernetes autoscaler repository.
+*/
+
 resource "helm_release" "cluster_autoscaler" {
   count = var.enabled ? 1 : 0
 
