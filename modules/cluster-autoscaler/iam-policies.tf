@@ -34,7 +34,7 @@ resource "aws_iam_policy" "cluster_autoscaler" {
   name_prefix = "eks-cluster-autoscaler-"
   path        = var.role_path
   description = "Policy for cluster autoscaler"
-  policy      = data.aws_iam_policy_document.cluster_autoscaler[0].json
+  policy      = data.aws_iam_policy_document.autoscaler_policy[0].json
 
   tags = var.tags
 }
