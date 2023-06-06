@@ -52,7 +52,7 @@ resource "helm_release" "prometheus" {
   dynamic "set" {
     for_each = var.create_role && var.create_service_account ? [aws_iam_role.this[0].arn] : [var.role_arn]
     content {
-      name  = "serviceAccount.server.annotations.eks\\.amazonaws\\.com/role-arn"
+      name  = "serviceAccounts.server.annotations.eks\\.amazonaws\\.com/role-arn"
       value = set.value
       type  = "string"
     }
