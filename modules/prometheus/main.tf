@@ -7,7 +7,7 @@
 resource "helm_release" "prometheus" {
   count = var.enabled ? 1 : 0
 
-  name       = "aws-cluster-autoscaler"
+  name       = "aws-amp"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "prometheus"
   version    = var.prometheus_version
