@@ -18,11 +18,12 @@ module "eks_cluster_autoscaler" {
 module "prometheus" {
   source = "./modules/prometheus"
 
-  enabled             = var.enable_prometheus
-  cluster_name        = var.cluster_name
-  prometheus_version  = "22.6.2"
-  prometheus_endpoint = var.prometheus_endpoint
-  region              = var.region
+  enabled               = var.enable_prometheus
+  cluster_name          = var.cluster_name
+  prometheus_version    = "22.6.2"
+  prometheus_endpoint   = var.prometheus_endpoint
+  region                = var.region
+  monitoring_account_id = var.monitoring_aws_account_id
 
   oidc_providers = {
     main = {

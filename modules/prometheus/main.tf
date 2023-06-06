@@ -30,6 +30,11 @@ resource "helm_release" "prometheus" {
   }
 
   set {
+    name  = "server.remoteWrite[0].sigv4.role_arn"
+    value = "arn:aws:iam::${var.monitoring_account_id}:role/EKS-AMP-Central-Role"
+  }
+
+  set {
     name  = "server.remoteWrite[0].queue_config.max_samples_per_send"
     value = "1000"
   }

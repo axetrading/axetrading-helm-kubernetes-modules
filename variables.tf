@@ -31,3 +31,8 @@ variable "region" {
   default     = "eu-west-2"
 }
 
+
+variable "monitoring_aws_account_id" {
+  description = "AWS account ID where the monitoring stack is deployed"
+  type        = string
+}

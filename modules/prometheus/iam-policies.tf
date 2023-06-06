@@ -1,13 +1,15 @@
 data "aws_iam_policy_document" "prometheus" {
   statement {
+    sid    = "AssumeAMPRemoteWriteRole"
+    effect = "Allow"
+
     actions = [
-      "aps:RemoteWrite",
-      "aps:GetSeries",
-      "aps:GetLabels",
-      "aps:GetMetricMetadata",
+      "sts:AssumeRole",
     ]
 
-    resources = ["*"]
+    resources = [
+      "arn:aws:iam::${var.monitoring_account_id}:role/EKS-AMP-Central-Role",
+    ]
   }
 }
 

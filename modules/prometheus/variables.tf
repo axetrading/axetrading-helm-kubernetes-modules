@@ -128,3 +128,9 @@ variable "prometheus_endpoint" {
   description = "AWS Managed Prometheus workspace endpoint URL"
   default     = null
 }
+
+variable "monitoring_account_id" {
+  type        = string
+  description = "AWS account ID where the AWS Managed Prometheus workspace is located"
+  default     = null
+}

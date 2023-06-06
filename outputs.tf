@@ -7,3 +7,12 @@ output "eks_cluster_autoscaler" {
     cluster_autoscaler_helm_release_namespace = module.eks_cluster_autoscaler.helm_release_namespace,
   } : null
 }
+
+output "prometheus" {
+  description = "Prometheus module outputs"
+  value = var.enable_prometheus ? {
+    prometheus_helm_release_id        = module.prometheus.helm_release_id,
+    prometheus_helm_release_name      = module.prometheus.helm_release_name,
+    prometheus_helm_release_namespace = module.prometheus.helm_release_namespace,
+  } : null
+}
