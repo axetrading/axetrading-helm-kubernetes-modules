@@ -68,9 +68,9 @@ resource "helm_release" "cluster_autoscaler" {
   }
 
   set {
-    name = "service.annotations.prometheus\\.io/scrape"
+    name  = "service.annotations.prometheus\\.io/scrape"
     value = "true"
-    type = "string"
+    type  = "string"
   }
 
   dynamic "set" {

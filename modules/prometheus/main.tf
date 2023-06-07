@@ -57,4 +57,16 @@ resource "helm_release" "prometheus" {
       type  = "string"
     }
   }
+  depends_on = [ helm_release.prometheus_operator_crds ]
+}
+
+
+resource "helm_release" "prometheus_operator_crds" {
+  count = var.enabled ? 1 : 0
+
+  name       = "prometheus-operator-crds"
+  repository = "https://prometheus-community.github.io/helm-charts"
+  chart      = "prometheus-operator-crds"
+  version    = var.prometheus_operator_crds_version
+  namespace  = "monitoring"
 }
