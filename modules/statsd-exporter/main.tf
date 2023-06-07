@@ -12,21 +12,10 @@ resource "helm_release" "statsd_exporter" {
     value = "statsd-exporter"
     type  = "string"
   }
-  set {
-    name  = "prometheus.monitor.enabled"
-    value = "false"
-    type  = "string"
-  }
-
-  set {
-    name  = "prometheus.monitor.apiVersion"
-    value = "monitoring.coreos.com/v1"
-    type  = "string"
-  }
 
   set {
     name  = "serviceMonitor.enabled"
-    value = "false"
+    value = "true"
     type  = "string"
   }
   set {
