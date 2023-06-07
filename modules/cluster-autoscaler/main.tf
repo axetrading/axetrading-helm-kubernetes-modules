@@ -63,7 +63,7 @@ resource "helm_release" "cluster_autoscaler" {
   }
 
   set {
-    name  = "prometheusRule.enabled"
+    name  = "serviceMonitor.enabled"
     value = "true"
   }
 
