@@ -57,7 +57,7 @@ resource "helm_release" "prometheus" {
       type  = "string"
     }
   }
-  depends_on = [ helm_release.prometheus_operator_crds ]
+  depends_on = [helm_release.prometheus_operator_crds]
 }
 
 
