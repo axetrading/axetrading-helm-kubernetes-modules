@@ -14,7 +14,7 @@ resource "helm_release" "statsd_exporter" {
   }
   set {
     name  = "prometheus.monitor.enabled"
-    value = "true"
+    value = "false"
     type  = "string"
   }
 
@@ -26,7 +26,7 @@ resource "helm_release" "statsd_exporter" {
 
   set {
     name  = "serviceMonitor.enabled"
-    value = "true"
+    value = "false"
     type  = "string"
   }
   set {
