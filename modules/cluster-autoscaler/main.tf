@@ -67,6 +67,12 @@ resource "helm_release" "cluster_autoscaler" {
     value = "true"
   }
 
+  set {
+    name = "service.annotations.prometheus\\.io/scrape"
+    value = "true"
+    type = "string"
+  }
+
   dynamic "set" {
     for_each = var.create_role && var.create_service_account ? [aws_iam_role.this[0].arn] : [var.role_arn]
     content {
