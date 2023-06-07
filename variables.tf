@@ -10,6 +10,12 @@ variable "enable_prometheus" {
   default     = false
 }
 
+variable "enable_statsd_exporter" {
+  description = "Whether to enable the statsd exporter module"
+  type        = bool
+  default     = false
+}
+
 variable "prometheus_endpoint" {
   type        = string
   description = "AWS Managed Prometheus endpoint URL"
