@@ -19,7 +19,6 @@ module "prometheus" {
   source = "./modules/prometheus"
 
   enabled               = var.enable_prometheus
-  cluster_name          = var.cluster_name
   prometheus_version    = "22.6.2"
   prometheus_endpoint   = var.prometheus_endpoint
   region                = var.region
@@ -32,4 +31,11 @@ module "prometheus" {
     }
   }
   role_name_prefix = "amp-iamproxy-ingest-role-"
+}
+
+module "statsd_exporter" {
+  source = "./modules/statsd-exporter"
+
+  enabled               = var.enable_statsd_exporter
+  statsd_exporter_version = "0.8.0"
 }

@@ -16,6 +16,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 |------|--------|---------|
 | <a name="module_eks_cluster_autoscaler"></a> [eks\_cluster\_autoscaler](#module\_eks\_cluster\_autoscaler) | ./modules/cluster-autoscaler | n/a |
 | <a name="module_prometheus"></a> [prometheus](#module\_prometheus) | ./modules/prometheus | n/a |
+| <a name="module_statsd_exporter"></a> [statsd\_exporter](#module\_statsd\_exporter) | ./modules/statsd-exporter | n/a |
 
 ## Inputs
 
@@ -35,4 +36,5 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 |------|-------------|
 | <a name="output_eks_cluster_autoscaler"></a> [eks\_cluster\_autoscaler](#output\_eks\_cluster\_autoscaler) | EKS Cluster Autoscaler module outputs |
 | <a name="output_prometheus"></a> [prometheus](#output\_prometheus) | Prometheus module outputs |
+| <a name="output_statsd_exporter"></a> [statsd\_exporter](#output\_statsd\_exporter) | StatsD Exporter module outputs |
 <!-- END_TF_DOCS -->

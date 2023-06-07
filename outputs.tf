@@ -16,3 +16,12 @@ output "prometheus" {
     prometheus_helm_release_namespace = module.prometheus.helm_release_namespace,
   } : null
 }
+
+output "statsd_exporter" {
+  description = "StatsD Exporter module outputs"
+  value = var.enable_statsd_exporter ? {
+    statsd_exporter_helm_release_id        = module.statsd_exporter.helm_release_id,
+    statsd_exporter_helm_release_name      = module.statsd_exporter.helm_release_name,
+    statsd_exporter_helm_release_namespace = module.statsd_exporter.helm_release_namespace,
+  } : null
+}
