@@ -9,32 +9,10 @@ resource "helm_release" "statsd_exporter" {
 
   set {
     name  = "fullnameOverride"
-    value = "statsd-exporter"
-    type  = "string"
-  }
-  set {
-    name  = "prometheus.monitor.enabled"
-    value = "true"
+    value = "prometheus-statsd-exporter"
     type  = "string"
   }
 
-  set {
-    name  = "prometheus.monitor.apiVersion"
-    value = "monitoring.coreos.com/v1"
-    type  = "string"
-  }
-
-  set {
-    name  = "prometheus.monitor.kind"
-    value = "PodMonitor"
-    type  = "string"
-  }
-
-  set {
-    name  = "serviceMonitor.enabled"
-    value = "true"
-    type  = "string"
-  }
   set {
     name  = "service.annotations.prometheus\\.io/scrape"
     value = "true"

@@ -16,6 +16,12 @@ variable "enable_statsd_exporter" {
   default     = false
 }
 
+variable "enable_blackbox_exporter" {
+  description = "Whether to enable the blackbox exporter module"
+  type        = bool
+  default     = false
+}
+
 variable "prometheus_endpoint" {
   type        = string
   description = "AWS Managed Prometheus endpoint URL"

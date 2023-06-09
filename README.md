@@ -7,8 +7,8 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2.5 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 4.36 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 2.9.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.36 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.9.0 |
 
 ## Modules
 
@@ -16,7 +16,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 |------|--------|---------|
 | <a name="module_eks_cluster_autoscaler"></a> [eks\_cluster\_autoscaler](#module\_eks\_cluster\_autoscaler) | ./modules/cluster-autoscaler | n/a |
 | <a name="module_prometheus"></a> [prometheus](#module\_prometheus) | ./modules/prometheus | n/a |
-| <a name="module_statsd_exporter"></a> [statsd\_exporter](#module\_statsd\_exporter) | ./modules/statsd-exporter | n/a |
+| <a name="module_statsd_exporter"></a> [statsd\_exporter](#module\_statsd\_exporter) | ./modules/blackboxß-exporter | n/a |
 
 ## Inputs
 
@@ -24,6 +24,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 |------|-------------|------|---------|:--------:|
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the EKS cluster | `string` | n/a | yes |
 | <a name="input_eks_oidc_provider_arn"></a> [eks\_oidc\_provider\_arn](#input\_eks\_oidc\_provider\_arn) | ARN of the OIDC provider associated with the EKS cluster | `string` | n/a | yes |
+| <a name="input_enable_blackbox_exporter"></a> [enable\_blackbox\_exporter](#input\_enable\_blackbox\_exporter) | Whether to enable the blackbox exporter module | `bool` | `false` | no |
 | <a name="input_enable_cluster_autoscaler"></a> [enable\_cluster\_autoscaler](#input\_enable\_cluster\_autoscaler) | Whether to enable the cluster autoscaler module | `bool` | `false` | no |
 | <a name="input_enable_prometheus"></a> [enable\_prometheus](#input\_enable\_prometheus) | Whether to enable the prometheus module | `bool` | `false` | no |
 | <a name="input_enable_statsd_exporter"></a> [enable\_statsd\_exporter](#input\_enable\_statsd\_exporter) | Whether to enable the statsd exporter module | `bool` | `false` | no |
@@ -35,6 +36,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 
 | Name | Description |
 |------|-------------|
+| <a name="output_blackbox_exporter"></a> [blackbox\_exporter](#output\_blackbox\_exporter) | Blackbox Exporter module outputs |
 | <a name="output_eks_cluster_autoscaler"></a> [eks\_cluster\_autoscaler](#output\_eks\_cluster\_autoscaler) | EKS Cluster Autoscaler module outputs |
 | <a name="output_prometheus"></a> [prometheus](#output\_prometheus) | Prometheus module outputs |
 | <a name="output_statsd_exporter"></a> [statsd\_exporter](#output\_statsd\_exporter) | StatsD Exporter module outputs |

@@ -25,3 +25,12 @@ output "statsd_exporter" {
     statsd_exporter_helm_release_namespace = module.statsd_exporter.helm_release_namespace,
   } : null
 }
+
+output "blackbox_exporter" {
+  description = "Blackbox Exporter module outputs"
+  value = var.enable_blackbox_exporter ? {
+    blackbox_exporter_helm_release_id        = module.blackbox_exporter.helm_release_id,
+    blackbox_exporter_helm_release_name      = module.blackbox_exporter.helm_release_name,
+    blackbox_exporter_helm_release_namespace = module.blackbox_exporter.helm_release_namespace,
+  } : null
+}
