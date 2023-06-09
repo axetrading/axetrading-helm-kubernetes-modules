@@ -43,6 +43,6 @@ module "statsd_exporter" {
 module "blackbox_exporter" {
   source = "./modules/blackbox-exporter"
 
-  enabled                 = var.enable_blackbox_exporter
+  enabled                   = var.enable_blackbox_exporter
   blackbox_exporter_version = "7.10.0"
 }
