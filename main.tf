@@ -40,8 +40,8 @@ module "statsd_exporter" {
   statsd_exporter_version = "0.8.0"
 }
 
-module "statsd_exporter" {
-  source = "./modules/blackboxß-exporter"
+module "blackbox_exporter" {
+  source = "./modules/blackbox-exporter"
 
   enabled                 = var.enable_blackbox_exporter
   statsd_exporter_version = "7.10.0"
