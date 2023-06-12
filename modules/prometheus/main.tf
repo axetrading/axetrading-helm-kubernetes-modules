@@ -7,7 +7,7 @@
 locals {
   prometheus_config_files = [
     file("${path.module}/config/prometheus.yml"),
-    var.enable_blackbox_exporter ? templatefile("${path.module}/config/blackbox.tftpl", {
+    var.enable_blackbox_exporter ? templatefile("${path.module}/config/blackbox_exporter.tftpl", {
       monitored_endpoints    = var.monitored_endpoints
       blackbox_exporter_host = var.blackbox_exporter_host
     }) : null
