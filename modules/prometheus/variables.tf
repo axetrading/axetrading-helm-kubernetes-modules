@@ -145,16 +145,16 @@ variable "enable_blackbox_exporter" {
 variable "monitored_endpoints" {
   description = "The endpoints to be monitored by Prometheus"
   type = object({
-    http_endpoints = optional(list(string), [])
-    tcp_endpoints  = optional(list(string), [])
-    icmp_endpoints = optional(list(string), [])
-    ssh_endpoints  = optional(list(string), [])
+    http_endpoints = optional(list(string), null)
+    tcp_endpoints  = optional(list(string), null)
+    icmp_endpoints = optional(list(string), null)
+    ssh_endpoints  = optional(list(string), null)
   })
   default = {
-    http_endpoints = []
-    tcp_endpoints  = []
-    icmp_endpoints = []
-    ssh_endpoints  = []
+    http_endpoints = null
+    tcp_endpoints  = null
+    icmp_endpoints = null
+    ssh_endpoints  = null
   }
 }
 
