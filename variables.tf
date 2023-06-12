@@ -52,10 +52,10 @@ variable "monitoring_aws_account_id" {
 variable "monitored_endpoints" {
   description = "The endpoints to be monitored by Prometheus"
   type = object({
-    http_endpoints = optional(list, [])
-    tcp_endpoints  = optional(list, [])
-    icmp_endpoints = optional(list, [])
-    ssh_endpoints  = optional(list, [])
+    http_endpoints = optional(list(string), [])
+    tcp_endpoints  = optional(list(string), [])
+    icmp_endpoints = optional(list(string), [])
+    ssh_endpoints  = optional(list(string), [])
   })
   default = {
     http_endpoints = []
