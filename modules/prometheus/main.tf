@@ -4,6 +4,17 @@
   The Prometheus server is used for monitoring and alerting in Kubernetes clusters.
 */
 
+locals {
+  prometheus_config_files = [
+    file("${path.module}/config/prometheus.yml"),
+    var.enable_blackbox_exporter ? templatefile("${path.module}/config/blackbox.tftpl", {
+      monitored_endpoints    = var.monitored_endpoints
+      blackbox_exporter_host = var.blackbox_exporter_host
+    }) : null
+  ]
+  prometheus_config = compact(local.prometheus_config_files)
+}
+
 resource "helm_release" "prometheus" {
   count = var.enabled ? 1 : 0
 
@@ -12,7 +23,7 @@ resource "helm_release" "prometheus" {
   chart      = "prometheus"
   version    = var.prometheus_version
   namespace  = "monitoring"
-  values     = [file("${path.module}/prometheus.yml")]
+  values     = local.prometheus_config
 
   set {
     name  = "serviceAccounts.server.name"
