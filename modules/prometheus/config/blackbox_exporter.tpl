@@ -1,4 +1,4 @@
-extraScrapeConfigs:
+extraScrapeConfigs: |
   %{~ if monitored_endpoints.http_endpoints != null ~}
   - job_name: 'blackbox-http'
     metrics_path: /probe
