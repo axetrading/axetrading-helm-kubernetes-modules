@@ -12,6 +12,7 @@ resource "helm_release" "prometheus" {
   chart      = "prometheus"
   version    = var.prometheus_version
   namespace  = "monitoring"
+  values     = [file("${path.module}/prometheus.yml")]
 
   set {
     name  = "serviceAccounts.server.name"
