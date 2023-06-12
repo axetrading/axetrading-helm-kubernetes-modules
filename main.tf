@@ -18,11 +18,14 @@ module "eks_cluster_autoscaler" {
 module "prometheus" {
   source = "./modules/prometheus"
 
-  enabled               = var.enable_prometheus
-  prometheus_version    = "22.6.2"
-  prometheus_endpoint   = var.prometheus_endpoint
-  region                = var.region
-  monitoring_account_id = var.monitoring_aws_account_id
+  enabled                  = var.enable_prometheus
+  prometheus_version       = "22.6.2"
+  prometheus_endpoint      = var.prometheus_endpoint
+  region                   = var.region
+  monitoring_account_id    = var.monitoring_aws_account_id
+  enable_blackbox_exporter = var.enable_blackbox_exporter
+  blackbox_exporter_host   = var.blackbox_exporter_host
+  monitored_endpoints      = var.monitored_endpoints
 
   oidc_providers = {
     main = {

@@ -48,3 +48,25 @@ variable "monitoring_aws_account_id" {
   description = "AWS account ID where the monitoring stack is deployed"
   type        = string
 }
+
+variable "monitored_endpoints" {
+  description = "The endpoints to be monitored by Prometheus"
+  type = object({
+    http_endpoints = list(string)
+    tcp_endpoints  = list(string)
+    icmp_endpoints = list(string)
+    ssh_endpoints  = list(string)
+  })
+  default = {
+    http_endpoints = []
+    tcp_endpoints  = []
+    icmp_endpoints = []
+    ssh_endpoints  = []
+  }
+}
+
+variable "blackbox_exporter_host" {
+  type        = string
+  description = "Prometheus Blackbox Exporter host"
+  default     = "prometheus-blackbox-exporter.monitoring.svc.cluster.local"
+}
