@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "this" {
   dynamic "statement" {
     for_each = var.cross_account_enabled ? [1] : []
     content {
-      effect = "Allow"
+      effect  = "Allow"
       actions = ["sts:AssumeRole"]
 
       principals {

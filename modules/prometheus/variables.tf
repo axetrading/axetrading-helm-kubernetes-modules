@@ -163,3 +163,9 @@ variable "blackbox_exporter_host" {
   description = "Prometheus Blackbox Exporter host"
   default     = "prometheus-blackbox-exporter.monitoring.svc.cluster.local"
 }
+
+variable "cross_account_enabled" {
+  type        = bool
+  description = "Whether to allow cross account access to AWS CloudWatch Logs and Metrics"
+  default     = true
+}
