@@ -75,5 +75,5 @@ variable "blackbox_exporter_host" {
 variable "attach_grafana_cloudwatch_policy" {
   description = "Whether to attach the Grafana CloudWatch policy to the IAM role"
   type        = bool
-  default     = false
+  default     = true
 }
