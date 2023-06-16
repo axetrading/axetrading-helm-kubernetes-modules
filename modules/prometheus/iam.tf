@@ -34,7 +34,7 @@ data "aws_iam_policy_document" "this" {
 
       principals {
         type        = "AWS"
-        identifiers = var.monitoring_account_id
+        identifiers = [var.monitoring_account_id]
       }
     }
   }
