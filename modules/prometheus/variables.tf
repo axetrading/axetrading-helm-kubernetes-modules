@@ -169,3 +169,9 @@ variable "cross_account_enabled" {
   description = "Whether to allow cross account access to AWS CloudWatch Logs and Metrics"
   default     = true
 }
+
+variable "attach_grafana_cloudwatch_policy" {
+  type        = bool
+  description = "Whether to attach the AWS managed Grafana CloudWatch policy to the IAM role"
+  default     = false
+}

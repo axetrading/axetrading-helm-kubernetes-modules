@@ -63,6 +63,13 @@ resource "aws_iam_role_policy_attachment" "this" {
   policy_arn = each.value
 }
 
+resource "aws_iam_role_policy_attachment" "this" {
+  count = var.attach_grafana_cloudwatch_policy ? 1 : 0
+
+  role       = aws_iam_role.this[0].name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonGrafanaCloudWatchAccess"
+}
+
 module "short-name" {
   count      = var.role_name_prefix != null ? 1 : 0
   source     = "axetrading/short-name/null"

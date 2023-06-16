@@ -27,6 +27,7 @@ module "prometheus" {
   enable_blackbox_exporter = var.enable_blackbox_exporter
   blackbox_exporter_host   = var.blackbox_exporter_host
   monitored_endpoints      = var.monitored_endpoints
+  attach_grafana_cloudwatch_policy = var.attach_grafana_cloudwatch_policy
 
   oidc_providers = {
     main = {

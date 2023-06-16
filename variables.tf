@@ -71,3 +71,9 @@ variable "blackbox_exporter_host" {
   description = "Prometheus Blackbox Exporter host"
   default     = "prometheus-blackbox-exporter.monitoring.svc.cluster.local"
 }
+
+variable "attach_grafana_cloudwatch_policy" {
+  description = "Whether to attach the Grafana CloudWatch policy to the IAM role"
+  type        = bool
+  default     = false
+}
