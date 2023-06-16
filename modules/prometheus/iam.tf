@@ -63,7 +63,7 @@ resource "aws_iam_role_policy_attachment" "this" {
   policy_arn = each.value
 }
 
-resource "aws_iam_role_policy_attachment" "this" {
+resource "aws_iam_role_policy_attachment" "grafana_cloudwatch" {
   count = var.attach_grafana_cloudwatch_policy ? 1 : 0
 
   role       = aws_iam_role.this[0].name
