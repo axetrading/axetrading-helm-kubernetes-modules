@@ -1,10 +1,25 @@
 mappings:
-- match: "^([^.]+)\\.([^.]+)\\.(.+)\\.(counter|timer|gauge)$"
-  match_metric_type: "$4"
+- match: "^([^.]+)\\.([^.]+)\\.(.+)\\.counter$"
+  match_metric_type: counter
   match_type: "regex"
   name: "${3}"
   help: "Custom application metrics from microservices"
   labels:
     pod_id: "$1"
     environment: "$2"
-    type: "$4"
+- match: "^([^.]+)\\.([^.]+)\\.(.+)\\.timer$"
+  match_metric_type: timer
+  match_type: "regex"
+  name: "${3}"
+  help: "Custom application metrics from microservices"
+  labels:
+    pod_id: "$1"
+    environment: "$2"
+- match: "^([^.]+)\\.([^.]+)\\.(.+)\\.gauge$"
+  match_metric_type: gauge
+  match_type: "regex"
+  name: "${3}"
+  help: "Custom application metrics from microservices"
+  labels:
+    pod_id: "$1"
+    environment: "$2"
