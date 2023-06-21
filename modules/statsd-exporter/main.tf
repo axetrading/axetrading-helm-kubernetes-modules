@@ -24,4 +24,10 @@ resource "helm_release" "statsd_exporter" {
     value = "true"
     type  = "string"
   }
+
+  set {
+    name  = "mappingConfig"
+    value = file("${path.module}/configs/mapping.yml")
+    type  = "string"
+  }
 }
