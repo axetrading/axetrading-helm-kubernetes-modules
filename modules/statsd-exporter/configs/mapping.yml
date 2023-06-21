@@ -1,5 +1,5 @@
 mappings:
-- match: "^([^.]+)\\.([^.]+)\\.(.+)\\.counter$"
+- match: "^([-a-zA-Z0-9]+).([-a-zA-Z0-9]+).(.+).counter$"
   match_metric_type: counter
   match_type: "regex"
   name: "${3}"
@@ -7,7 +7,7 @@ mappings:
   labels:
     pod_id: "$1"
     environment: "$2"
-- match: "^([^.]+)\\.([^.]+)\\.(.+)\\.timer$"
+- match: "^([-a-zA-Z0-9]+).([-a-zA-Z0-9]+).(.+).timer$"
   match_metric_type: timer
   match_type: "regex"
   name: "${3}"
@@ -15,7 +15,7 @@ mappings:
   labels:
     pod_id: "$1"
     environment: "$2"
-- match: "^([^.]+)\\.([^.]+)\\.(.+)\\.gauge$"
+- match: "^([-a-zA-Z0-9]+).([-a-zA-Z0-9]+).(.+).gauge$"
   match_metric_type: gauge
   match_type: "regex"
   name: "${3}"
