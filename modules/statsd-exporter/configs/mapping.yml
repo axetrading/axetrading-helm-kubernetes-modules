@@ -1,25 +1,32 @@
 mappings:
-- match: "^([-a-zA-Z0-9]+).([-a-zA-Z0-9]+).(.+).counter$"
+- match: "^([a-zA-Z-]+).([a-zA-Z-]+).([-a-zA-Z0-9_-]+).([a-zA-Z_-]+).counter$"
   match_metric_type: counter
   match_type: "regex"
-  name: "${3}"
+  name: "${2}_${4}"
   help: "Custom application metrics from microservices"
   labels:
-    pod_id: "$1"
-    environment: "$2"
-- match: "^([-a-zA-Z0-9]+).([-a-zA-Z0-9]+).(.+).timer$"
+    pod_id: "$3"
+    environment: "$1"
+    component: "$2"
+- match: "^([a-zA-Z-]+).([a-zA-Z-]+).([-a-zA-Z0-9_-]+).([a-zA-Z_-]+).timer$"
   match_metric_type: timer
   match_type: "regex"
-  name: "${3}"
+  name: "${2}_${4}"
   help: "Custom application metrics from microservices"
   labels:
-    pod_id: "$1"
-    environment: "$2"
-- match: "^([-a-zA-Z0-9]+).([-a-zA-Z0-9]+).(.+).gauge$"
+    pod_id: "$3"
+    environment: "$1"
+    component: "$2"
+- match: "^([a-zA-Z-]+).([a-zA-Z-]+).([-a-zA-Z0-9_-]+).([a-zA-Z_-]+).gauge$"
   match_metric_type: gauge
   match_type: "regex"
-  name: "${3}"
+  name: "${2}_${4}"
   help: "Custom application metrics from microservices"
   labels:
-    pod_id: "$1"
-    environment: "$2"
+    pod_id: "$3"
+    environment: "$1"
+    component: "$2"
+- match: "."
+  match_type: "regex"
+  action: drop
+  name: "invalid_metric"
