@@ -30,4 +30,9 @@ resource "helm_release" "statsd_exporter" {
     value = file("${path.module}/configs/mapping.yml")
     type  = "string"
   }
+
+  set_list {
+    name  = "extraArgs"
+    value = ["--log.level=debug"]
+  }
 }

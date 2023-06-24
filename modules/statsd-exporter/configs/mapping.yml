@@ -26,7 +26,3 @@ mappings:
     pod_id: "$3"
     environment: "$1"
     component: "$2"
-- match: "."
-  match_type: "regex"
-  action: drop
-  name: "invalid_metric"
