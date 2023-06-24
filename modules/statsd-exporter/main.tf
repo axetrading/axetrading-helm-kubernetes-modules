@@ -27,7 +27,7 @@ resource "helm_release" "statsd_exporter" {
 
   set {
     name  = "statsd.mappingConfig"
-    value = yamlencode(file("${path.module}/configs/mapping.yml"))
+    value = trimspace(file("${path.module}/configs/mapping.yml"))
     type  = "string"
   }
 
