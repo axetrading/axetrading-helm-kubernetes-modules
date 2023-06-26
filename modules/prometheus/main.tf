@@ -67,7 +67,7 @@ resource "helm_release" "prometheus" {
   }
 
   set {
-    name  = "server.global.eval_interval"
+    name  = "server.global.evaluation_interval"
     value = var.eval_interval
   }
 
