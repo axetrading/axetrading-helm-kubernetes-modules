@@ -28,6 +28,8 @@ module "prometheus" {
   blackbox_exporter_host           = var.blackbox_exporter_host
   monitored_endpoints              = var.monitored_endpoints
   attach_grafana_cloudwatch_policy = var.attach_grafana_cloudwatch_policy
+  scrape_interval                  = var.prometheus_scrape_interval
+  eval_interval                    = var.prometheus_evaluation_interval
 
   oidc_providers = {
     main = {

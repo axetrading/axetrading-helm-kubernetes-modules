@@ -61,6 +61,16 @@ resource "helm_release" "prometheus" {
     value = "2500"
   }
 
+  set {
+    name  = "server.global.scrape_interval"
+    value = var.scrape_interval
+  }
+
+  set {
+    name  = "server.global.eval_interval"
+    value = var.eval_interval
+  }
+
   dynamic "set" {
     for_each = var.create_role && var.create_service_account ? [aws_iam_role.this[0].arn] : [var.role_arn]
     content {

@@ -48,6 +48,7 @@
 | <a name="input_cross_account_enabled"></a> [cross\_account\_enabled](#input\_cross\_account\_enabled) | Whether to allow cross account access to AWS CloudWatch Logs and Metrics | `bool` | `true` | no |
 | <a name="input_enable_blackbox_exporter"></a> [enable\_blackbox\_exporter](#input\_enable\_blackbox\_exporter) | Whether to add the blackbox exporter jobs in prometheus | `bool` | `false` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Whether to create the cluster autoscaler | `bool` | `true` | no |
+| <a name="input_eval_interval"></a> [eval\_interval](#input\_eval\_interval) | The evaluation interval for Prometheus | `string` | `"1m"` | no |
 | <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Whether policies should be detached from this role when destroying | `bool` | `true` | no |
 | <a name="input_max_session_duration"></a> [max\_session\_duration](#input\_max\_session\_duration) | Maximum CLI/API session duration in seconds between 3600 and 43200 | `number` | `null` | no |
 | <a name="input_monitored_endpoints"></a> [monitored\_endpoints](#input\_monitored\_endpoints) | The endpoints to be monitored by Prometheus | <pre>object({<br>    http_endpoints = optional(list(string), null)<br>    tcp_endpoints  = optional(list(string), null)<br>    icmp_endpoints = optional(list(string), null)<br>    ssh_endpoints  = optional(list(string), null)<br>  })</pre> | <pre>{<br>  "http_endpoints": null,<br>  "icmp_endpoints": null,<br>  "ssh_endpoints": null,<br>  "tcp_endpoints": null<br>}</pre> | no |
@@ -65,6 +66,7 @@
 | <a name="input_role_path"></a> [role\_path](#input\_role\_path) | Path of IAM role | `string` | `"/"` | no |
 | <a name="input_role_permissions_boundary_arn"></a> [role\_permissions\_boundary\_arn](#input\_role\_permissions\_boundary\_arn) | Permissions boundary ARN to use for IAM role | `string` | `null` | no |
 | <a name="input_role_policy_arns"></a> [role\_policy\_arns](#input\_role\_policy\_arns) | ARNs of any policies to attach to the IAM role | `set(string)` | `[]` | no |
+| <a name="input_scrape_interval"></a> [scrape\_interval](#input\_scrape\_interval) | The scrape interval for Prometheus | `string` | `"15s"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add the the IAM role | `map(any)` | `{}` | no |
 
 ## Outputs

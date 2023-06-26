@@ -77,3 +77,15 @@ variable "attach_grafana_cloudwatch_policy" {
   type        = bool
   default     = true
 }
+
+variable "prometheus_evaluation_interval" {
+  type        = string
+  description = "The evaluation interval for Prometheus"
+  default     = "1m"
+}
+
+variable "prometheus_scrape_interval" {
+  type        = string
+  description = "The scrape interval for Prometheus"
+  default     = "15s"
+}

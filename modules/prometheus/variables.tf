@@ -175,3 +175,15 @@ variable "attach_grafana_cloudwatch_policy" {
   description = "Whether to attach the AWS managed Grafana CloudWatch policy to the IAM role"
   default     = false
 }
+
+variable "eval_interval" {
+  type        = string
+  description = "The evaluation interval for Prometheus"
+  default     = "1m"
+}
+
+variable "scrape_interval" {
+  type        = string
+  description = "The scrape interval for Prometheus"
+  default     = "15s"
+}
