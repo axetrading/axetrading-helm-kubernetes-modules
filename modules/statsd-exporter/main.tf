@@ -51,8 +51,4 @@ resource "helm_release" "statsd_exporter" {
     value = "128Mi"
   }
 
-  set {
-    name = "replicaCount"
-    value = "2"
-  }
 }
