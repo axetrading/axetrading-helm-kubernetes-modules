@@ -35,4 +35,40 @@ resource "helm_release" "statsd_exporter" {
     name  = "extraArgs"
     value = ["--log.level=debug"]
   }
+
+  set {
+    name  = "autoscaling.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "autoscaling.minReplicas"
+    value = "2"
+  }
+
+  set {
+    name  = "autoscaling.maxReplicas"
+    value = "5"
+  }
+
+  set {
+    name  = "autoscaling.targetMemoryUtilizationPercentage"
+    value = "80"
+  }
+
+  set {
+    name  = "resources.requests.cpu"
+    value = "100m"
+  }
+
+  set {
+    name  = "resources.requests.memory"
+    value = "128Mi"
+  }
+
+  set {
+    name  = "resources.limits.memory"
+    value = "128Mi"
+  }
+
 }
