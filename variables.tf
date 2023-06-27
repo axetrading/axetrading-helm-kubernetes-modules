@@ -89,3 +89,9 @@ variable "prometheus_scrape_interval" {
   description = "The scrape interval for Prometheus"
   default     = "15s"
 }
+
+variable "enable_nginx_ingress_controller" {
+  description = "Whether to enable the nginx ingress controller module"
+  type        = bool
+  default     = false
+}

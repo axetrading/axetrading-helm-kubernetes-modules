@@ -53,3 +53,10 @@ module "blackbox_exporter" {
   enabled                   = var.enable_blackbox_exporter
   blackbox_exporter_version = "7.10.0"
 }
+
+module "nginx_ingress_controller" {
+  source = "./modules/nginx-ingress-controller"
+
+  enabled                          = var.enable_nginx_ingress_controller
+  nginx_ingress_controller_version = "4.7.0"
+}
