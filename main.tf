@@ -43,8 +43,8 @@ module "prometheus" {
 module "statsd_exporter" {
   source = "./modules/statsd-exporter"
 
-  enabled = var.enable_statsd_exporter
-  statsd_exporter_version          = "0.8.0"
+  enabled                 = var.enable_statsd_exporter
+  statsd_exporter_version = "0.8.0"
 }
 
 module "blackbox_exporter" {
