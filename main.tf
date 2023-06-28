@@ -44,10 +44,7 @@ module "statsd_exporter" {
   source = "./modules/statsd-exporter"
 
   enabled = var.enable_statsd_exporter
-
   statsd_exporter_version          = "0.8.0"
-  statsd_high_availability_enabled = var.statsd_config["high_availability_enabled"]
-  statsd_exporter_target_group_arn = var.statsd_config["target_group_arn"]
 }
 
 module "blackbox_exporter" {

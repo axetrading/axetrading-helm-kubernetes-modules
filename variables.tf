@@ -95,12 +95,3 @@ variable "enable_nginx_ingress_controller" {
   type        = bool
   default     = false
 }
-
-variable "statsd_config" {
-  type        = map(any)
-  description = "StatsD exporter configuration"
-  default = {
-    high_availability_enabled = false
-    target_group_arn          = null
-  }
-}

@@ -39,7 +39,6 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_prometheus_evaluation_interval"></a> [prometheus\_evaluation\_interval](#input\_prometheus\_evaluation\_interval) | The evaluation interval for Prometheus | `string` | `"1m"` | no |
 | <a name="input_prometheus_scrape_interval"></a> [prometheus\_scrape\_interval](#input\_prometheus\_scrape\_interval) | The scrape interval for Prometheus | `string` | `"15s"` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"eu-west-2"` | no |
-| <a name="input_statsd_config"></a> [statsd\_config](#input\_statsd\_config) | StatsD exporter configuration | `map(any)` | <pre>{<br>  "high_availability_enabled": false,<br>  "target_group_arn": null<br>}</pre> | no |
 
 ## Outputs
 
