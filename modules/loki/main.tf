@@ -74,7 +74,7 @@ resource "helm_release" "loki" {
     value = false
     type  = "string"
   }
-  set {}
+  
   depends_on = [helm_release.grafana_agent_operator]
 }
 
