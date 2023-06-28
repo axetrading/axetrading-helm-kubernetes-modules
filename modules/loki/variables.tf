@@ -7,7 +7,7 @@ variable "enabled" {
 variable "loki_version" {
   description = "Loki-stack helm chart version"
   type        = string
-  default     = "2.9.10"
+  default     = "5.8.6"
 }
 
 variable "create_bucket" {

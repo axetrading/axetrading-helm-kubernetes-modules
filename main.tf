@@ -62,14 +62,14 @@ module "nginx_ingress_controller" {
 }
 
 module "loki_stack" {
-  source = "./modules/loki-stack"
+  source = "./modules/loki"
 
   enabled          = var.enable_loki
   promtail_enabled = var.enable_promtail
   create_bucket    = var.create_loki_bucket
   region           = var.bucket_region
   bucket_name      = var.loki_bucket_name
-  loki_version     = "2.9.10"
+  loki_version     = "5.8.6"
 
   oidc_providers = {
     main = {

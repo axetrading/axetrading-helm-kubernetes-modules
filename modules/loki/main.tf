@@ -19,43 +19,33 @@ resource "helm_release" "loki" {
 
   name       = "loki"
   repository = "https://grafana.github.io/helm-charts"
-  chart      = "loki-stack"
+  chart      = "loki"
   version    = var.loki_version
   namespace  = "monitoring"
 
   set {
-    name  = "loki.fullnameOverride"
+    name  = "fullnameOverride"
     value = "loki"
-  }
-
-  set {
-    name  = "promtail.enabled"
-    value = var.promtail_enabled
-  }
-
-  set {
-    name  = "promtail.fullnameOverride"
-    value = "promtail"
-    type  = "string"
   }
 
   dynamic "set" {
     for_each = var.create_role ? [aws_iam_role.this[0].arn] : [var.role_arn]
     content {
-      name  = "loki.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+      name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
       value = set.value
       type  = "string"
     }
   }
 
   set {
-    name  = "loki.loki.storage.type"
+    name  = "loki.storage.type"
     value = "s3"
   }
 
   set {
-    name  = "loki.loki.storage.s3.s3"
+    name  = "loki.storage.s3.s3"
     value = "s3://${var.region}/${local.bucket_name}"
   }
 
 }
+
