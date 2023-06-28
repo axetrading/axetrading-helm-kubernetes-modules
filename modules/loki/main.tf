@@ -74,7 +74,25 @@ resource "helm_release" "loki" {
     value = false
     type  = "string"
   }
-  
+
+  set {
+    name  = "gateway.enabled"
+    value = false
+    type  = "string"
+  }
+
+  set {
+    name  = "monitoring.serviceMonitor.grafanaAgent.installOperator"
+    value = false
+    type  = "string"
+  }
+
+  set {
+    name  = "test.enabled"
+    value = false
+    type  = "string"
+  }
+
   depends_on = [helm_release.grafana_agent_operator]
 }
 
