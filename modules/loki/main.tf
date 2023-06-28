@@ -62,6 +62,19 @@ resource "helm_release" "loki" {
     value = false
     type  = "string"
   }
+
+  set {
+    name  = "monitoring.dashboard.enabled"
+    value = false
+    type  = "string"
+  }
+
+  set {
+    name  = "monitoring.lokiCanary.enabled"
+    value = false
+    type  = "string"
+  }
+  set {}
   depends_on = [helm_release.grafana_agent_operator]
 }
 
