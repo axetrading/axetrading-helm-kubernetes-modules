@@ -74,7 +74,7 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name  = "monitoring.dashboard.enabled"
+    name  = "monitoring.dashboards.enabled"
     value = false
   }
 
