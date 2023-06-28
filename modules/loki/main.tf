@@ -47,5 +47,11 @@ resource "helm_release" "loki" {
     value = "s3://${var.region}/${local.bucket_name}"
   }
 
+  set {
+    name  = "monitoring.selfMonitoring.enabled"
+    value = false
+    type = "string"
+  }
+
 }
 
