@@ -1,12 +1,8 @@
-locals {
-  replica_count = 2
-}
 resource "helm_release" "statsd_exporter" {
   count = var.enabled ? 1 : 0
 
   name       = "statsd-exporter"
-  repository = "https://prometheus-community.github.io/helm-charts"
-  chart      = "prometheus-statsd-exporter"
+  chart      = "${path.module}/helm/prometheus-statsd-exporter"
   version    = var.statsd_exporter_version
   namespace  = "monitoring"
 
@@ -54,32 +50,4 @@ resource "helm_release" "statsd_exporter" {
     value = "128Mi"
   }
 
-  dynamic "set" {
-    for_each = var.enabled && var.statsd_high_availability_enabled ? [local.replica_count] : []
-    content {
-      name  = "replicaCount"
-      value = set.value
-      type  = "string"
-    }
-  }
-}
-
-resource "kubernetes_manifest" "this" {
-  count = var.enabled && var.statsd_high_availability_enabled ? 1 : 0
-  manifest = {
-    "apiVersion" = "elbv2.k8s.aws/v1beta1"
-    "kind"       = "TargetGroupBinding"
-    "metadata" = {
-      "name"      = "prometheus-statsd-exporter"
-      "namespace" = "monitoring"
-    }
-    "spec" = {
-      "serviceRef" = {
-        "name" = "prometheus-statsd-exporter"
-        port   = 9125
-      }
-      "targetGroupARN" = var.statsd_exporter_target_group_arn
-      "targetType"     = "ip"
-    }
-  }
 }
