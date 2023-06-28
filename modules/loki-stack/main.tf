@@ -49,17 +49,13 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name  = "loki.loki.storage_config.aws.s3"
-    value = "s3://${var.region}/${local.bucket_name}"
-  }
-
-  set {
-    name  = "loki.loki.storage_config.aws.dynamodb.dynamodb_url"
-    value = "dynamodb://${var.region}"
-  }
-
-  set {
     name  = "loki.loki.storage.type"
     value = "s3"
   }
+
+  set {
+    name  = "loki.loki.storage.s3.s3"
+    value = "s3://${var.region}/${local.bucket_name}"
+  }
+
 }
