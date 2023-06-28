@@ -5,9 +5,6 @@ set -eo pipefail
 scripts/format.sh
 scripts/generate-readme.sh
 
-# change directory to where your terraform files are
-cd path/to/terraform/files
-
 echo "Running Terraform Init..."
 terraform init -backend=false
 
