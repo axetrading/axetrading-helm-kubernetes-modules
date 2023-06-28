@@ -32,14 +32,14 @@ resource "helm_release" "loki" {
   chart      = "loki"
   version    = var.loki_version
   namespace  = "monitoring"
-  
+
   set {
     name  = "fullnameOverride"
     value = "loki"
   }
 
   set {
-    name = "loki.auth.enabled"
+    name  = "loki.auth.enabled"
     value = false
   }
 
@@ -60,6 +60,12 @@ resource "helm_release" "loki" {
   set {
     name  = "loki.storage.s3.s3"
     value = "s3://${var.region}/${local.bucket_name}"
+  }
+
+  set {
+    name  = "loki.storage.s3.region"
+    value = var.region
+    type  = "string"
   }
 
   set {
@@ -93,17 +99,17 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name = "backend.autoscaling.enabled"
+    name  = "backend.autoscaling.enabled"
     value = true
   }
 
   set {
-    name = "write.autoscaling.enabled"
+    name  = "write.autoscaling.enabled"
     value = true
   }
 
   set {
-    name = "read.autoscaling.enabled"
+    name  = "read.autoscaling.enabled"
     value = true
   }
 
