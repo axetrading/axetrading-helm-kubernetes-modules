@@ -32,10 +32,15 @@ resource "helm_release" "loki" {
   chart      = "loki"
   version    = var.loki_version
   namespace  = "monitoring"
-
+  
   set {
     name  = "fullnameOverride"
     value = "loki"
+  }
+
+  set {
+    name = "loki.auth.enabled"
+    value = false
   }
 
   dynamic "set" {
@@ -60,37 +65,46 @@ resource "helm_release" "loki" {
   set {
     name  = "monitoring.selfMonitoring.enabled"
     value = false
-    type  = "string"
   }
 
   set {
     name  = "monitoring.dashboard.enabled"
     value = false
-    type  = "string"
   }
 
   set {
     name  = "monitoring.lokiCanary.enabled"
     value = false
-    type  = "string"
   }
 
   set {
     name  = "gateway.enabled"
     value = false
-    type  = "string"
   }
 
   set {
     name  = "monitoring.serviceMonitor.grafanaAgent.installOperator"
     value = false
-    type  = "string"
   }
 
   set {
     name  = "test.enabled"
     value = false
-    type  = "string"
+  }
+
+  set {
+    name = "backend.autoscaling.enabled"
+    value = true
+  }
+
+  set {
+    name = "write.autoscaling.enabled"
+    value = true
+  }
+
+  set {
+    name = "read.autoscaling.enabled"
+    value = true
   }
 
   depends_on = [helm_release.grafana_agent_operator]
