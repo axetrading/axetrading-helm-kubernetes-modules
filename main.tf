@@ -75,7 +75,7 @@ module "loki_stack" {
   oidc_providers = {
     main = {
       provider_arn               = var.eks_oidc_provider_arn
-      namespace_service_accounts = ["monitoring:amp-iamproxy-ingest-service-account"]
+      namespace_service_accounts = ["monitoring:loki"]
     }
   }
   role_name_prefix = "aws-loki-role-"
