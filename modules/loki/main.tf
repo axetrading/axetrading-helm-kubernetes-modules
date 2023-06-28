@@ -39,7 +39,7 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name  = "loki.auth.enabled"
+    name  = "loki.auth_enabled"
     value = false
   }
 
