@@ -60,3 +60,22 @@ module "nginx_ingress_controller" {
   enabled                          = var.enable_nginx_ingress_controller
   nginx_ingress_controller_version = "4.7.0"
 }
+
+module "loki_stack" {
+  source = "./modules/loki-stack"
+
+  enabled          = var.enable_loki
+  promtail_enabled = var.enable_promtail
+  create_bucket    = var.create_loki_bucket
+  region           = var.bucket_region
+  bucket_name      = var.loki_bucket_name
+  loki_version     = "2.9.10"
+
+  oidc_providers = {
+    main = {
+      provider_arn               = var.eks_oidc_provider_arn
+      namespace_service_accounts = ["monitoring:amp-iamproxy-ingest-service-account"]
+    }
+  }
+  role_name_prefix = "aws-loki-role-"
+}

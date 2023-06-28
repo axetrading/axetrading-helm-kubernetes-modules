@@ -1,10 +1,10 @@
 resource "helm_release" "statsd_exporter" {
   count = var.enabled ? 1 : 0
 
-  name       = "statsd-exporter"
-  chart      = "${path.module}/helm/prometheus-statsd-exporter"
-  version    = var.statsd_exporter_version
-  namespace  = "monitoring"
+  name      = "statsd-exporter"
+  chart     = "${path.module}/helm/prometheus-statsd-exporter"
+  version   = var.statsd_exporter_version
+  namespace = "monitoring"
 
   set {
     name  = "fullnameOverride"

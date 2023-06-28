@@ -16,6 +16,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 |------|--------|---------|
 | <a name="module_blackbox_exporter"></a> [blackbox\_exporter](#module\_blackbox\_exporter) | ./modules/blackbox-exporter | n/a |
 | <a name="module_eks_cluster_autoscaler"></a> [eks\_cluster\_autoscaler](#module\_eks\_cluster\_autoscaler) | ./modules/cluster-autoscaler | n/a |
+| <a name="module_loki_stack"></a> [loki\_stack](#module\_loki\_stack) | ./modules/loki-stack | n/a |
 | <a name="module_nginx_ingress_controller"></a> [nginx\_ingress\_controller](#module\_nginx\_ingress\_controller) | ./modules/nginx-ingress-controller | n/a |
 | <a name="module_prometheus"></a> [prometheus](#module\_prometheus) | ./modules/prometheus | n/a |
 | <a name="module_statsd_exporter"></a> [statsd\_exporter](#module\_statsd\_exporter) | ./modules/statsd-exporter | n/a |
@@ -26,13 +27,18 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 |------|-------------|------|---------|:--------:|
 | <a name="input_attach_grafana_cloudwatch_policy"></a> [attach\_grafana\_cloudwatch\_policy](#input\_attach\_grafana\_cloudwatch\_policy) | Whether to attach the Grafana CloudWatch policy to the IAM role | `bool` | `true` | no |
 | <a name="input_blackbox_exporter_host"></a> [blackbox\_exporter\_host](#input\_blackbox\_exporter\_host) | Prometheus Blackbox Exporter host | `string` | `"prometheus-blackbox-exporter.monitoring.svc.cluster.local"` | no |
+| <a name="input_bucket_region"></a> [bucket\_region](#input\_bucket\_region) | S3 Region of the Loki bucket | `string` | `"eu-west-2"` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the EKS cluster | `string` | n/a | yes |
+| <a name="input_create_loki_bucket"></a> [create\_loki\_bucket](#input\_create\_loki\_bucket) | Whether to create the Loki bucket | `bool` | `true` | no |
 | <a name="input_eks_oidc_provider_arn"></a> [eks\_oidc\_provider\_arn](#input\_eks\_oidc\_provider\_arn) | ARN of the OIDC provider associated with the EKS cluster | `string` | n/a | yes |
 | <a name="input_enable_blackbox_exporter"></a> [enable\_blackbox\_exporter](#input\_enable\_blackbox\_exporter) | Whether to enable the blackbox exporter module | `bool` | `false` | no |
 | <a name="input_enable_cluster_autoscaler"></a> [enable\_cluster\_autoscaler](#input\_enable\_cluster\_autoscaler) | Whether to enable the cluster autoscaler module | `bool` | `false` | no |
+| <a name="input_enable_loki"></a> [enable\_loki](#input\_enable\_loki) | Whether to enable the loki stack module | `bool` | `false` | no |
 | <a name="input_enable_nginx_ingress_controller"></a> [enable\_nginx\_ingress\_controller](#input\_enable\_nginx\_ingress\_controller) | Whether to enable the nginx ingress controller module | `bool` | `false` | no |
 | <a name="input_enable_prometheus"></a> [enable\_prometheus](#input\_enable\_prometheus) | Whether to enable the prometheus module | `bool` | `false` | no |
+| <a name="input_enable_promtail"></a> [enable\_promtail](#input\_enable\_promtail) | Whether to enable the promtail module | `bool` | `false` | no |
 | <a name="input_enable_statsd_exporter"></a> [enable\_statsd\_exporter](#input\_enable\_statsd\_exporter) | Whether to enable the statsd exporter module | `bool` | `false` | no |
+| <a name="input_loki_bucket_name"></a> [loki\_bucket\_name](#input\_loki\_bucket\_name) | Name of the Loki bucket | `string` | `null` | no |
 | <a name="input_monitored_endpoints"></a> [monitored\_endpoints](#input\_monitored\_endpoints) | The endpoints to be monitored by Prometheus | <pre>object({<br>    http_endpoints = optional(list(string), null)<br>    tcp_endpoints  = optional(list(string), null)<br>    icmp_endpoints = optional(list(string), null)<br>    ssh_endpoints  = optional(list(string), null)<br>  })</pre> | <pre>{<br>  "http_endpoints": null,<br>  "icmp_endpoints": null,<br>  "ssh_endpoints": null,<br>  "tcp_endpoints": null<br>}</pre> | no |
 | <a name="input_monitoring_aws_account_id"></a> [monitoring\_aws\_account\_id](#input\_monitoring\_aws\_account\_id) | AWS account ID where the monitoring stack is deployed | `string` | n/a | yes |
 | <a name="input_prometheus_endpoint"></a> [prometheus\_endpoint](#input\_prometheus\_endpoint) | AWS Managed Prometheus endpoint URL | `string` | n/a | yes |

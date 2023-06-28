@@ -95,3 +95,33 @@ variable "enable_nginx_ingress_controller" {
   type        = bool
   default     = false
 }
+
+variable "enable_loki" {
+  description = "Whether to enable the loki stack module"
+  type        = bool
+  default     = false
+}
+
+variable "enable_promtail" {
+  description = "Whether to enable the promtail module"
+  type        = bool
+  default     = false
+}
+
+variable "create_loki_bucket" {
+  description = "Whether to create the Loki bucket"
+  type        = bool
+  default     = true
+}
+
+variable "loki_bucket_name" {
+  description = "Name of the Loki bucket"
+  type        = string
+  default     = null
+}
+
+variable "bucket_region" {
+  description = "S3 Region of the Loki bucket"
+  type        = string
+  default     = "eu-west-2"
+}
