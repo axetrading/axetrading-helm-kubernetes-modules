@@ -10,6 +10,12 @@ variable "loki_version" {
   default     = "5.8.6"
 }
 
+variable "grafana_agent_operator_version" {
+  description = "Grafana Agent Operator helm chart version"
+  type        = string
+  default     = "0.2.16"
+}
+
 variable "create_bucket" {
   type        = bool
   default     = true

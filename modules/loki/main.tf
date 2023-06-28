@@ -14,6 +14,16 @@ locals {
   bucket_name = var.create_bucket ? aws_s3_bucket.loki[0].id : var.bucket_name
 }
 
+resource "helm_release" "grafana_agent_operator" {
+  count = var.enabled ? 1 : 0
+
+  name       = "grafana-agent-operator"
+  repository = "https://grafana.github.io/helm-charts"
+  chart      = "grafana-agent-operator"
+  version    = var.grafana_agent_operator_version
+  namespace  = "monitoring"
+}
+
 resource "helm_release" "loki" {
   count = var.enabled ? 1 : 0
 
@@ -50,8 +60,8 @@ resource "helm_release" "loki" {
   set {
     name  = "monitoring.selfMonitoring.enabled"
     value = false
-    type = "string"
+    type  = "string"
   }
-
+  depends_on = [helm_release.grafana_agent_operator]
 }
 
