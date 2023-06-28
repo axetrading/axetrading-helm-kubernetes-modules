@@ -17,7 +17,7 @@ locals {
 resource "helm_release" "loki" {
   count = var.enabled ? 1 : 0
 
-  name       = "loki-stack"
+  name       = "loki"
   repository = "https://grafana.github.io/helm-charts"
   chart      = "loki-stack"
   version    = var.loki_version
@@ -49,8 +49,17 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name  = "loki.storageConfig.aws.s3.bucketName"
+    name  = "loki.loki.storage_config.aws.s3"
     value = "s3://${var.region}/${local.bucket_name}"
   }
-}
 
+  set {
+    name  = "loki.loki.storage_config.aws.dynamodb.dynamodb_url"
+    value = "dynamodb://${var.region}"
+  }
+
+  set {
+    name  = "loki.loki.storage.type"
+    value = "s3"
+  }
+}
