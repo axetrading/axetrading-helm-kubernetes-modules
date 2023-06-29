@@ -65,13 +65,13 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name  = "loki.storage.s3.bucketNames.chunks"
+    name  = "loki.storage.bucketNames.chunks"
     value = local.bucket_name
     type = "string"
   }
    
   set {
-    name = "loki.storage.s3.bucketNames.ruler"
+    name = "loki.storage.bucketNames.ruler"
     value = local.bucket_name
     type = "string"
   } 
