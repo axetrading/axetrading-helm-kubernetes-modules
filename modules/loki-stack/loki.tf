@@ -67,14 +67,14 @@ resource "helm_release" "loki" {
   set {
     name  = "loki.storage.bucketNames.chunks"
     value = local.bucket_name
-    type = "string"
+    type  = "string"
   }
-   
+
   set {
-    name = "loki.storage.bucketNames.ruler"
+    name  = "loki.storage.bucketNames.ruler"
     value = local.bucket_name
-    type = "string"
-  } 
+    type  = "string"
+  }
 
   set {
     name  = "monitoring.selfMonitoring.enabled"
@@ -125,7 +125,7 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name = "loki.commonConfig.replication_factor"
+    name  = "loki.commonConfig.replication_factor"
     value = "1"
   }
 
