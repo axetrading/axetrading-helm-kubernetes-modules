@@ -124,6 +124,11 @@ resource "helm_release" "loki" {
     value = true
   }
 
+  set {
+    name = "loki.commonConfig.replication_factor"
+    value = "1"
+  }
+
   depends_on = [helm_release.grafana_agent_operator]
 }
 
