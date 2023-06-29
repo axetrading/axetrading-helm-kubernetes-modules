@@ -65,14 +65,15 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name = "loki.storage.s3.bucketNames.chunks"
+    name  = "loki.storage.s3.bucketNames"
     value = local.bucket_name
   }
-
+  /* 
   set {
     name = "loki.storage.s3.bucketNames.ruler"
     value = local.bucket_name
-  }
+    type = string
+  } */
 
   set {
     name  = "monitoring.selfMonitoring.enabled"
@@ -89,9 +90,12 @@ resource "helm_release" "loki" {
     value = false
   }
 
-  set {
-    name  = "gateway.enabled"
-    value = true
+  dynamic "set" {
+    for_each = var.loki_gateway_enabled ? [var.loki_gateway_enabled] : []
+    content {
+      name  = "gateway.enabled"
+      value = set.value
+    }
   }
 
   set {
@@ -122,3 +126,22 @@ resource "helm_release" "loki" {
   depends_on = [helm_release.grafana_agent_operator]
 }
 
+resource "kubernetes_manifest" "this" {
+  count = var.enabled && var.loki_gateway_enabled ? 1 : 0
+  manifest = {
+    "apiVersion" = "elbv2.k8s.aws/v1beta1"
+    "kind"       = "TargetGroupBinding"
+    "metadata" = {
+      "name"      = "loki-gateway"
+      "namespace" = "monitoring"
+    }
+    "spec" = {
+      "serviceRef" = {
+        "name" = "loki-gateway"
+        port   = 80
+      }
+      "targetGroupARN" = var.loki_gateway_target_group_arn
+      "targetType"     = "ip"
+    }
+  }
+}

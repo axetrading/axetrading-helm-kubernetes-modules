@@ -147,3 +147,15 @@ variable "promtail_enabled" {
   type        = bool
   default     = true
 }
+
+variable "loki_gateway_enabled" {
+  type        = bool
+  description = "Whether to enable Loki Gateway"
+  default     = true
+}
+
+variable "loki_gateway_target_group_arn" {
+  type        = string
+  description = "ARN of the target group for Loki Gateway"
+  default     = null
+}

@@ -125,3 +125,15 @@ variable "bucket_region" {
   type        = string
   default     = "eu-west-2"
 }
+
+variable "enable_loki_gateway" {
+  description = "Whether to enable the Loki gateway module"
+  type        = bool
+  default     = false
+}
+
+variable "loki_gateway_target_group_arn" {
+  description = "ARN of the target group for Loki Gateway"
+  type        = string
+  default     = null
+}
