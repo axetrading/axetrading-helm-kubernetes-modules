@@ -57,15 +57,21 @@ resource "helm_release" "loki" {
     value = "s3"
   }
 
-  set {
-    name  = "loki.storage.s3.s3"
-    value = "s3://${var.region}/${local.bucket_name}"
-  }
 
   set {
     name  = "loki.storage.s3.region"
     value = var.region
     type  = "string"
+  }
+
+  set {
+    name = "loki.storage.s3.bucketNames.chunks"
+    value = local.bucket_name
+  }
+
+  set {
+    name = "loki.storage.s3.bucketNames.ruler"
+    value = local.bucket_name
   }
 
   set {
@@ -85,7 +91,7 @@ resource "helm_release" "loki" {
 
   set {
     name  = "gateway.enabled"
-    value = false
+    value = true
   }
 
   set {
