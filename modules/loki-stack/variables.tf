@@ -159,3 +159,9 @@ variable "loki_gateway_target_group_arn" {
   description = "ARN of the target group for Loki Gateway"
   default     = null
 }
+
+variable "promtail_version" {
+  description = "Promtail helm chart version"
+  type        = string
+  default     = "6.11.5"
+}
