@@ -65,15 +65,16 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name  = "loki.storage.s3.bucketNames"
+    name  = "loki.storage.s3.bucketNames.chunks"
     value = local.bucket_name
+    type = "string"
   }
-  /* 
+   
   set {
     name = "loki.storage.s3.bucketNames.ruler"
     value = local.bucket_name
-    type = string
-  } */
+    type = "string"
+  } 
 
   set {
     name  = "monitoring.selfMonitoring.enabled"
