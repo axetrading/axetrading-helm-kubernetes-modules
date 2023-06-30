@@ -52,6 +52,7 @@
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment | `string` | `null` | no |
 | <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Whether policies should be detached from this role when destroying | `bool` | `true` | no |
 | <a name="input_grafana_agent_operator_version"></a> [grafana\_agent\_operator\_version](#input\_grafana\_agent\_operator\_version) | Grafana Agent Operator helm chart version | `string` | `"0.2.16"` | no |
+| <a name="input_loki_bucket_name"></a> [loki\_bucket\_name](#input\_loki\_bucket\_name) | Name of the S3 bucket that will be created for Loki | `string` | `"axetrading-loki"` | no |
 | <a name="input_loki_gateway_enabled"></a> [loki\_gateway\_enabled](#input\_loki\_gateway\_enabled) | Whether to enable Loki Gateway | `bool` | `true` | no |
 | <a name="input_loki_gateway_target_group_arn"></a> [loki\_gateway\_target\_group\_arn](#input\_loki\_gateway\_target\_group\_arn) | ARN of the target group for Loki Gateway | `string` | `null` | no |
 | <a name="input_loki_version"></a> [loki\_version](#input\_loki\_version) | Loki-stack helm chart version | `string` | `"5.8.6"` | no |

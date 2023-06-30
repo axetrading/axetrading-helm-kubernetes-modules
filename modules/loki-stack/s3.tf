@@ -2,8 +2,8 @@
 resource "aws_s3_bucket" "loki" {
   count = var.create_bucket ? 1 : 0
 
-  bucket = "axetrading-loki"
+  bucket = var.loki_bucket_name
   tags = merge({
-    Name = "axetrading-loki"
+    Name = var.loki_bucket_name
   }, var.tags)
 }

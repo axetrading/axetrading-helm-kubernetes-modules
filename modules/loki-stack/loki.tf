@@ -130,25 +130,25 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name = "loki.query_scheduler.max_outstanding_requests_per_tenant"
+    name  = "loki.query_scheduler.max_outstanding_requests_per_tenant"
     value = "4096"
   }
 
   set {
-    name = "loki.frontend.max_outstanding_per_tenant"
+    name  = "loki.frontend.max_outstanding_per_tenant"
     value = "4096"
   }
 
   set {
-    name = "loki.limits_config.split_queries_by_interval"
+    name  = "loki.limits_config.split_queries_by_interval"
     value = "24h"
   }
 
   set {
-    name = "loki.limits_config.max_query_parallelism"
+    name  = "loki.limits_config.max_query_parallelism"
     value = "100"
   }
-  
+
   depends_on = [helm_release.grafana_agent_operator]
 }
 

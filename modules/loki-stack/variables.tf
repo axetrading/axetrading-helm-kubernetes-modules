@@ -165,3 +165,9 @@ variable "promtail_version" {
   type        = string
   default     = "6.11.5"
 }
+
+variable "loki_bucket_name" {
+  description = "Name of the S3 bucket that will be created for Loki"
+  type        = string
+  default     = "axetrading-loki"
+}

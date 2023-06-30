@@ -114,8 +114,8 @@ variable "create_loki_bucket" {
   default     = true
 }
 
-variable "loki_bucket_name" {
-  description = "Name of the Loki bucket"
+variable "loki_existing_bucket_name" {
+  description = "Name of an existing S3 bucket for Loki"
   type        = string
   default     = null
 }
@@ -136,4 +136,10 @@ variable "loki_gateway_target_group_arn" {
   description = "ARN of the target group for Loki Gateway"
   type        = string
   default     = null
+}
+
+variable "loki_bucket_name" {
+  description = "Name of the Loki bucket"
+  type        = string
+  default     = "axetrading-loki"
 }
