@@ -1,14 +1,8 @@
-output "helm_release_id" {
-  value       = helm_release.blackbox_exporter[0].id
-  description = "Helm Release ID"
-}
-
-output "helm_release_name" {
-  value       = helm_release.blackbox_exporter[0].name
-  description = "Helm Release Name"
-}
-
-output "helm_release_namespace" {
-  value       = helm_release.blackbox_exporter[0].namespace
-  description = "Helm Release Namespace"
+output "blackbox_exporter" {
+  description = "Blackbox Exporter Release Details"
+  value = var.enabled ? {
+    id        = helm_release.blackbox_exporter[0].id
+    name      = helm_release.blackbox_exporter[0].name
+    namespace = helm_release.blackbox_exporter[0].namespace
+  } : null
 }

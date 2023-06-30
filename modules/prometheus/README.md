@@ -73,8 +73,6 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_helm_release_id"></a> [helm\_release\_id](#output\_helm\_release\_id) | Helm Release ID |
-| <a name="output_helm_release_name"></a> [helm\_release\_name](#output\_helm\_release\_name) | Helm Release Name |
-| <a name="output_helm_release_namespace"></a> [helm\_release\_namespace](#output\_helm\_release\_namespace) | Helm Release Namespace |
 | <a name="output_iam_role_arn"></a> [iam\_role\_arn](#output\_iam\_role\_arn) | ARN of IAM role for Prometheus |
+| <a name="output_prometheus"></a> [prometheus](#output\_prometheus) | Prometheus Release Details |
 <!-- END_TF_DOCS -->

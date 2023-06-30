@@ -30,7 +30,5 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_helm_release_id"></a> [helm\_release\_id](#output\_helm\_release\_id) | Helm Release ID |
-| <a name="output_helm_release_name"></a> [helm\_release\_name](#output\_helm\_release\_name) | Helm Release Name |
-| <a name="output_helm_release_namespace"></a> [helm\_release\_namespace](#output\_helm\_release\_namespace) | Helm Release Namespace |
+| <a name="output_statsd_exporter"></a> [statsd\_exporter](#output\_statsd\_exporter) | Statsd Exporter Release Details |
 <!-- END_TF_DOCS -->
