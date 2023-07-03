@@ -92,3 +92,23 @@ resource "helm_release" "prometheus_operator_crds" {
   version    = var.prometheus_operator_crds_version
   namespace  = "monitoring"
 }
+
+resource "kubernetes_manifest" "alertmanager" {
+  count = var.enabled && var.alertmanager_enabled ? 1 : 0
+  manifest = {
+    "apiVersion" = "elbv2.k8s.aws/v1beta1"
+    "kind"       = "TargetGroupBinding"
+    "metadata" = {
+      "name"      = "aws-amp-alertmanager"
+      "namespace" = "monitoring"
+    }
+    "spec" = {
+      "serviceRef" = {
+        "name" = "aws-amp-alertmanager"
+        port   = 9093
+      }
+      "targetGroupARN" = var.alertmanager_target_group_arn
+      "targetType"     = "ip"
+    }
+  }
+}

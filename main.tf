@@ -25,6 +25,7 @@ module "prometheus" {
   monitoring_account_id            = var.monitoring_aws_account_id
   cross_account_enabled            = true
   enable_blackbox_exporter         = var.enable_blackbox_exporter
+  alertmanager_enabled             = var.enable_alertmanager
   blackbox_exporter_host           = var.blackbox_exporter_host
   monitored_endpoints              = var.monitored_endpoints
   attach_grafana_cloudwatch_policy = var.attach_grafana_cloudwatch_policy

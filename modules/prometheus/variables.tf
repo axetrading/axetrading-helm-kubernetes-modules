@@ -187,3 +187,15 @@ variable "scrape_interval" {
   description = "The scrape interval for Prometheus"
   default     = "15s"
 }
+
+variable "alertmanager_target_group_arn" {
+  type        = string
+  description = "The ARN of the target group for Alertmanager"
+  default     = null
+}
+
+variable "alertmanager_enabled" {
+  type        = bool
+  description = "Whether to enable Alertmanager"
+  default     = false
+}

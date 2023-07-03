@@ -143,3 +143,9 @@ variable "loki_bucket_name" {
   type        = string
   default     = "axetrading-loki"
 }
+
+variable "enable_alertmanager" {
+  description = "Whether to enable the alertmanager module"
+  type        = bool
+  default     = false
+}
