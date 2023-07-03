@@ -149,3 +149,9 @@ variable "enable_alertmanager" {
   type        = bool
   default     = false
 }
+
+variable "alertmanager_target_group_arn" {
+  description = "ARN of the target group for Alertmanager"
+  type        = string
+  default     = null
+}
