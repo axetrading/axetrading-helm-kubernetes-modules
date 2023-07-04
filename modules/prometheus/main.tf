@@ -83,8 +83,9 @@ resource "helm_release" "prometheus" {
   set {
     name  = "serverFiles.alerting_rules.yml"
     value = file("${path.module}/config/alerting_rules.yml")
+    type  = "string"
   }
-  
+
   depends_on = [helm_release.prometheus_operator_crds]
 }
 
