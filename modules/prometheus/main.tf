@@ -6,6 +6,7 @@
 
 locals {
   prometheus_config_files = [
+    file("${path.module}/config/alerting_rules.yml"),
     file("${path.module}/config/prometheus.yml"),
     var.enable_blackbox_exporter ? templatefile("${path.module}/config/blackbox_exporter.tpl", {
       monitored_endpoints    = var.monitored_endpoints
@@ -79,13 +80,6 @@ resource "helm_release" "prometheus" {
       type  = "string"
     }
   }
-
-  set {
-    name  = "serverFiles.alerting_rules\\.yml.groups"
-    value = file("${path.module}/config/alerting_rules.tpl")
-    type  = "string"
-  }
-
   depends_on = [helm_release.prometheus_operator_crds]
 }
 
