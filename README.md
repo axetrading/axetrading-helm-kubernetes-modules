@@ -25,6 +25,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_alertmanager_target_group_arn"></a> [alertmanager\_target\_group\_arn](#input\_alertmanager\_target\_group\_arn) | ARN of the target group for Alertmanager | `string` | `null` | no |
 | <a name="input_attach_grafana_cloudwatch_policy"></a> [attach\_grafana\_cloudwatch\_policy](#input\_attach\_grafana\_cloudwatch\_policy) | Whether to attach the Grafana CloudWatch policy to the IAM role | `bool` | `true` | no |
 | <a name="input_blackbox_exporter_host"></a> [blackbox\_exporter\_host](#input\_blackbox\_exporter\_host) | Prometheus Blackbox Exporter host | `string` | `"prometheus-blackbox-exporter.monitoring.svc.cluster.local"` | no |
 | <a name="input_bucket_region"></a> [bucket\_region](#input\_bucket\_region) | S3 Region of the Loki bucket | `string` | `"eu-west-2"` | no |
