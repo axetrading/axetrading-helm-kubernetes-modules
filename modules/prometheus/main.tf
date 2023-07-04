@@ -81,8 +81,8 @@ resource "helm_release" "prometheus" {
   }
 
   set {
-    name  = "serverFiles.alerting_rules.yml"
-    value = file("${path.module}/config/alerting_rules.yml")
+    name  = "serverFiles.alerting_rules\\.yml.groups"
+    value = file("${path.module}/config/alerting_rules.tpl")
     type  = "string"
   }
 

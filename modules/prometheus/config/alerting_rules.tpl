@@ -1,4 +1,3 @@
-groups:
 - name: BlackBox
   rules:
   - alert: BlackboxProbeFail
