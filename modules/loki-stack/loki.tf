@@ -123,6 +123,13 @@ resource "helm_release" "loki" {
     }
   }
 
+  dynamic "set" {
+    for_each = var.loki_gateway_enabled && var.loki_gateway_host != null ? [var.loki_gateway_enabled] : []
+    content {
+      name  = "gateway.ingress.hosts[0].paths[0].pathType"
+      value = "Prefix"
+    }
+  }
   set {
     name  = "monitoring.serviceMonitor.grafanaAgent.installOperator"
     value = false
