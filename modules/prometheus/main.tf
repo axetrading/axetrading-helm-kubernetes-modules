@@ -80,14 +80,6 @@ resource "helm_release" "prometheus" {
     }
   }
 
-  dynamic "set" {
-    for_each = var.enabled && var.prometheus_host != null ? [var.monitoring_ingress_class_name] : []
-    content {
-      name  = "server.ingress.ingressClassName"
-      value = set.value
-    }
-  }
-
   dynamic "set_list" {
     for_each = var.enabled && var.prometheus_host != null ? [var.prometheus_host] : [null]
     content {

@@ -108,21 +108,19 @@ resource "helm_release" "loki" {
   }
 
   dynamic "set" {
-    for_each = var.loki_gateway_enabled ? [var.loki_gateway_enabled] : []
-    content {
-      name  = "gateway.ingress.annotations.ingressClassName"
-      value = var.monitoring_ingress_class_name
-    }
-
-  }
-
-  dynamic "set" {
     for_each = var.loki_gateway_enabled && var.loki_gateway_host != null ? [var.loki_gateway_enabled] : []
     content {
       name  = "gateway.ingress.hosts[0].host"
       value = var.loki_gateway_host
     }
+  }
 
+  dynamic "set" {
+    for_each = var.loki_gateway_enabled && var.loki_gateway_host != null ? [var.loki_gateway_enabled] : []
+    content {
+      name  = "gateway.ingress.hosts[0].paths[0].path"
+      value = "/"
+    }
   }
 
   set {
