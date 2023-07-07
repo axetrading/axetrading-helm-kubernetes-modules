@@ -41,6 +41,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_enable_prometheus"></a> [enable\_prometheus](#input\_enable\_prometheus) | Whether to enable the prometheus module | `bool` | `false` | no |
 | <a name="input_enable_promtail"></a> [enable\_promtail](#input\_enable\_promtail) | Whether to enable the promtail module | `bool` | `false` | no |
 | <a name="input_enable_statsd_exporter"></a> [enable\_statsd\_exporter](#input\_enable\_statsd\_exporter) | Whether to enable the statsd exporter module | `bool` | `false` | no |
+| <a name="input_ingress_nginx_target_group_arn"></a> [ingress\_nginx\_target\_group\_arn](#input\_ingress\_nginx\_target\_group\_arn) | ARN of the target group to bind the ingress controller to | `string` | `null` | no |
 | <a name="input_loki_bucket_name"></a> [loki\_bucket\_name](#input\_loki\_bucket\_name) | Name of the Loki bucket | `string` | `"axetrading-loki"` | no |
 | <a name="input_loki_existing_bucket_name"></a> [loki\_existing\_bucket\_name](#input\_loki\_existing\_bucket\_name) | Name of an existing S3 bucket for Loki | `string` | `null` | no |
 | <a name="input_loki_gateway_target_group_arn"></a> [loki\_gateway\_target\_group\_arn](#input\_loki\_gateway\_target\_group\_arn) | ARN of the target group for Loki Gateway | `string` | `null` | no |
