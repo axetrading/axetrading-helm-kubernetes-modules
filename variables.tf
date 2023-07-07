@@ -155,3 +155,9 @@ variable "alertmanager_target_group_arn" {
   type        = string
   default     = null
 }
+
+variable "ingress_nginx_target_group_arn" {
+  description = "ARN of the target group to bind the ingress controller to"
+  type        = string
+  default     = null
+}

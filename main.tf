@@ -61,6 +61,7 @@ module "nginx_ingress_controller" {
 
   enabled                          = var.enable_nginx_ingress_controller
   nginx_ingress_controller_version = "4.7.0"
+  ingress_nginx_target_group_arn = var.ingress_nginx_target_group_arn
 }
 
 module "loki_stack" {
