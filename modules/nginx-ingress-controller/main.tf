@@ -7,6 +7,10 @@ resource "helm_release" "monitoring_nginx_ingress_controller" {
   namespace        = "ingress-nginx"
   version          = var.nginx_ingress_controller_version
   create_namespace = true
+  set {
+    name  = "fullnameOverride"
+    value = "monitoring-ingress-controller"
+  }
 
   set {
     name  = "controller.service.type"
