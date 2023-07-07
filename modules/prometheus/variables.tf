@@ -199,3 +199,15 @@ variable "alertmanager_enabled" {
   description = "Whether to enable Alertmanager"
   default     = false
 }
+
+variable "monitoring_ingress_class_name" {
+  type        = string
+  description = "The ingress class name for the monitoring ingress"
+  default     = "monitoring-nginx"
+}
+
+variable "prometheus_host" {
+  type        = string
+  description = "The host for the Prometheus ingress"
+  default     = null
+}

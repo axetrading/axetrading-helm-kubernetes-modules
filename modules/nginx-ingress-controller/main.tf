@@ -33,7 +33,7 @@ resource "helm_release" "monitoring_nginx_ingress_controller" {
 
 
 resource "helm_release" "external_secrets_cluster_store" {
-  count      = var.enabled  && var.ingress_nginx_target_group_arn != null ? 1 : 0
+  count      = var.enabled && var.ingress_nginx_target_group_arn != null ? 1 : 0
   name       = "external-secrets-cluster-store"
   repository = "https://charts.itscontained.io"
   chart      = "raw"

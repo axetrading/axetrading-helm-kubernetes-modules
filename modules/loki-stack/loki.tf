@@ -99,6 +99,32 @@ resource "helm_release" "loki" {
     }
   }
 
+  dynamic "set" {
+    for_each = var.loki_gateway_enabled ? [var.loki_gateway_enabled] : []
+    content {
+      name  = "gateway.ingress.enabled"
+      value = set.value
+    }
+  }
+
+  dynamic "set" {
+    for_each = var.loki_gateway_enabled ? [var.loki_gateway_enabled] : []
+    content {
+      name  = "gateway.ingress.annotations.ingressClassName"
+      value = var.monitoring_ingress_class_name
+    }
+
+  }
+
+  dynamic "set" {
+    for_each = var.loki_gateway_enabled && var.loki_gateway_host != null ? [var.loki_gateway_enabled] : []
+    content {
+      name  = "gateway.ingress.hosts[0].host"
+      value = var.loki_gateway_host
+    }
+
+  }
+
   set {
     name  = "monitoring.serviceMonitor.grafanaAgent.installOperator"
     value = false
@@ -150,24 +176,4 @@ resource "helm_release" "loki" {
   }
 
   depends_on = [helm_release.grafana_agent_operator]
-}
-
-resource "kubernetes_manifest" "this" {
-  count = var.enabled && var.loki_gateway_enabled ? 1 : 0
-  manifest = {
-    "apiVersion" = "elbv2.k8s.aws/v1beta1"
-    "kind"       = "TargetGroupBinding"
-    "metadata" = {
-      "name"      = "loki-gateway"
-      "namespace" = "monitoring"
-    }
-    "spec" = {
-      "serviceRef" = {
-        "name" = "loki-gateway"
-        port   = 80
-      }
-      "targetGroupARN" = var.loki_gateway_target_group_arn
-      "targetType"     = "ip"
-    }
-  }
 }

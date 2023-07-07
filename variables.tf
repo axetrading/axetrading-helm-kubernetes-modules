@@ -161,3 +161,21 @@ variable "ingress_nginx_target_group_arn" {
   type        = string
   default     = null
 }
+
+variable "loki_gateway_host" {
+  description = "Loki Gateway ingress host"
+  type        = string
+  default     = null
+}
+
+variable "prometheus_host" {
+  description = "Prometheus ingress host"
+  type        = string
+  default     = null
+}
+
+variable "monitoring_ingress_class_name" {
+  description = "Ingress class name for the monitoring stack"
+  type        = string
+  default     = "monitoring-nginx"
+}

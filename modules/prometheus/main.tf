@@ -73,6 +73,30 @@ resource "helm_release" "prometheus" {
   }
 
   dynamic "set" {
+    for_each = var.enabled && var.prometheus_host != null ? [true] : [false]
+    content {
+      name  = "server.ingress.enabled"
+      value = set.value
+    }
+  }
+
+  dynamic "set" {
+    for_each = var.enabled && var.prometheus_host != null ? [var.monitoring_ingress_class_name] : []
+    content {
+      name  = "server.ingress.ingressClassName"
+      value = set.value
+    }
+  }
+
+  dynamic "set_list" {
+    for_each = var.enabled && var.prometheus_host != null ? [var.prometheus_host] : [null]
+    content {
+      name  = "server.ingress.hosts"
+      value = [set.value]
+    }
+  }
+
+  dynamic "set" {
     for_each = var.create_role && var.create_service_account ? [aws_iam_role.this[0].arn] : [var.role_arn]
     content {
       name  = "serviceAccounts.server.annotations.eks\\.amazonaws\\.com/role-arn"
@@ -92,24 +116,4 @@ resource "helm_release" "prometheus_operator_crds" {
   chart      = "prometheus-operator-crds"
   version    = var.prometheus_operator_crds_version
   namespace  = "monitoring"
-}
-
-resource "kubernetes_manifest" "alertmanager" {
-  count = var.enabled && var.alertmanager_enabled ? 1 : 0
-  manifest = {
-    "apiVersion" = "elbv2.k8s.aws/v1beta1"
-    "kind"       = "TargetGroupBinding"
-    "metadata" = {
-      "name"      = "aws-amp-alertmanager"
-      "namespace" = "monitoring"
-    }
-    "spec" = {
-      "serviceRef" = {
-        "name" = "aws-amp-alertmanager"
-        port   = 9093
-      }
-      "targetGroupARN" = var.alertmanager_target_group_arn
-      "targetType"     = "ip"
-    }
-  }
 }
