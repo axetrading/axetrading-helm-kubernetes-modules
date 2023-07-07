@@ -92,7 +92,7 @@ resource "helm_release" "prometheus" {
     for_each = var.enabled && var.prometheus_host != null ? [var.prometheus_host] : [null]
     content {
       name  = "server.ingress.hosts"
-      value = [set.value]
+      value = [var.prometheus_host]
     }
   }
 
