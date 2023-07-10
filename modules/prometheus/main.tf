@@ -98,7 +98,7 @@ resource "helm_release" "prometheus_operator_crds" {
 resource "helm_release" "prometheus_targetgroupbinding_crds" {
   count = var.enabled && var.prometheus_gateway_enabled ? 1 : 0
   name  = "aws-amp-prometheus-server-gateway"
-  chart = "../helm-template/crds"
+  chart = "${path.root}/modules/helm-template/crds"
   values = [
     <<-EOF
   apiVersion: elbv2.k8s.aws/v1beta1
@@ -123,7 +123,7 @@ resource "helm_release" "prometheus_targetgroupbinding_crds" {
 resource "helm_release" "alertmanager_targetgroupbinding_crds" {
   count = var.enabled && var.alertmanager_enabled ? 1 : 0
   name  = "aws-amp-alertmanager-gateway"
-  chart = "../helm-template/crds"
+  chart = "${path.root}/modules/helm-template/crds"
   values = [
     <<-EOF
   apiVersion: elbv2.k8s.aws/v1beta1
