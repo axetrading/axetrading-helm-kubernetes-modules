@@ -30,16 +30,3 @@ Create chart name and version as used by the chart label.
 {{- define "crds.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
-
-{{/*
-crds.resource will create a resource template that can be
-merged with each item in `.Values.resources`.
-*/}}
-{{- define "crds.resource" -}}
-metadata:
-  labels:
-    app: {{ template "crds.name" . }}
-    chart: {{ template "crds.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-{{- end }}

@@ -1,0 +1,10 @@
+apiVersion: elbv2.k8s.aws/v1beta1
+kind: TargetGroupBinding
+metadata:
+  name: {{ include "crds.fullname" . }}
+spec:
+  serviceRef:
+    name: {{ .Values.targetGroupBinding.service.name }}
+    port: {{ .Values.targetGroupBinding.port }}
+  targetGroupARN: {{ .Values.targetGroupBinding.targetGroupARN }}
+  targetType: {{ .Values.targetGroupBinding.targetType }}

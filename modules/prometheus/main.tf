@@ -100,21 +100,26 @@ resource "helm_release" "prometheus_targetgroupbinding_crds" {
   name      = "aws-amp-prometheus-server-gateway"
   chart     = "${path.module}/../helm-template/crds"
   namespace = "monitoring"
-  values = [
-    <<-EOF
-  apiVersion: elbv2.k8s.aws/v1beta1
-  kind: TargetGroupBinding
-  metadata:
-    name: aws-amp-prometheus-server-gateway
-    namespace: monitoring
-  spec:
-    serviceRef:
-      name: aws-amp-prometheus-server
-      port: 80
-    targetGroupARN: ${var.prometheus_gateway_target_group_arn}
-    targetType: ip
-    EOF
-  ]
+
+  set {
+    name  = "fullnameOverride"
+    value = "aws-amp-prometheus-server-gateway"
+  }
+
+  set {
+    name  = "targetGroupBinding.service.name"
+    value = "aws-amp-prometheus-server"
+  }
+
+  set {
+    name  = "targetGroupBinding.service.port"
+    value = "9090"
+  }
+
+  set {
+    name  = "targetGroupBinding.targetGroupARN"
+    value = var.prometheus_gateway_target_group_arn
+  }
 
   depends_on = [
     helm_release.prometheus
@@ -126,21 +131,26 @@ resource "helm_release" "alertmanager_targetgroupbinding_crds" {
   name      = "aws-amp-alertmanager-gateway"
   chart     = "${path.module}/../helm-template/crds"
   namespace = "monitoring"
-  values = [
-    <<-EOF
-  apiVersion: elbv2.k8s.aws/v1beta1
-  kind: TargetGroupBinding
-  metadata:
-    name: aws-amp-alertmanager-gateway
-    namespace: monitoring
-  spec:
-    serviceRef:
-      name: aws-amp-alertmanager
-      port: 9093
-    targetGroupARN: ${var.alertmanager_target_group_arn}
-    targetType: ip
-    EOF
-  ]
+
+  set {
+    name  = "fullnameOverride"
+    value = "aws-amp-alertmanager-gateway"
+  }
+
+  set {
+    name  = "targetGroupBinding.service.name"
+    value = "aws-amp-alertmanager"
+  }
+
+  set {
+    name  = "targetGroupBinding.service.port"
+    value = "9093"
+  }
+
+  set {
+    name  = "targetGroupBinding.targetGroupARN"
+    value = var.alertmanager_target_group_arn
+  }
 
   depends_on = [
     helm_release.prometheus

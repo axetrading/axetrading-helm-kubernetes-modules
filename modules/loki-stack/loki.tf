@@ -154,23 +154,28 @@ resource "helm_release" "loki" {
 resource "helm_release" "loki_targetgroupbinding_crds" {
   count     = var.enabled && var.loki_gateway_enabled ? 1 : 0
   name      = "loki-gateway"
-  namespace = "monitoring"
   chart     = "${path.module}/../helm-template/crds"
-  values = [
-    <<-EOF
-  apiVersion: elbv2.k8s.aws/v1beta1
-  kind: TargetGroupBinding
-  metadata:
-    name: loki-gateway
-    namespace: monitoring
-  spec:
-    serviceRef:
-      name: loki-gateway
-      port: 80
-    targetGroupARN: ${var.loki_gateway_target_group_arn}
-    targetType: ip
-    EOF
-  ]
+  namespace = "monitoring"
+
+  set {
+    name  = "fullnameOverride"
+    value = "loki-gateway"
+  }
+
+  set {
+    name  = "targetGroupBinding.service.name"
+    value = "loki-gateway"
+  }
+
+  set {
+    name  = "targetGroupBinding.service.port"
+    value = "80"
+  }
+
+  set {
+    name  = "targetGroupBinding.targetGroupARN"
+    value = var.loki_gateway_target_group_arn
+  }
 
   depends_on = [
     helm_release.grafana_agent_operator,

@@ -1,2 +1,8 @@
-resources: []
-templates: []
+fullnameOverride: ""
+nameOverride: ""
+targetGroupBinding:
+  service:
+    name: ""
+  port: 80
+  targetGroupARN: ""
+  targetType: "ip"
