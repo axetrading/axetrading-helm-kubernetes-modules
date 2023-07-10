@@ -150,6 +150,12 @@ variable "enable_alertmanager" {
   default     = false
 }
 
+variable "enable_prometheus_gateway" {
+  description = "Whether to enable the prometheus gateway module"
+  type        = bool
+  default     = false
+}
+
 variable "alertmanager_target_group_arn" {
   description = "ARN of the target group for Alertmanager"
   type        = string

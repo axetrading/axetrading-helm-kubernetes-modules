@@ -96,7 +96,7 @@ resource "helm_release" "prometheus_operator_crds" {
 
 
 resource "helm_release" "prometheus_targetgroupbinding_crds" {
-  count      = var.enabled && var.prometheus_gateway_target_group_arn != null ? 1 : 0
+  count      = var.enabled && var.prometheus_gateway_enabled ? 1 : 0
   name       = "aws-amp-prometheus-server-gateway"
   repository = "https://charts.itscontained.io"
   chart      = "raw"
@@ -123,7 +123,7 @@ resource "helm_release" "prometheus_targetgroupbinding_crds" {
 }
 
 resource "helm_release" "alertmanager_targetgroupbinding_crds" {
-  count      = var.enabled && var.alertmanager_enabled && var.alertmanager_target_group_arn != null ? 1 : 0
+  count      = var.enabled && var.alertmanager_enabled ? 1 : 0
   name       = "aws-amp-alertmanager-gateway"
   repository = "https://charts.itscontained.io"
   chart      = "raw"

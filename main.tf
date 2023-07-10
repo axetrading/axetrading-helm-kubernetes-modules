@@ -29,6 +29,7 @@ module "prometheus" {
   monitored_endpoints                 = var.monitored_endpoints
   monitoring_account_id               = var.monitoring_aws_account_id
   prometheus_endpoint                 = var.prometheus_endpoint
+  prometheus_gateway_enabled          = var.enable_prometheus_gateway
   prometheus_gateway_target_group_arn = var.prometheus_gateway_target_group_arn
   prometheus_version                  = "22.6.2"
   region                              = var.region

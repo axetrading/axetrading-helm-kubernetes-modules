@@ -39,6 +39,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_enable_loki_gateway"></a> [enable\_loki\_gateway](#input\_enable\_loki\_gateway) | Whether to enable the Loki gateway module | `bool` | `false` | no |
 | <a name="input_enable_nginx_ingress_controller"></a> [enable\_nginx\_ingress\_controller](#input\_enable\_nginx\_ingress\_controller) | Whether to enable the nginx ingress controller module | `bool` | `false` | no |
 | <a name="input_enable_prometheus"></a> [enable\_prometheus](#input\_enable\_prometheus) | Whether to enable the prometheus module | `bool` | `false` | no |
+| <a name="input_enable_prometheus_gateway"></a> [enable\_prometheus\_gateway](#input\_enable\_prometheus\_gateway) | Whether to enable the prometheus gateway module | `bool` | `false` | no |
 | <a name="input_enable_promtail"></a> [enable\_promtail](#input\_enable\_promtail) | Whether to enable the promtail module | `bool` | `false` | no |
 | <a name="input_enable_statsd_exporter"></a> [enable\_statsd\_exporter](#input\_enable\_statsd\_exporter) | Whether to enable the statsd exporter module | `bool` | `false` | no |
 | <a name="input_ingress_nginx_target_group_arn"></a> [ingress\_nginx\_target\_group\_arn](#input\_ingress\_nginx\_target\_group\_arn) | ARN of the target group to bind the ingress controller to | `string` | `null` | no |
@@ -49,6 +50,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_monitoring_aws_account_id"></a> [monitoring\_aws\_account\_id](#input\_monitoring\_aws\_account\_id) | AWS account ID where the monitoring stack is deployed | `string` | n/a | yes |
 | <a name="input_prometheus_endpoint"></a> [prometheus\_endpoint](#input\_prometheus\_endpoint) | AWS Managed Prometheus endpoint URL | `string` | n/a | yes |
 | <a name="input_prometheus_evaluation_interval"></a> [prometheus\_evaluation\_interval](#input\_prometheus\_evaluation\_interval) | The evaluation interval for Prometheus | `string` | `"1m"` | no |
+| <a name="input_prometheus_gateway_target_group_arn"></a> [prometheus\_gateway\_target\_group\_arn](#input\_prometheus\_gateway\_target\_group\_arn) | ARN of the target group for Prometheus Gateway | `string` | `null` | no |
 | <a name="input_prometheus_scrape_interval"></a> [prometheus\_scrape\_interval](#input\_prometheus\_scrape\_interval) | The scrape interval for Prometheus | `string` | `"15s"` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"eu-west-2"` | no |
 

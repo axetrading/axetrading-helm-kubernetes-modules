@@ -200,8 +200,14 @@ variable "alertmanager_enabled" {
   default     = false
 }
 
+variable "prometheus_gateway_enabled" {
+  type        = bool
+  description = "Whether to enable Prometheus ALB Gateway"
+  default     = false
+}
+
 variable "prometheus_gateway_target_group_arn" {
   type        = string
-  description = "The ARN of the target group for Prometheus Gateway"
+  description = "The ARN of the target group for Prometheus ALB Gateway"
   default     = null
 }

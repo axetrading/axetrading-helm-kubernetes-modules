@@ -57,7 +57,6 @@ resource "helm_release" "loki" {
     value = "s3"
   }
 
-
   set {
     name  = "loki.storage.s3.region"
     value = var.region
@@ -153,7 +152,7 @@ resource "helm_release" "loki" {
 }
 
 resource "helm_release" "loki_targetgroupbinding_crds" {
-  count      = var.enabled && var.loki_gateway_target_group_arn != null ? 1 : 0
+  count      = var.enabled && var.loki_gateway_enabled ? 1 : 0
   name       = "loki-gateway"
   repository = "https://charts.itscontained.io"
   chart      = "raw"
