@@ -154,7 +154,7 @@ resource "helm_release" "loki" {
 resource "helm_release" "loki_targetgroupbinding_crds" {
   count = var.enabled && var.loki_gateway_enabled ? 1 : 0
   name  = "loki-gateway"
-  chart = "${path.module}/helm-template-module/crds"
+  chart = "${path.module}/helm-template/crds"
   values = [
     <<-EOF
   apiVersion: elbv2.k8s.aws/v1beta1
