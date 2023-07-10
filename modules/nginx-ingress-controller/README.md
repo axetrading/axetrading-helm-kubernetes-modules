@@ -17,7 +17,6 @@
 
 | Name | Type |
 |------|------|
-| [helm_release.external_secrets_cluster_store](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.monitoring_nginx_ingress_controller](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 
 ## Inputs

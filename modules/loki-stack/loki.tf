@@ -152,11 +152,9 @@ resource "helm_release" "loki" {
 }
 
 resource "helm_release" "loki_targetgroupbinding_crds" {
-  count      = var.enabled && var.loki_gateway_enabled ? 1 : 0
-  name       = "loki-gateway"
-  repository = "https://charts.itscontained.io"
-  chart      = "raw"
-  version    = "0.2.5"
+  count = var.enabled && var.loki_gateway_enabled ? 1 : 0
+  name  = "loki-gateway"
+  chart = "${path.module}/helm-template-module/crds"
   values = [
     <<-EOF
   apiVersion: elbv2.k8s.aws/v1beta1

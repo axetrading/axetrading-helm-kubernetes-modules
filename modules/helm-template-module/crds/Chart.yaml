@@ -1,0 +1,12 @@
+apiVersion: v2
+description: This chart will be used by all CRDS that needs to be available at the planning phase in terraform.
+name: crds-terraform
+version: v0.0.1
+kubeVersion: ">=1.16.0-0"
+keywords:
+    - crds
+    - terraform
+    - kubernetes
+maintainers:
+    - name: CiprianUrsu
+      email: contact@ciprianursu.com
