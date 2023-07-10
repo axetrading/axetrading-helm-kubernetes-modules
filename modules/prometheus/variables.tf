@@ -200,14 +200,8 @@ variable "alertmanager_enabled" {
   default     = false
 }
 
-variable "monitoring_ingress_class_name" {
+variable "prometheus_gateway_target_group_arn" {
   type        = string
-  description = "The ingress class name for the monitoring ingress"
-  default     = "monitoring-nginx"
-}
-
-variable "prometheus_host" {
-  type        = string
-  description = "The host for the Prometheus ingress"
+  description = "The ARN of the target group for Prometheus Gateway"
   default     = null
 }

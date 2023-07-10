@@ -11,8 +11,8 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.5.0 |
-| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.10.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.36 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.10.0 |
 
 ## Modules
 
@@ -31,6 +31,7 @@
 | [aws_s3_bucket.loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [helm_release.grafana_agent_operator](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.loki](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.loki_targetgroupbinding_crds](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.promtail](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [aws_iam_policy_document.loki](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -52,11 +53,9 @@
 | <a name="input_grafana_agent_operator_version"></a> [grafana\_agent\_operator\_version](#input\_grafana\_agent\_operator\_version) | Grafana Agent Operator helm chart version | `string` | `"0.2.16"` | no |
 | <a name="input_loki_bucket_name"></a> [loki\_bucket\_name](#input\_loki\_bucket\_name) | Name of the S3 bucket that will be created for Loki | `string` | `"axetrading-loki"` | no |
 | <a name="input_loki_gateway_enabled"></a> [loki\_gateway\_enabled](#input\_loki\_gateway\_enabled) | Whether to enable Loki Gateway | `bool` | `true` | no |
-| <a name="input_loki_gateway_host"></a> [loki\_gateway\_host](#input\_loki\_gateway\_host) | Ingress host for monitoring ingress | `string` | `null` | no |
 | <a name="input_loki_gateway_target_group_arn"></a> [loki\_gateway\_target\_group\_arn](#input\_loki\_gateway\_target\_group\_arn) | ARN of the target group for Loki Gateway | `string` | `null` | no |
 | <a name="input_loki_version"></a> [loki\_version](#input\_loki\_version) | Loki-stack helm chart version | `string` | `"5.8.6"` | no |
 | <a name="input_max_session_duration"></a> [max\_session\_duration](#input\_max\_session\_duration) | Maximum CLI/API session duration in seconds between 3600 and 43200 | `number` | `null` | no |
-| <a name="input_monitoring_ingress_class_name"></a> [monitoring\_ingress\_class\_name](#input\_monitoring\_ingress\_class\_name) | Ingress class name for monitoring ingress | `string` | `"monitoring-nginx"` | no |
 | <a name="input_oidc_providers"></a> [oidc\_providers](#input\_oidc\_providers) | Map of OIDC providers where each provider map should contain the `provider`, `provider_arn`, and `namespace_service_accounts` | `any` | `{}` | no |
 | <a name="input_policy_name_prefix"></a> [policy\_name\_prefix](#input\_policy\_name\_prefix) | IAM policy name prefix | `string` | `"eks-policy"` | no |
 | <a name="input_promtail_enabled"></a> [promtail\_enabled](#input\_promtail\_enabled) | Whether to enable promtail | `bool` | `true` | no |

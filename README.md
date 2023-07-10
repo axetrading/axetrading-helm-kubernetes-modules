@@ -44,14 +44,11 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_ingress_nginx_target_group_arn"></a> [ingress\_nginx\_target\_group\_arn](#input\_ingress\_nginx\_target\_group\_arn) | ARN of the target group to bind the ingress controller to | `string` | `null` | no |
 | <a name="input_loki_bucket_name"></a> [loki\_bucket\_name](#input\_loki\_bucket\_name) | Name of the Loki bucket | `string` | `"axetrading-loki"` | no |
 | <a name="input_loki_existing_bucket_name"></a> [loki\_existing\_bucket\_name](#input\_loki\_existing\_bucket\_name) | Name of an existing S3 bucket for Loki | `string` | `null` | no |
-| <a name="input_loki_gateway_host"></a> [loki\_gateway\_host](#input\_loki\_gateway\_host) | Loki Gateway ingress host | `string` | `null` | no |
 | <a name="input_loki_gateway_target_group_arn"></a> [loki\_gateway\_target\_group\_arn](#input\_loki\_gateway\_target\_group\_arn) | ARN of the target group for Loki Gateway | `string` | `null` | no |
 | <a name="input_monitored_endpoints"></a> [monitored\_endpoints](#input\_monitored\_endpoints) | The endpoints to be monitored by Prometheus | <pre>object({<br>    http_endpoints = optional(list(string), null)<br>    tcp_endpoints  = optional(list(string), null)<br>    icmp_endpoints = optional(list(string), null)<br>    ssh_endpoints  = optional(list(string), null)<br>  })</pre> | <pre>{<br>  "http_endpoints": null,<br>  "icmp_endpoints": null,<br>  "ssh_endpoints": null,<br>  "tcp_endpoints": null<br>}</pre> | no |
 | <a name="input_monitoring_aws_account_id"></a> [monitoring\_aws\_account\_id](#input\_monitoring\_aws\_account\_id) | AWS account ID where the monitoring stack is deployed | `string` | n/a | yes |
-| <a name="input_monitoring_ingress_class_name"></a> [monitoring\_ingress\_class\_name](#input\_monitoring\_ingress\_class\_name) | Ingress class name for the monitoring stack | `string` | `"monitoring-nginx"` | no |
 | <a name="input_prometheus_endpoint"></a> [prometheus\_endpoint](#input\_prometheus\_endpoint) | AWS Managed Prometheus endpoint URL | `string` | n/a | yes |
 | <a name="input_prometheus_evaluation_interval"></a> [prometheus\_evaluation\_interval](#input\_prometheus\_evaluation\_interval) | The evaluation interval for Prometheus | `string` | `"1m"` | no |
-| <a name="input_prometheus_host"></a> [prometheus\_host](#input\_prometheus\_host) | Prometheus ingress host | `string` | `null` | no |
 | <a name="input_prometheus_scrape_interval"></a> [prometheus\_scrape\_interval](#input\_prometheus\_scrape\_interval) | The scrape interval for Prometheus | `string` | `"15s"` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"eu-west-2"` | no |
 

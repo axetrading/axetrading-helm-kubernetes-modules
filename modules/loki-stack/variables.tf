@@ -171,15 +171,3 @@ variable "loki_bucket_name" {
   type        = string
   default     = "axetrading-loki"
 }
-
-variable "monitoring_ingress_class_name" {
-  description = "Ingress class name for monitoring ingress"
-  type        = string
-  default     = "monitoring-nginx"
-}
-
-variable "loki_gateway_host" {
-  description = "Ingress host for monitoring ingress"
-  type        = string
-  default     = null
-}

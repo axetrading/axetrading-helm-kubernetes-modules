@@ -73,22 +73,6 @@ resource "helm_release" "prometheus" {
   }
 
   dynamic "set" {
-    for_each = var.enabled && var.prometheus_host != null ? [true] : [false]
-    content {
-      name  = "server.ingress.enabled"
-      value = set.value
-    }
-  }
-
-  dynamic "set_list" {
-    for_each = var.enabled && var.prometheus_host != null ? [var.prometheus_host] : [null]
-    content {
-      name  = "server.ingress.hosts"
-      value = [var.prometheus_host]
-    }
-  }
-
-  dynamic "set" {
     for_each = var.create_role && var.create_service_account ? [aws_iam_role.this[0].arn] : [var.role_arn]
     content {
       name  = "serviceAccounts.server.annotations.eks\\.amazonaws\\.com/role-arn"
@@ -108,4 +92,59 @@ resource "helm_release" "prometheus_operator_crds" {
   chart      = "prometheus-operator-crds"
   version    = var.prometheus_operator_crds_version
   namespace  = "monitoring"
+}
+
+
+resource "helm_release" "prometheus_targetgroupbinding_crds" {
+  count      = var.enabled && var.prometheus_gateway_target_group_arn != null ? 1 : 0
+  name       = "aws-amp-prometheus-server-gateway"
+  repository = "https://charts.itscontained.io"
+  chart      = "raw"
+  version    = "0.2.5"
+  values = [
+    <<-EOF
+  apiVersion: elbv2.k8s.aws/v1beta1
+  kind: TargetGroupBinding
+  metadata:
+    name: aws-amp-prometheus-server-gateway
+    namespace: monitoring
+  spec:
+    serviceRef:
+      name: aws-amp-prometheus-server
+      port: 80
+    targetGroupARN: ${var.prometheus_gateway_target_group_arn}
+    targetType: ip
+    EOF
+  ]
+
+  depends_on = [
+    helm_release.prometheus
+  ]
+}
+
+resource "helm_release" "alertmanager_targetgroupbinding_crds" {
+  count      = var.enabled && var.alertmanager_enabled && var.alertmanager_target_group_arn != null ? 1 : 0
+  name       = "aws-amp-alertmanager-gateway"
+  repository = "https://charts.itscontained.io"
+  chart      = "raw"
+  version    = "0.2.5"
+  values = [
+    <<-EOF
+  apiVersion: elbv2.k8s.aws/v1beta1
+  kind: TargetGroupBinding
+  metadata:
+    name: aws-amp-alertmanager-gateway
+    namespace: monitoring
+  spec:
+    serviceRef:
+      name: aws-amp-alertmanager
+      port: 9093
+    targetGroupARN: ${var.alertmanager_target_group_arn}
+    targetType: ip
+    EOF
+  ]
+
+  depends_on = [
+    helm_release.prometheus
+  ]
 }

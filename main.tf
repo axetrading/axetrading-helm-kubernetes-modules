@@ -18,21 +18,21 @@ module "eks_cluster_autoscaler" {
 module "prometheus" {
   source = "./modules/prometheus"
 
-  enabled                          = var.enable_prometheus
-  alertmanager_enabled             = var.enable_alertmanager
-  attach_grafana_cloudwatch_policy = var.attach_grafana_cloudwatch_policy
-  blackbox_exporter_host           = var.blackbox_exporter_host
-  prometheus_host                  = var.prometheus_host
-  cross_account_enabled            = true
-  enable_blackbox_exporter         = var.enable_blackbox_exporter
-  eval_interval                    = var.prometheus_evaluation_interval
-  monitoring_ingress_class_name    = var.monitoring_ingress_class_name
-  monitored_endpoints              = var.monitored_endpoints
-  monitoring_account_id            = var.monitoring_aws_account_id
-  prometheus_endpoint              = var.prometheus_endpoint
-  prometheus_version               = "22.6.2"
-  region                           = var.region
-  scrape_interval                  = var.prometheus_scrape_interval
+  enabled                             = var.enable_prometheus
+  alertmanager_enabled                = var.enable_alertmanager
+  alertmanager_target_group_arn       = var.alertmanager_target_group_arn
+  attach_grafana_cloudwatch_policy    = var.attach_grafana_cloudwatch_policy
+  blackbox_exporter_host              = var.blackbox_exporter_host
+  cross_account_enabled               = true
+  enable_blackbox_exporter            = var.enable_blackbox_exporter
+  eval_interval                       = var.prometheus_evaluation_interval
+  monitored_endpoints                 = var.monitored_endpoints
+  monitoring_account_id               = var.monitoring_aws_account_id
+  prometheus_endpoint                 = var.prometheus_endpoint
+  prometheus_gateway_target_group_arn = var.prometheus_gateway_target_group_arn
+  prometheus_version                  = "22.6.2"
+  region                              = var.region
+  scrape_interval                     = var.prometheus_scrape_interval
 
   oidc_providers = {
     main = {
@@ -71,8 +71,7 @@ module "loki_stack" {
   enabled                        = var.enable_loki
   promtail_enabled               = var.enable_promtail
   loki_gateway_enabled           = var.enable_loki_gateway
-  loki_gateway_host              = var.loki_gateway_host
-  monitoring_ingress_class_name  = var.monitoring_ingress_class_name
+  loki_gateway_target_group_arn  = var.loki_gateway_target_group_arn
   loki_bucket_name               = var.loki_bucket_name
   create_bucket                  = var.create_loki_bucket
   region                         = var.bucket_region
