@@ -143,7 +143,7 @@ resource "helm_release" "alertmanager_targetgroupbinding_crds" {
   }
 
   set {
-    name  = "targetGroupBinding.service.port"
+    name  = "targetGroupBinding.port"
     value = "9093"
   }
 
