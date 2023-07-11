@@ -24,6 +24,11 @@ resource "helm_release" "statsd_exporter" {
   }
 
   set {
+    name = "serviceMonitor.additionalLabels.release"
+    value = "prometheus" 
+  }
+
+  set {
     name  = "statsd.mappingConfig"
     value = trimspace(file("${path.module}/configs/mapping.yml"))
     type  = "string"

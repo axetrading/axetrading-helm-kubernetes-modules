@@ -26,6 +26,16 @@ resource "helm_release" "blackbox_exporter" {
   }
 
   set {
+    name = "serviceMonitor.selfMonitor.enabled"
+    value = "true"
+  }
+
+  set {
+    name = "commonLabels.release"
+    value = "prometheus"
+  }
+
+  set {
     name  = "serviceMonitor.defaults.interval"
     value = "15s"
   }
