@@ -78,12 +78,12 @@ resource "helm_release" "thanos_targetgroupbinding_crds" {
 
   set {
     name  = "targetGroupBinding.service.name"
-    value = "thanos-gateway"
+    value = "thanos-query"
   }
 
   set {
     name  = "targetGroupBinding.service.port"
-    value = "80"
+    value = "9090"
   }
 
   set {
