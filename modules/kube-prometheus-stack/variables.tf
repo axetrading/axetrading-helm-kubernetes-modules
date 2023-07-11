@@ -175,7 +175,6 @@ variable "enable_default_prometheus_rules" {
 variable "cluster_name" {
   type        = string
   description = "The name of the EKS cluster that will be added as a Prometheus External Label"
-  default     = null
 }
 
 variable "thanos_sidecar_enabled" {

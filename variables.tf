@@ -252,3 +252,8 @@ variable "enable_prometheus_alertmanager" {
   type        = bool
   default     = false
 }
+
+variable "kubernetes_cluster_name" {
+  description = "Name of the Kubernetes cluster where Prometheus Stack is going to be deployed"
+  type        = string
+}

@@ -8,6 +8,7 @@ module "kube-prometheus-stack" {
   enable_default_prometheus_rules     = var.enable_default_prometheus_rules
   prometheus_gateway_enabled          = var.enable_prometheus_gateway
   prometheus_gateway_target_group_arn = var.prometheus_gateway_target_group_arn
+  cluster_name                        = var.kubernetes_cluster_name
   thanos_bucket_name                  = var.thanos_bucket_name
   thanos_sidecar_enabled              = var.enable_thanos_sidecar
   thanos_sidecar_target_group_arn     = var.thanos_sidecar_target_group_arn
