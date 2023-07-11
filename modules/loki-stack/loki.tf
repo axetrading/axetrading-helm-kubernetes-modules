@@ -168,7 +168,7 @@ resource "helm_release" "loki_targetgroupbinding_crds" {
   }
 
   set {
-    name  = "targetGroupBinding.service.port"
+    name  = "targetGroupBinding.port"
     value = "80"
   }
 

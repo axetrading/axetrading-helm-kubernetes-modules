@@ -216,3 +216,39 @@ variable "thanos_gateway_target_group_arn" {
   type        = string
   default     = null
 }
+
+variable "enable_kube_prometheus_stack" {
+  description = "Whether to enable the kube-prometheus-stack module"
+  type        = bool
+  default     = false
+}
+
+variable "enable_thanos_sidecar" {
+  description = "Whether to enable the thanos sidecar module"
+  type        = bool
+  default     = false
+}
+
+variable "enable_default_prometheus_rules" {
+  description = "Whether to enable the default Prometheus rules"
+  type        = bool
+  default     = false
+}
+
+variable "prometheus_default_rules" {
+  type        = map(any)
+  description = "A map of Prometheus default rules"
+  default     = {}
+}
+
+variable "thanos_sidecar_target_group_arn" {
+  description = "ARN of the target group for Thanos Sidecar"
+  type        = string
+  default     = null
+}
+
+variable "enable_prometheus_alertmanager" {
+  description = "Whether to enable the prometheus alertmanager module"
+  type        = bool
+  default     = false
+}

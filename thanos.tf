@@ -17,7 +17,7 @@ module "thanos" {
         "monitoring:thanos-query",
         "thanos-query-frontend",
         "monitoring:thanos-storegateway",
-        "monitoring:thanos-compact",
+        "monitoring:thanos-compactor",
         "monitoring:thanos-ruler"
       ]
     }

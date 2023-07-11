@@ -16,6 +16,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 |------|--------|---------|
 | <a name="module_blackbox_exporter"></a> [blackbox\_exporter](#module\_blackbox\_exporter) | ./modules/blackbox-exporter | n/a |
 | <a name="module_eks_cluster_autoscaler"></a> [eks\_cluster\_autoscaler](#module\_eks\_cluster\_autoscaler) | ./modules/cluster-autoscaler | n/a |
+| <a name="module_kube-prometheus-stack"></a> [kube-prometheus-stack](#module\_kube-prometheus-stack) | ./modules/kube-prometheus-stack | n/a |
 | <a name="module_loki_stack"></a> [loki\_stack](#module\_loki\_stack) | ./modules/loki-stack | n/a |
 | <a name="module_nginx_ingress_controller"></a> [nginx\_ingress\_controller](#module\_nginx\_ingress\_controller) | ./modules/nginx-ingress-controller | n/a |
 | <a name="module_prometheus"></a> [prometheus](#module\_prometheus) | ./modules/prometheus | n/a |
@@ -37,21 +38,26 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_enable_alertmanager"></a> [enable\_alertmanager](#input\_enable\_alertmanager) | Whether to enable the alertmanager module | `bool` | `false` | no |
 | <a name="input_enable_blackbox_exporter"></a> [enable\_blackbox\_exporter](#input\_enable\_blackbox\_exporter) | Whether to enable the blackbox exporter module | `bool` | `false` | no |
 | <a name="input_enable_cluster_autoscaler"></a> [enable\_cluster\_autoscaler](#input\_enable\_cluster\_autoscaler) | Whether to enable the cluster autoscaler module | `bool` | `false` | no |
+| <a name="input_enable_default_prometheus_rules"></a> [enable\_default\_prometheus\_rules](#input\_enable\_default\_prometheus\_rules) | Whether to enable the default Prometheus rules | `bool` | `false` | no |
+| <a name="input_enable_kube_prometheus_stack"></a> [enable\_kube\_prometheus\_stack](#input\_enable\_kube\_prometheus\_stack) | Whether to enable the kube-prometheus-stack module | `bool` | `false` | no |
 | <a name="input_enable_loki"></a> [enable\_loki](#input\_enable\_loki) | Whether to enable the loki stack module | `bool` | `false` | no |
 | <a name="input_enable_loki_gateway"></a> [enable\_loki\_gateway](#input\_enable\_loki\_gateway) | Whether to enable the Loki gateway module | `bool` | `false` | no |
 | <a name="input_enable_nginx_ingress_controller"></a> [enable\_nginx\_ingress\_controller](#input\_enable\_nginx\_ingress\_controller) | Whether to enable the nginx ingress controller module | `bool` | `false` | no |
 | <a name="input_enable_prometheus"></a> [enable\_prometheus](#input\_enable\_prometheus) | Whether to enable the prometheus module | `bool` | `false` | no |
+| <a name="input_enable_prometheus_alertmanager"></a> [enable\_prometheus\_alertmanager](#input\_enable\_prometheus\_alertmanager) | Whether to enable the prometheus alertmanager module | `bool` | `false` | no |
 | <a name="input_enable_prometheus_gateway"></a> [enable\_prometheus\_gateway](#input\_enable\_prometheus\_gateway) | Whether to enable the prometheus gateway module | `bool` | `false` | no |
 | <a name="input_enable_promtail"></a> [enable\_promtail](#input\_enable\_promtail) | Whether to enable the promtail module | `bool` | `false` | no |
 | <a name="input_enable_statsd_exporter"></a> [enable\_statsd\_exporter](#input\_enable\_statsd\_exporter) | Whether to enable the statsd exporter module | `bool` | `false` | no |
 | <a name="input_enable_thanos"></a> [enable\_thanos](#input\_enable\_thanos) | Whether to enable the thanos module | `bool` | `false` | no |
 | <a name="input_enable_thanos_gateway"></a> [enable\_thanos\_gateway](#input\_enable\_thanos\_gateway) | Whether to enable the thanos gateway module | `bool` | `false` | no |
+| <a name="input_enable_thanos_sidecar"></a> [enable\_thanos\_sidecar](#input\_enable\_thanos\_sidecar) | Whether to enable the thanos sidecar module | `bool` | `false` | no |
 | <a name="input_ingress_nginx_target_group_arn"></a> [ingress\_nginx\_target\_group\_arn](#input\_ingress\_nginx\_target\_group\_arn) | ARN of the target group to bind the ingress controller to | `string` | `null` | no |
 | <a name="input_loki_bucket_name"></a> [loki\_bucket\_name](#input\_loki\_bucket\_name) | Name of the Loki bucket | `string` | `"axetrading-loki"` | no |
 | <a name="input_loki_existing_bucket_name"></a> [loki\_existing\_bucket\_name](#input\_loki\_existing\_bucket\_name) | Name of an existing S3 bucket for Loki | `string` | `null` | no |
 | <a name="input_loki_gateway_target_group_arn"></a> [loki\_gateway\_target\_group\_arn](#input\_loki\_gateway\_target\_group\_arn) | ARN of the target group for Loki Gateway | `string` | `null` | no |
 | <a name="input_monitored_endpoints"></a> [monitored\_endpoints](#input\_monitored\_endpoints) | The endpoints to be monitored by Prometheus | <pre>object({<br>    http_endpoints = optional(list(string), null)<br>    tcp_endpoints  = optional(list(string), null)<br>    icmp_endpoints = optional(list(string), null)<br>    ssh_endpoints  = optional(list(string), null)<br>  })</pre> | <pre>{<br>  "http_endpoints": null,<br>  "icmp_endpoints": null,<br>  "ssh_endpoints": null,<br>  "tcp_endpoints": null<br>}</pre> | no |
 | <a name="input_monitoring_aws_account_id"></a> [monitoring\_aws\_account\_id](#input\_monitoring\_aws\_account\_id) | AWS account ID where the monitoring stack is deployed | `string` | n/a | yes |
+| <a name="input_prometheus_default_rules"></a> [prometheus\_default\_rules](#input\_prometheus\_default\_rules) | A map of Prometheus default rules | `map(any)` | `{}` | no |
 | <a name="input_prometheus_endpoint"></a> [prometheus\_endpoint](#input\_prometheus\_endpoint) | AWS Managed Prometheus endpoint URL | `string` | n/a | yes |
 | <a name="input_prometheus_evaluation_interval"></a> [prometheus\_evaluation\_interval](#input\_prometheus\_evaluation\_interval) | The evaluation interval for Prometheus | `string` | `"1m"` | no |
 | <a name="input_prometheus_gateway_target_group_arn"></a> [prometheus\_gateway\_target\_group\_arn](#input\_prometheus\_gateway\_target\_group\_arn) | ARN of the target group for Prometheus Gateway | `string` | `null` | no |
@@ -61,6 +67,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_thanos_bucket_region"></a> [thanos\_bucket\_region](#input\_thanos\_bucket\_region) | S3 Region of the Thanos bucket | `string` | `"eu-west-2"` | no |
 | <a name="input_thanos_existing_bucket_name"></a> [thanos\_existing\_bucket\_name](#input\_thanos\_existing\_bucket\_name) | Name of an existing S3 bucket for Thanos | `string` | `null` | no |
 | <a name="input_thanos_gateway_target_group_arn"></a> [thanos\_gateway\_target\_group\_arn](#input\_thanos\_gateway\_target\_group\_arn) | ARN of the target group for Thanos Gateway | `string` | `null` | no |
+| <a name="input_thanos_sidecar_target_group_arn"></a> [thanos\_sidecar\_target\_group\_arn](#input\_thanos\_sidecar\_target\_group\_arn) | ARN of the target group for Thanos Sidecar | `string` | `null` | no |
 
 ## Outputs
 

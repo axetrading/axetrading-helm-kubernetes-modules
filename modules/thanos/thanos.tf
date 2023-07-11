@@ -49,9 +49,29 @@ resource "helm_release" "thanos" {
     value = true
   }
 
+
+  dynamic "set" {
+    for_each = var.create_role ? [aws_iam_role.this[0].arn] : [var.role_arn]
+    content {
+      name  = "compactor.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+      value = set.value
+      type  = "string"
+    }
+  }
+
   set {
     name  = "storegateway.enabled"
     value = true
+  }
+
+
+  dynamic "set" {
+    for_each = var.create_role ? [aws_iam_role.this[0].arn] : [var.role_arn]
+    content {
+      name  = "storegateway.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+      value = set.value
+      type  = "string"
+    }
   }
 
   set {
@@ -82,7 +102,7 @@ resource "helm_release" "thanos_targetgroupbinding_crds" {
   }
 
   set {
-    name  = "targetGroupBinding.service.port"
+    name  = "targetGroupBinding.port"
     value = "9090"
   }
 
