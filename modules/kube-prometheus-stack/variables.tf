@@ -175,7 +175,7 @@ variable "enable_default_prometheus_rules" {
 variable "prometheus_default_rules" {
   type        = map(any)
   description = "A map of Prometheus default rules"
-  default     = {}
+  default     = null
 }
 
 variable "cluster_name" {
