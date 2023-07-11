@@ -26,6 +26,11 @@ resource "helm_release" "kube_prometheus_stack" {
     value = var.enable_default_prometheus_rules ? true : false
   }
 
+  set {
+    name  = "grafana.enabled"
+    value = false
+  }
+
   dynamic "set" {
     for_each = var.enable_default_prometheus_rules ? var.prometheus_default_rules : {}
     content {
@@ -130,7 +135,7 @@ resource "helm_release" "alertmanager_targetgroupbinding_crds" {
 
 resource "helm_release" "thanos_sidecar_targetgroupbinding_crds" {
   count     = var.enabled && var.thanos_sidecar_enabled ? 1 : 0
-  name      = "aws-amp-alertmanager-gateway"
+  name      = "thanos-sidecar-gateway"
   chart     = "${path.module}/../helm-template/crds"
   namespace = "monitoring"
 
