@@ -257,3 +257,9 @@ variable "kubernetes_cluster_name" {
   description = "Name of the Kubernetes cluster where Prometheus Stack is going to be deployed"
   type        = string
 }
+
+variable "thanos_stores_endpoints" {
+  description = "The endpoints of the Thanos stores"
+  type        = list(string)
+  default     = null
+}

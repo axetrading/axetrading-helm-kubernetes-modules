@@ -83,6 +83,14 @@ resource "helm_release" "thanos" {
     name  = "objstoreConfig"
     value = local.config_file
   }
+
+  dynamic "set_list" {
+    for_each = var.thanos_stores_endpoints != null ? [var.thanos_stores_endpoints] : []
+    content {
+      name = "query.stores"
+      value = set_list.value
+    }
+  }
 }
 
 resource "helm_release" "thanos_targetgroupbinding_crds" {

@@ -5,6 +5,7 @@ module "thanos" {
   thanos_gateway_enabled          = var.enable_thanos_gateway
   thanos_gateway_target_group_arn = var.thanos_gateway_target_group_arn
   thanos_bucket_name              = var.thanos_bucket_name
+  thanos_stores_endpoints         = var.thanos_stores_endpoints
   create_bucket                   = var.create_thanos_bucket
   thanos_bucket_region            = var.thanos_bucket_region
   existing_bucket_name            = var.thanos_existing_bucket_name

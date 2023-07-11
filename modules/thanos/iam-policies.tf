@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "thanos" {
   statement {
     actions = [
       "s3:PutObject",
-      "s3:GetObject",
+      "s3:Get*",
       "s3:DeleteObject",
     ]
 
