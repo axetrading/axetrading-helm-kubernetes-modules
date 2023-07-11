@@ -19,4 +19,14 @@ resource "helm_release" "blackbox_exporter" {
     value = "true"
     type  = "string"
   }
+
+  set {
+    name  = "serviceMonitor.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "serviceMonitor.interval"
+    value = "15s"
+  }
 }
