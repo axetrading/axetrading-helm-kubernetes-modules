@@ -24,8 +24,8 @@ resource "helm_release" "statsd_exporter" {
   }
 
   set {
-    name = "serviceMonitor.additionalLabels.release"
-    value = "prometheus" 
+    name  = "serviceMonitor.additionalLabels.release"
+    value = "prometheus"
   }
 
   set {

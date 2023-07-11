@@ -26,12 +26,12 @@ resource "helm_release" "blackbox_exporter" {
   }
 
   set {
-    name = "serviceMonitor.selfMonitor.enabled"
+    name  = "serviceMonitor.selfMonitor.enabled"
     value = "true"
   }
 
   set {
-    name = "commonLabels.release"
+    name  = "commonLabels.release"
     value = "prometheus"
   }
 

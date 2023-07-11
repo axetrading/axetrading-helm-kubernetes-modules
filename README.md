@@ -20,6 +20,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="module_nginx_ingress_controller"></a> [nginx\_ingress\_controller](#module\_nginx\_ingress\_controller) | ./modules/nginx-ingress-controller | n/a |
 | <a name="module_prometheus"></a> [prometheus](#module\_prometheus) | ./modules/prometheus | n/a |
 | <a name="module_statsd_exporter"></a> [statsd\_exporter](#module\_statsd\_exporter) | ./modules/statsd-exporter | n/a |
+| <a name="module_thanos"></a> [thanos](#module\_thanos) | ./modules/thanos | n/a |
 
 ## Inputs
 
@@ -31,6 +32,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_bucket_region"></a> [bucket\_region](#input\_bucket\_region) | S3 Region of the Loki bucket | `string` | `"eu-west-2"` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the EKS cluster | `string` | n/a | yes |
 | <a name="input_create_loki_bucket"></a> [create\_loki\_bucket](#input\_create\_loki\_bucket) | Whether to create the Loki bucket | `bool` | `true` | no |
+| <a name="input_create_thanos_bucket"></a> [create\_thanos\_bucket](#input\_create\_thanos\_bucket) | Whether to create the Thanos bucket | `bool` | `true` | no |
 | <a name="input_eks_oidc_provider_arn"></a> [eks\_oidc\_provider\_arn](#input\_eks\_oidc\_provider\_arn) | ARN of the OIDC provider associated with the EKS cluster | `string` | n/a | yes |
 | <a name="input_enable_alertmanager"></a> [enable\_alertmanager](#input\_enable\_alertmanager) | Whether to enable the alertmanager module | `bool` | `false` | no |
 | <a name="input_enable_blackbox_exporter"></a> [enable\_blackbox\_exporter](#input\_enable\_blackbox\_exporter) | Whether to enable the blackbox exporter module | `bool` | `false` | no |
@@ -42,6 +44,8 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_enable_prometheus_gateway"></a> [enable\_prometheus\_gateway](#input\_enable\_prometheus\_gateway) | Whether to enable the prometheus gateway module | `bool` | `false` | no |
 | <a name="input_enable_promtail"></a> [enable\_promtail](#input\_enable\_promtail) | Whether to enable the promtail module | `bool` | `false` | no |
 | <a name="input_enable_statsd_exporter"></a> [enable\_statsd\_exporter](#input\_enable\_statsd\_exporter) | Whether to enable the statsd exporter module | `bool` | `false` | no |
+| <a name="input_enable_thanos"></a> [enable\_thanos](#input\_enable\_thanos) | Whether to enable the thanos module | `bool` | `false` | no |
+| <a name="input_enable_thanos_gateway"></a> [enable\_thanos\_gateway](#input\_enable\_thanos\_gateway) | Whether to enable the thanos gateway module | `bool` | `false` | no |
 | <a name="input_ingress_nginx_target_group_arn"></a> [ingress\_nginx\_target\_group\_arn](#input\_ingress\_nginx\_target\_group\_arn) | ARN of the target group to bind the ingress controller to | `string` | `null` | no |
 | <a name="input_loki_bucket_name"></a> [loki\_bucket\_name](#input\_loki\_bucket\_name) | Name of the Loki bucket | `string` | `"axetrading-loki"` | no |
 | <a name="input_loki_existing_bucket_name"></a> [loki\_existing\_bucket\_name](#input\_loki\_existing\_bucket\_name) | Name of an existing S3 bucket for Loki | `string` | `null` | no |
@@ -53,6 +57,10 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_prometheus_gateway_target_group_arn"></a> [prometheus\_gateway\_target\_group\_arn](#input\_prometheus\_gateway\_target\_group\_arn) | ARN of the target group for Prometheus Gateway | `string` | `null` | no |
 | <a name="input_prometheus_scrape_interval"></a> [prometheus\_scrape\_interval](#input\_prometheus\_scrape\_interval) | The scrape interval for Prometheus | `string` | `"15s"` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"eu-west-2"` | no |
+| <a name="input_thanos_bucket_name"></a> [thanos\_bucket\_name](#input\_thanos\_bucket\_name) | Name of the Thanos bucket | `string` | `null` | no |
+| <a name="input_thanos_bucket_region"></a> [thanos\_bucket\_region](#input\_thanos\_bucket\_region) | S3 Region of the Thanos bucket | `string` | `"eu-west-2"` | no |
+| <a name="input_thanos_existing_bucket_name"></a> [thanos\_existing\_bucket\_name](#input\_thanos\_existing\_bucket\_name) | Name of an existing S3 bucket for Thanos | `string` | `null` | no |
+| <a name="input_thanos_gateway_target_group_arn"></a> [thanos\_gateway\_target\_group\_arn](#input\_thanos\_gateway\_target\_group\_arn) | ARN of the target group for Thanos Gateway | `string` | `null` | no |
 
 ## Outputs
 

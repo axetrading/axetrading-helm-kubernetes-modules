@@ -173,3 +173,46 @@ variable "ingress_nginx_target_group_arn" {
   type        = string
   default     = null
 }
+
+
+variable "enable_thanos" {
+  description = "Whether to enable the thanos module"
+  type        = bool
+  default     = false
+}
+
+variable "enable_thanos_gateway" {
+  description = "Whether to enable the thanos gateway module"
+  type        = bool
+  default     = false
+}
+
+variable "thanos_bucket_name" {
+  description = "Name of the Thanos bucket"
+  type        = string
+  default     = null
+}
+
+variable "create_thanos_bucket" {
+  description = "Whether to create the Thanos bucket"
+  type        = bool
+  default     = true
+}
+
+variable "thanos_bucket_region" {
+  description = "S3 Region of the Thanos bucket"
+  type        = string
+  default     = "eu-west-2"
+}
+
+variable "thanos_existing_bucket_name" {
+  description = "Name of an existing S3 bucket for Thanos"
+  type        = string
+  default     = null
+}
+
+variable "thanos_gateway_target_group_arn" {
+  description = "ARN of the target group for Thanos Gateway"
+  type        = string
+  default     = null
+}
