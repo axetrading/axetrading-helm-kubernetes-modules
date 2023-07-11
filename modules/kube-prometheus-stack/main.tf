@@ -23,20 +23,12 @@ resource "helm_release" "kube_prometheus_stack" {
 
   set {
     name  = "defaultRules.create"
-    value = var.enable_default_prometheus_rules ? true : false
+    value = var.enable_default_prometheus_rules
   }
 
   set {
     name  = "grafana.enabled"
     value = false
-  }
-
-  dynamic "set" {
-    for_each = var.enable_default_prometheus_rules && var.prometheus_default_rules != null ? var.prometheus_default_rules : {}
-    content {
-      name  = "defaultRules.rules.${set.key}"
-      value = set.value
-    }
   }
 
   set {

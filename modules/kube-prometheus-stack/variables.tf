@@ -172,12 +172,6 @@ variable "enable_default_prometheus_rules" {
   default     = true
 }
 
-variable "prometheus_default_rules" {
-  type        = map(any)
-  description = "A map of Prometheus default rules"
-  default     = null
-}
-
 variable "cluster_name" {
   type        = string
   description = "The name of the EKS cluster that will be added as a Prometheus External Label"
