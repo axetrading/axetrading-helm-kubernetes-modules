@@ -26,7 +26,12 @@ resource "helm_release" "blackbox_exporter" {
   }
 
   set {
-    name  = "serviceMonitor.interval"
+    name  = "serviceMonitor.defaults.interval"
     value = "15s"
+  }
+
+  set {
+    name  = "serviceMonitor.defaults.scrapeTimeout"
+    value = "10s"
   }
 }
