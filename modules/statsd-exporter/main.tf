@@ -20,7 +20,7 @@ resource "helm_release" "statsd_exporter" {
 
   set {
     name  = "serviceMonitor.enabled"
-    value = "true"
+    value = true
   }
 
   set {

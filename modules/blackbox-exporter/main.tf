@@ -22,12 +22,12 @@ resource "helm_release" "blackbox_exporter" {
 
   set {
     name  = "serviceMonitor.enabled"
-    value = "true"
+    value = true
   }
 
   set {
     name  = "serviceMonitor.selfMonitor.enabled"
-    value = "true"
+    value = true
   }
 
   set {
