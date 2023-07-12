@@ -44,7 +44,7 @@
 | <a name="input_create_bucket"></a> [create\_bucket](#input\_create\_bucket) | Create S3 bucket for Thanos | `bool` | `true` | no |
 | <a name="input_create_role"></a> [create\_role](#input\_create\_role) | Whether to create a role | `bool` | `true` | no |
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Whether to create a service account for Kubernetes Deployment | `bool` | `true` | no |
-| <a name="input_enabled"></a> [enabled](#input\_enabled) | Whether to create the cluster autoscaler | `bool` | `true` | no |
+| <a name="input_enabled"></a> [enabled](#input\_enabled) | Whether to create Thanos resources or not | `bool` | `true` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment | `string` | `null` | no |
 | <a name="input_existing_bucket_name"></a> [existing\_bucket\_name](#input\_existing\_bucket\_name) | Name of the an existing S3 bucket that will be used by Thanos | `string` | `null` | no |
 | <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Whether policies should be detached from this role when destroying | `bool` | `true` | no |

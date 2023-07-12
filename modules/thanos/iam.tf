@@ -1,5 +1,5 @@
 data "aws_iam_policy_document" "this" {
-  count = var.create_role ? 1 : 0
+  count = var.create_role && var.enabled ? 1 : 0
 
   dynamic "statement" {
     for_each = var.oidc_providers
@@ -29,7 +29,7 @@ data "aws_iam_policy_document" "this" {
 }
 
 resource "aws_iam_role" "this" {
-  count = var.create_role ? 1 : 0
+  count = var.create_role && var.enabled ? 1 : 0
 
   name        = var.role_name
   name_prefix = module.short-name[0].result
@@ -54,7 +54,7 @@ resource "aws_iam_role_policy_attachment" "this" {
 
 
 module "short-name" {
-  count      = var.role_name_prefix != null ? 1 : 0
+  count      = var.role_name_prefix != null && var.enabled ? 1 : 0
   source     = "axetrading/short-name/null"
   version    = "1.0.0"
   max_length = 38

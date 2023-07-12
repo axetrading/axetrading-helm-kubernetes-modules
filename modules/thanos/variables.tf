@@ -1,5 +1,5 @@
 variable "enabled" {
-  description = "Whether to create the cluster autoscaler"
+  description = "Whether to create Thanos resources or not"
   type        = bool
   default     = true
 }

@@ -1,5 +1,5 @@
 data "aws_iam_policy_document" "thanos" {
-  count = var.create_role ? 1 : 0
+  count = var.create_role && var.enabled ? 1 : 0
 
   statement {
     actions = [
@@ -37,7 +37,7 @@ resource "aws_iam_policy" "thanos" {
 }
 
 resource "aws_iam_role_policy_attachment" "thanos" {
-  count = var.create_role ? 1 : 0
+  count = var.create_role && var.enabled ? 1 : 0
 
   role       = aws_iam_role.this[0].name
   policy_arn = aws_iam_policy.thanos[0].arn
