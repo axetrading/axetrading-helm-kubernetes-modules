@@ -4,7 +4,7 @@ It will also create an S3 bucket for Thanos to use as an object store.
 */
 
 locals {
-  thanos_bucket_name = var.create_bucket ? aws_s3_bucket.thanos[0].id : var.existing_bucket_name
+  thanos_bucket_name = var.create_bucket ? try(aws_s3_bucket.thanos[0].id, var.existing_bucket_name) : var.existing_bucket_name
   config_file = templatefile("${path.module}/configs/objstore.tpl", {
     thanos_objstore_bucket   = local.thanos_bucket_name,
     thanos_objstore_region   = var.thanos_bucket_region,

@@ -26,7 +26,7 @@ data "aws_iam_policy_document" "thanos" {
 }
 
 resource "aws_iam_policy" "thanos" {
-  count = var.create_role ? 1 : 0
+  count = var.create_role && var.enabled ? 1 : 0
 
   name_prefix = "thanos-store-policy-"
   path        = var.role_path

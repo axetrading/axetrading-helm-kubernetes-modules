@@ -14,6 +14,6 @@ output "thanos" {
 }
 
 output "s3_bucket_id" {
-  value       = var.create_bucket ? aws_s3_bucket.thanos[0].id : var.thanos_bucket_name
+  value       = var.create_bucket ? try(aws_s3_bucket.thanos[0].id, null) : var.thanos_bucket_name
   description = "S3 Bucket ID"
 }
