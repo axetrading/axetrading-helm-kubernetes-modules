@@ -69,6 +69,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_thanos_bucket_region"></a> [thanos\_bucket\_region](#input\_thanos\_bucket\_region) | S3 Region of the Thanos bucket | `string` | `"eu-west-2"` | no |
 | <a name="input_thanos_existing_bucket_name"></a> [thanos\_existing\_bucket\_name](#input\_thanos\_existing\_bucket\_name) | Name of an existing S3 bucket for Thanos | `string` | `null` | no |
 | <a name="input_thanos_gateway_target_group_arn"></a> [thanos\_gateway\_target\_group\_arn](#input\_thanos\_gateway\_target\_group\_arn) | ARN of the target group for Thanos Gateway | `string` | `null` | no |
+| <a name="input_thanos_sidecar_secret_name"></a> [thanos\_sidecar\_secret\_name](#input\_thanos\_sidecar\_secret\_name) | Name of the Thanos sidecar secret | `string` | `null` | no |
 | <a name="input_thanos_sidecar_target_group_arn"></a> [thanos\_sidecar\_target\_group\_arn](#input\_thanos\_sidecar\_target\_group\_arn) | ARN of the target group for Thanos Sidecar | `string` | `null` | no |
 | <a name="input_thanos_stores_endpoints"></a> [thanos\_stores\_endpoints](#input\_thanos\_stores\_endpoints) | The endpoints of the Thanos stores | `list(string)` | `null` | no |
 

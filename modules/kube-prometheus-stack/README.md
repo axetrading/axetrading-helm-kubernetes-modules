@@ -75,6 +75,7 @@
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add the the IAM role | `map(any)` | `{}` | no |
 | <a name="input_thanos_bucket_name"></a> [thanos\_bucket\_name](#input\_thanos\_bucket\_name) | The name of the S3 bucket to store Thanos data | `string` | `null` | no |
 | <a name="input_thanos_sidecar_enabled"></a> [thanos\_sidecar\_enabled](#input\_thanos\_sidecar\_enabled) | Whether to enable Thanos sidecar | `bool` | `false` | no |
+| <a name="input_thanos_sidecar_secret_name"></a> [thanos\_sidecar\_secret\_name](#input\_thanos\_sidecar\_secret\_name) | The name of the aws secret that contains the Thanos sidecar bucket configuration | `string` | `null` | no |
 | <a name="input_thanos_sidecar_target_group_arn"></a> [thanos\_sidecar\_target\_group\_arn](#input\_thanos\_sidecar\_target\_group\_arn) | The ARN of the target group for Thanos sidecar | `string` | `null` | no |
 
 ## Outputs

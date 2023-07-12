@@ -13,6 +13,7 @@ module "kube-prometheus-stack" {
   thanos_bucket_name                  = var.thanos_bucket_name
   thanos_sidecar_enabled              = var.enable_thanos_sidecar
   thanos_sidecar_target_group_arn     = var.thanos_sidecar_target_group_arn
+  thanos_sidecar_secret_name          = var.thanos_sidecar_secret_name
 
   oidc_providers = {
     main = {

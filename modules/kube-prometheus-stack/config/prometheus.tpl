@@ -5,7 +5,7 @@ prometheus:
          provider: aws
          parameters:
            objects: |
-             - objectName: "integration/thanos"
+             - objectName: ${thanos_sidecar_secret_name}
                objectType: "secretsmanager"
                objectAlias: "object-store.yaml"
        objectStorageConfigFile: /mnt/secrets/object-store.yaml

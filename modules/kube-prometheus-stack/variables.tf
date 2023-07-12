@@ -200,3 +200,9 @@ variable "thanos_bucket_name" {
   description = "The name of the S3 bucket to store Thanos data"
   default     = null
 }
+
+variable "thanos_sidecar_secret_name" {
+  type        = string
+  description = "The name of the aws secret that contains the Thanos sidecar bucket configuration"
+  default     = null
+}

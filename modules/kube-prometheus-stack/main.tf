@@ -6,7 +6,9 @@
 
 locals {
   prometheus_config_files = [
-    file("${path.module}/config/prometheus.yml"),
+    templatefile("${path.module}/config/prometheus.tpl", {
+      thanos_sidecar_secret_name = var.thanos_sidecar_secret_name
+    }),
   ]
   prometheus_config = compact(local.prometheus_config_files)
 }

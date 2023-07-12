@@ -269,3 +269,9 @@ variable "enable_thanos_external_service" {
   type        = bool
   default     = false
 }
+
+variable "thanos_sidecar_secret_name" {
+  description = "Name of the Thanos sidecar secret"
+  type        = string
+  default     = null
+}
