@@ -41,7 +41,7 @@
 | <a name="input_additional_value_files"></a> [additional\_value\_files](#input\_additional\_value\_files) | A list of additional value files. It will work in the same way as helm -f value1.yaml -f value2.yaml | `list(any)` | `[]` | no |
 | <a name="input_assume_role_condition_test"></a> [assume\_role\_condition\_test](#input\_assume\_role\_condition\_test) | Name of the [IAM condition operator](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html) to evaluate when assuming the role | `string` | `"StringEquals"` | no |
 | <a name="input_attach_secrets_policy"></a> [attach\_secrets\_policy](#input\_attach\_secrets\_policy) | Attach a policy that will allow the role to get secrets from AWS Secrets Manager or AWS SSM | `bool` | `true` | no |
-| <a name="input_create_bucket"></a> [create\_bucket](#input\_create\_bucket) | Create S3 bucket for Thanos | `bool` | `true` | no |
+| <a name="input_create_bucket"></a> [create\_bucket](#input\_create\_bucket) | Create S3 bucket for Thanos | `bool` | `false` | no |
 | <a name="input_create_role"></a> [create\_role](#input\_create\_role) | Whether to create a role | `bool` | `true` | no |
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Whether to create a service account for Kubernetes Deployment | `bool` | `true` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Whether to create Thanos resources or not | `bool` | `true` | no |

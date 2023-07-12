@@ -12,7 +12,7 @@ variable "thanos_version" {
 
 variable "create_bucket" {
   type        = bool
-  default     = true
+  default     = false
   description = "Create S3 bucket for Thanos"
 }
 

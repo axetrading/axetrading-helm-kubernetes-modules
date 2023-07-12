@@ -196,7 +196,7 @@ variable "thanos_bucket_name" {
 variable "create_thanos_bucket" {
   description = "Whether to create the Thanos bucket"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "thanos_bucket_region" {
