@@ -53,6 +53,7 @@
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Whether to create a service account for Kubernetes Deployment | `bool` | `true` | no |
 | <a name="input_cross_account_enabled"></a> [cross\_account\_enabled](#input\_cross\_account\_enabled) | Whether to allow cross account access to AWS CloudWatch Logs and Metrics | `bool` | `true` | no |
 | <a name="input_enable_default_prometheus_rules"></a> [enable\_default\_prometheus\_rules](#input\_enable\_default\_prometheus\_rules) | Whether to enable default Prometheus rules | `bool` | `true` | no |
+| <a name="input_enable_thanos_external_service"></a> [enable\_thanos\_external\_service](#input\_enable\_thanos\_external\_service) | Whether to enable Thanos Sidecar external service | `bool` | `false` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Whether to create the kube-prometheus-stack resources | `bool` | `false` | no |
 | <a name="input_eval_interval"></a> [eval\_interval](#input\_eval\_interval) | The evaluation interval for Prometheus | `string` | `"1m"` | no |
 | <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Whether policies should be detached from this role when destroying | `bool` | `true` | no |

@@ -165,7 +165,7 @@ variable "thanos_objstore_endpoint" {
   type        = string
   default     = "s3.eu-west-2.amazonaws.com"
 }
-  
+
 variable "thanos_stores_endpoints" {
   description = "Endpoints of Thanos Stores (Gateways or SideCars, Rulers) that will be attached to Thanos Query"
   type        = list(string)

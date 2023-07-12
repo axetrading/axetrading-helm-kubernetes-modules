@@ -263,3 +263,9 @@ variable "thanos_stores_endpoints" {
   type        = list(string)
   default     = null
 }
+
+variable "enable_thanos_external_service" {
+  description = "Whether to enable the thanos sidecar external service"
+  type        = bool
+  default     = false
+}

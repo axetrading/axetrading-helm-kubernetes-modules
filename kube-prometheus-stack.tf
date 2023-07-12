@@ -6,6 +6,7 @@ module "kube-prometheus-stack" {
   alertmanager_enabled                = var.enable_prometheus_alertmanager
   alertmanager_target_group_arn       = var.alertmanager_target_group_arn
   enable_default_prometheus_rules     = var.enable_default_prometheus_rules
+  enable_thanos_external_service      = var.enable_thanos_external_service
   prometheus_gateway_enabled          = var.enable_prometheus_gateway
   prometheus_gateway_target_group_arn = var.prometheus_gateway_target_group_arn
   cluster_name                        = var.kubernetes_cluster_name

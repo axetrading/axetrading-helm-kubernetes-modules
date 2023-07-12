@@ -65,6 +65,7 @@
 | <a name="input_thanos_gateway_enabled"></a> [thanos\_gateway\_enabled](#input\_thanos\_gateway\_enabled) | Whether to enable Thanos Gateway | `bool` | `true` | no |
 | <a name="input_thanos_gateway_target_group_arn"></a> [thanos\_gateway\_target\_group\_arn](#input\_thanos\_gateway\_target\_group\_arn) | ARN of the target group for Thanos Gateway | `string` | `null` | no |
 | <a name="input_thanos_objstore_endpoint"></a> [thanos\_objstore\_endpoint](#input\_thanos\_objstore\_endpoint) | Endpoint of the S3 bucket that will be created for Thanos | `string` | `"s3.eu-west-2.amazonaws.com"` | no |
+| <a name="input_thanos_stores_endpoints"></a> [thanos\_stores\_endpoints](#input\_thanos\_stores\_endpoints) | Endpoints of Thanos Stores (Gateways or SideCars, Rulers) that will be attached to Thanos Query | `list(string)` | `null` | no |
 | <a name="input_thanos_version"></a> [thanos\_version](#input\_thanos\_version) | Thanos-stack helm chart version | `string` | `"5.8.6"` | no |
 
 ## Outputs

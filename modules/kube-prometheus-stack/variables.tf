@@ -183,6 +183,12 @@ variable "thanos_sidecar_enabled" {
   default     = false
 }
 
+variable "enable_thanos_external_service" {
+  type        = bool
+  description = "Whether to enable Thanos Sidecar external service"
+  default     = false
+}
+
 variable "thanos_sidecar_target_group_arn" {
   type        = string
   description = "The ARN of the target group for Thanos sidecar"

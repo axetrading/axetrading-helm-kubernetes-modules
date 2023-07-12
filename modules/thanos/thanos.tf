@@ -87,7 +87,7 @@ resource "helm_release" "thanos" {
   dynamic "set_list" {
     for_each = var.thanos_stores_endpoints != null ? [var.thanos_stores_endpoints] : []
     content {
-      name = "query.stores"
+      name  = "query.stores"
       value = set_list.value
     }
   }

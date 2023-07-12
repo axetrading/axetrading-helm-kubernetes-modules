@@ -49,6 +49,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_enable_promtail"></a> [enable\_promtail](#input\_enable\_promtail) | Whether to enable the promtail module | `bool` | `false` | no |
 | <a name="input_enable_statsd_exporter"></a> [enable\_statsd\_exporter](#input\_enable\_statsd\_exporter) | Whether to enable the statsd exporter module | `bool` | `false` | no |
 | <a name="input_enable_thanos"></a> [enable\_thanos](#input\_enable\_thanos) | Whether to enable the thanos module | `bool` | `false` | no |
+| <a name="input_enable_thanos_external_service"></a> [enable\_thanos\_external\_service](#input\_enable\_thanos\_external\_service) | Whether to enable the thanos sidecar external service | `bool` | `false` | no |
 | <a name="input_enable_thanos_gateway"></a> [enable\_thanos\_gateway](#input\_enable\_thanos\_gateway) | Whether to enable the thanos gateway module | `bool` | `false` | no |
 | <a name="input_enable_thanos_sidecar"></a> [enable\_thanos\_sidecar](#input\_enable\_thanos\_sidecar) | Whether to enable the thanos sidecar module | `bool` | `false` | no |
 | <a name="input_ingress_nginx_target_group_arn"></a> [ingress\_nginx\_target\_group\_arn](#input\_ingress\_nginx\_target\_group\_arn) | ARN of the target group to bind the ingress controller to | `string` | `null` | no |
@@ -69,6 +70,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_thanos_existing_bucket_name"></a> [thanos\_existing\_bucket\_name](#input\_thanos\_existing\_bucket\_name) | Name of an existing S3 bucket for Thanos | `string` | `null` | no |
 | <a name="input_thanos_gateway_target_group_arn"></a> [thanos\_gateway\_target\_group\_arn](#input\_thanos\_gateway\_target\_group\_arn) | ARN of the target group for Thanos Gateway | `string` | `null` | no |
 | <a name="input_thanos_sidecar_target_group_arn"></a> [thanos\_sidecar\_target\_group\_arn](#input\_thanos\_sidecar\_target\_group\_arn) | ARN of the target group for Thanos Sidecar | `string` | `null` | no |
+| <a name="input_thanos_stores_endpoints"></a> [thanos\_stores\_endpoints](#input\_thanos\_stores\_endpoints) | The endpoints of the Thanos stores | `list(string)` | `null` | no |
 
 ## Outputs
 

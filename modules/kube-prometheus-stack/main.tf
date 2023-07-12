@@ -60,6 +60,20 @@ resource "helm_release" "kube_prometheus_stack" {
     name  = "prometheus.prometheusSpec.externalLabels.cluster"
     value = var.cluster_name
   }
+
+  set {
+    name  = "prometheus.thanosServiceExternal.enabled"
+    value = var.enable_thanos_external_service
+  }
+
+  dynamic "set" {
+    for_each = var.enable_thanos_external_service ? [true] : []
+    content {
+      name  = "prometheus.thanosServiceExternal.type"
+      value = "NodePort"
+    }
+
+  }
 }
 
 
@@ -138,7 +152,7 @@ resource "helm_release" "thanos_sidecar_targetgroupbinding_crds" {
 
   set {
     name  = "targetGroupBinding.service.name"
-    value = "prometheus-kube-prometheus-thanos-discovery"
+    value = var.enable_thanos_external_service ? "prometheus-kube-prometheus-thanos-external" : "prometheus-kube-prometheus-thanos-discovery"
   }
 
   set {
