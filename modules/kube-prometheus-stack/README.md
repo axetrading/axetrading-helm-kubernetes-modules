@@ -73,6 +73,7 @@
 | <a name="input_role_permissions_boundary_arn"></a> [role\_permissions\_boundary\_arn](#input\_role\_permissions\_boundary\_arn) | Permissions boundary ARN to use for IAM role | `string` | `null` | no |
 | <a name="input_role_policy_arns"></a> [role\_policy\_arns](#input\_role\_policy\_arns) | ARNs of any policies to attach to the IAM role | `set(string)` | `[]` | no |
 | <a name="input_scrape_interval"></a> [scrape\_interval](#input\_scrape\_interval) | The scrape interval for Prometheus | `string` | `"15s"` | no |
+| <a name="input_slack_api_url"></a> [slack\_api\_url](#input\_slack\_api\_url) | The Slack Channel API URL where the alerts will be sent | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add the the IAM role | `map(any)` | `{}` | no |
 | <a name="input_thanos_bucket_name"></a> [thanos\_bucket\_name](#input\_thanos\_bucket\_name) | The name of the S3 bucket to store Thanos data | `string` | `null` | no |
 | <a name="input_thanos_sidecar_enabled"></a> [thanos\_sidecar\_enabled](#input\_thanos\_sidecar\_enabled) | Whether to enable Thanos sidecar | `bool` | `false` | no |
