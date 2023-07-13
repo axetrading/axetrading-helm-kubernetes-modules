@@ -75,6 +75,11 @@ resource "helm_release" "kube_prometheus_stack" {
   }
 
   set {
+    name = "prometheus.prometheusSpec.externalUrl"
+    value = var.prometheus_external_url
+  }
+
+  set {
     name  = "prometheus.thanosServiceExternal.enabled"
     value = var.enable_thanos_external_service
   }

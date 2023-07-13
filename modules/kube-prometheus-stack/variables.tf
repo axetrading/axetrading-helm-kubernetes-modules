@@ -219,3 +219,9 @@ variable "slack_api_url" {
   default     = null
   sensitive   = true
 }
+
+variable "prometheus_external_url" {
+  type        = string
+  description = "The Prometheus external URL"
+  default     = null
+}
