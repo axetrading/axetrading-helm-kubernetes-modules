@@ -14,7 +14,21 @@ module "kube-prometheus-stack" {
   thanos_sidecar_enabled              = var.enable_thanos_sidecar
   thanos_sidecar_target_group_arn     = var.thanos_sidecar_target_group_arn
   thanos_sidecar_secret_name          = var.thanos_sidecar_secret_name
-
+  prometheus_default_rules = {
+    windows                     = false
+    etcd                        = false
+    kubeApiserverAvailability   = false
+    kubeApiserverBurnrate       = false
+    kubeApiserverHistogram      = false
+    kubeApiserverSlos           = false
+    kubeControllerManager       = false
+    kubePrometheusNodeRecording = false
+    kubernetesSystem            = false
+    kubeSchedulerRecording      = false
+    nodeExporterRecording       = false
+    windows                     = false
+    prometheusOperator          = false
+  }
   oidc_providers = {
     main = {
       provider_arn               = var.eks_oidc_provider_arn

@@ -7,3 +7,5 @@ resource "aws_s3_bucket" "thanos" {
     Name = var.thanos_bucket_name
   }, var.tags)
 }
+
+//TODO add thanos bucket policy 
