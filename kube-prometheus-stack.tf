@@ -15,6 +15,8 @@ module "kube-prometheus-stack" {
   thanos_sidecar_target_group_arn     = var.thanos_sidecar_target_group_arn
   thanos_sidecar_secret_name          = var.thanos_sidecar_secret_name
   slack_api_url                       = var.slack_api_url
+  slack_channel                       = var.slack_channel
+  prometheus_external_url             = var.prometheus_external_url
   prometheus_default_rules = {
     windows                     = false
     etcd                        = false

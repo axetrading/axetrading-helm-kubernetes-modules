@@ -282,3 +282,16 @@ variable "slack_api_url" {
   default     = null
   sensitive   = true
 }
+
+variable "slack_channel" {
+  type        = string
+  description = "The Slack Channel where the alerts will be sent"
+  default     = "monitoring"
+}
+
+
+variable "prometheus_external_url" {
+  type        = string
+  description = "The Prometheus external URL"
+  default     = null
+}

@@ -41,7 +41,7 @@ alertmanager:
     - name: 'null'
     - name: 'slack'
       slack_configs:
-      - channel: '#monitoring'
+      - channel: '#${slack_channel}'
         send_resolved: true
         text: '{{ template "slack.devops.text" . }}'
     templates:

@@ -10,7 +10,8 @@ locals {
       thanos_sidecar_secret_name = var.thanos_sidecar_secret_name
     }),
     var.alertmanager_enabled ? templatefile("${path.module}/config/alertmanager.tpl", {
-      slack_api_url = var.slack_api_url
+      slack_api_url = var.slack_api_url,
+      slack_channel = var.slack_channel
     }) : null
   ]
   prometheus_config = compact(local.prometheus_config_files)
@@ -74,9 +75,12 @@ resource "helm_release" "kube_prometheus_stack" {
     value = var.cluster_name
   }
 
-  set {
-    name = "prometheus.prometheusSpec.externalUrl"
-    value = var.prometheus_external_url
+  dynamic "set" {
+    for_each = var.prometheus_external_url != null && var.alertmanager_enabled ? [var.prometheus_external_url] : []
+    content {
+      name  = "prometheus.prometheusSpec.externalUrl"
+      value = set.value
+    }
   }
 
   set {

@@ -62,6 +62,7 @@
 | <a name="input_oidc_providers"></a> [oidc\_providers](#input\_oidc\_providers) | Map of OIDC providers where each provider map should contain the `provider`, `provider_arn`, and `namespace_service_accounts` | `any` | `{}` | no |
 | <a name="input_policy_name_prefix"></a> [policy\_name\_prefix](#input\_policy\_name\_prefix) | IAM policy name prefix | `string` | `"eks-policy"` | no |
 | <a name="input_prometheus_default_rules"></a> [prometheus\_default\_rules](#input\_prometheus\_default\_rules) | A map of Prometheus default rules | `map(any)` | `null` | no |
+| <a name="input_prometheus_external_url"></a> [prometheus\_external\_url](#input\_prometheus\_external\_url) | The Prometheus external URL | `string` | `null` | no |
 | <a name="input_prometheus_gateway_enabled"></a> [prometheus\_gateway\_enabled](#input\_prometheus\_gateway\_enabled) | Whether to enable Prometheus ALB Gateway | `bool` | `false` | no |
 | <a name="input_prometheus_gateway_target_group_arn"></a> [prometheus\_gateway\_target\_group\_arn](#input\_prometheus\_gateway\_target\_group\_arn) | The ARN of the target group for Prometheus ALB Gateway | `string` | `null` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"eu-west-2"` | no |
@@ -74,6 +75,7 @@
 | <a name="input_role_policy_arns"></a> [role\_policy\_arns](#input\_role\_policy\_arns) | ARNs of any policies to attach to the IAM role | `set(string)` | `[]` | no |
 | <a name="input_scrape_interval"></a> [scrape\_interval](#input\_scrape\_interval) | The scrape interval for Prometheus | `string` | `"15s"` | no |
 | <a name="input_slack_api_url"></a> [slack\_api\_url](#input\_slack\_api\_url) | The Slack Channel API URL where the alerts will be sent | `string` | `null` | no |
+| <a name="input_slack_channel"></a> [slack\_channel](#input\_slack\_channel) | The Slack Channel where the alerts will be sent | `string` | `"monitoring"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add the the IAM role | `map(any)` | `{}` | no |
 | <a name="input_thanos_bucket_name"></a> [thanos\_bucket\_name](#input\_thanos\_bucket\_name) | The name of the S3 bucket to store Thanos data | `string` | `null` | no |
 | <a name="input_thanos_sidecar_enabled"></a> [thanos\_sidecar\_enabled](#input\_thanos\_sidecar\_enabled) | Whether to enable Thanos sidecar | `bool` | `false` | no |
