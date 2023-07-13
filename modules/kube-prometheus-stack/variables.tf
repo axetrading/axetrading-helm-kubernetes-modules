@@ -212,3 +212,10 @@ variable "thanos_sidecar_secret_name" {
   description = "The name of the aws secret that contains the Thanos sidecar bucket configuration"
   default     = null
 }
+
+variable "slack_api_url" {
+  type        = string
+  description = "The Slack Channel API URL where the alerts will be sent"
+  default     = null
+  sensitive   = true
+}

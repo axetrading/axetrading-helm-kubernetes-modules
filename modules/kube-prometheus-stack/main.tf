@@ -9,6 +9,9 @@ locals {
     templatefile("${path.module}/config/prometheus.tpl", {
       thanos_sidecar_secret_name = var.thanos_sidecar_secret_name
     }),
+    var.alertmanager_enabled ? templatefile("${path.module}/config/alertmanager.tpl", {
+      slack_api_url = var.slack_api_url
+    }) : null
   ]
   prometheus_config = compact(local.prometheus_config_files)
 }
@@ -35,6 +38,7 @@ resource "helm_release" "kube_prometheus_stack" {
       value = set.value
     }
   }
+
   set {
     name  = "grafana.enabled"
     value = false
