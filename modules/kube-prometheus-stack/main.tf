@@ -75,6 +75,11 @@ resource "helm_release" "kube_prometheus_stack" {
     value = var.cluster_name
   }
 
+  set {
+    name = "alertmanager.enabled"
+    value = var.alertmanager_enabled
+  }
+
   dynamic "set" {
     for_each = var.prometheus_external_url != null && var.alertmanager_enabled ? [var.prometheus_external_url] : []
     content {
