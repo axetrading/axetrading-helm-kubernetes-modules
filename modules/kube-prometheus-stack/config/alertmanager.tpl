@@ -44,7 +44,7 @@ alertmanager:
         send_resolved: true
         title: '{{ template "slack.devops.title" . }}'
         text: '{{ template "slack.devops.text" . }}'
-        icon: '{{ template "slack.devops.icon_emoji" . }}'
+        icon_emoji: '{{ template "slack.devops.icon_emoji" . }}'
         color: '{{ template "slack.devops.color" . }}'
         actions:
         - type: button
