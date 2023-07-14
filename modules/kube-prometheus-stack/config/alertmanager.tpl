@@ -29,38 +29,114 @@ alertmanager:
       group_wait: 30s
       group_interval: 5m
       repeat_interval: 12h
-      receiver: 'null'
+      receiver: 'slack'
       routes:
-      - receiver: 'null'
+      - receiver: 'slack'
         matchers:
           - alertname =~ "InfoInhibitor|Watchdog"
       - receiver: 'slack'
         matchers:
             - severity =~ "warning|critical"
     receivers:
-    - name: 'null'
     - name: 'slack'
       slack_configs:
       - channel: '#${slack_channel}'
         send_resolved: true
+        title: '{{ template "slack.devops.title" . }}'
         text: '{{ template "slack.devops.text" . }}'
+        icon: '{{ template "slack.devops.icon_emoji" . }}'
+        color: '{{ template "slack.devops.color" . }}'
+        actions:
+        - type: button
+          name: runbook
+          text: 'Runbook :green_book:'
+          url: '{{ (index .Alerts 0).Annotations.runbook_url }}'
+        - type: button
+          name: query
+          text: 'Query :mag:'
+          url: '{{ (index .Alerts 0).GeneratorURL }}'
+        - type: button
+          name: dashboard
+          text: 'Dashboard :grafana:'
+          url: '{{ (index .Alerts 0).Annotations.dashboard }}'
+        - type: 
+          name: silence
+          text: 'Silence :no_bell:'
+          url: '{{ template "__alert_silence_link" . }}'
+        - type: button
+          name: link
+          text: '{{ template "slack.devops.link_button_text" . }}'
+          url: '{{ .CommonAnnotations.link_url }}'
     templates:
     - '/etc/alertmanager/config/*.tmpl'
 
   templateFiles: 
     slack.tmpl: |-
-         {{ define "cluster" }}{{ .ExternalURL | reReplaceAll ".*alertmanager\\.(.*)" "$1" }}{{ end }}
-  
-         {{ define "slack.devops.text" }}
-         {{- $root := . -}}
-         {{ range .Alerts }}
-           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
-           *Cluster:* {{ template "cluster" $root }}
-           *Description:* {{ .Annotations.description }}
-           *Graph:* <{{ .GeneratorURL }}|:chart_with_upwards_trend:>
-           *Runbook:* <{{ .Annotations.runbook }}|:spiral_note_pad:>
-           *Details:*
-             {{ range .Labels.SortedPairs }} - *{{ .Name }}:* `{{ .Value }}`
-             {{ end }}
-         {{ end }}
-         {{ end }}
+          {{ define "__alert_silence_link" -}}
+              {{ .ExternalURL }}/#/silences/new?filter=%7B
+              {{- range .CommonLabels.SortedPairs -}}
+                  {{- if ne .Name "alertname" -}}
+                      {{- .Name }}%3D"{{- .Value -}}"%2C%20
+                  {{- end -}}
+              {{- end -}}
+              alertname%3D"{{ .CommonLabels.alertname }}"%7D
+          {{- end }}
+          
+          {{ define "__alert_severity_prefix" -}}
+              {{ if ne .Status "firing" -}}
+              :lgtm:
+              {{- else if eq .Labels.severity "critical" -}}
+              :fire:
+              {{- else if eq .Labels.severity "warning" -}}
+              :warning:
+              {{- else -}}
+              :question:
+              {{- end }}
+          {{- end }}
+          
+          {{ define "__alert_severity_prefix_title" -}}
+              {{ if ne .Status "firing" -}}
+              :lgtm:
+              {{- else if eq .CommonLabels.severity "critical" -}}
+              :fire:
+              {{- else if eq .CommonLabels.severity "warning" -}}
+              :warning:
+              {{- else if eq .CommonLabels.severity "info" -}}
+              :information_source:
+              {{- else -}}
+              :question:
+              {{- end }}
+          {{- end }}
+          
+          {{ define "slack.devops.title" -}}
+              [{{ .Status | toUpper -}}
+              {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
+              ] {{ template "__alert_severity_prefix_title" . }} {{ .CommonLabels.alertname }}
+          {{- end }}
+          
+          {{ define "slack.devops.color" -}}
+              {{ if eq .Status "firing" -}}
+                  {{ if eq .CommonLabels.severity "warning" -}}
+                      warning
+                  {{- else if eq .CommonLabels.severity "critical" -}}
+                      danger
+                  {{- else -}}
+                      #439FE0
+                  {{- end -}}
+              {{ else -}}
+              good
+              {{- end }}
+          {{- end }}
+          
+          {{ define "slack.devops.icon_emoji" }}:prometheus:{{ end }}
+          
+          {{ define "slack.devops.text" -}}
+              {{ range .Alerts }}
+                  {{- if .Annotations.message }}
+                      {{ .Annotations.message }}
+                  {{- end }}
+                  {{- if .Annotations.description }}
+                      {{ .Annotations.description }}
+                  {{- end }}
+              {{- end }}
+          {{- end }}
