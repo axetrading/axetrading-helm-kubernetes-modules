@@ -59,7 +59,7 @@ alertmanager:
           name: dashboard
           text: 'Dashboard :grafana:'
           url: '{{ (index .Alerts 0).Annotations.dashboard }}'
-        - type: 
+        - type: button
           name: silence
           text: 'Silence :no_bell:'
           url: '{{ template "__alert_silence_link" . }}'
