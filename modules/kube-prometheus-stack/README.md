@@ -44,6 +44,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_additional_value_files"></a> [additional\_value\_files](#input\_additional\_value\_files) | A list of additional value files. It will work in the same way as helm -f value1.yaml -f value2.yaml | `list(any)` | `[]` | no |
 | <a name="input_alertmanager_enabled"></a> [alertmanager\_enabled](#input\_alertmanager\_enabled) | Whether to enable Alertmanager | `bool` | `false` | no |
+| <a name="input_alertmanager_external_url"></a> [alertmanager\_external\_url](#input\_alertmanager\_external\_url) | The Alertmanager external URL | `string` | `null` | no |
 | <a name="input_alertmanager_target_group_arn"></a> [alertmanager\_target\_group\_arn](#input\_alertmanager\_target\_group\_arn) | The ARN of the target group for Alertmanager | `string` | `null` | no |
 | <a name="input_assume_role_condition_test"></a> [assume\_role\_condition\_test](#input\_assume\_role\_condition\_test) | Name of the [IAM condition operator](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html) to evaluate when assuming the role | `string` | `"StringEquals"` | no |
 | <a name="input_attach_grafana_cloudwatch_policy"></a> [attach\_grafana\_cloudwatch\_policy](#input\_attach\_grafana\_cloudwatch\_policy) | Whether to attach the AWS managed Grafana CloudWatch policy to the IAM role | `bool` | `false` | no |

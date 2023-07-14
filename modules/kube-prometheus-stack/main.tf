@@ -76,7 +76,7 @@ resource "helm_release" "kube_prometheus_stack" {
   }
 
   set {
-    name = "alertmanager.enabled"
+    name  = "alertmanager.enabled"
     value = var.alertmanager_enabled
   }
 
@@ -84,6 +84,14 @@ resource "helm_release" "kube_prometheus_stack" {
     for_each = var.prometheus_external_url != null && var.alertmanager_enabled ? [var.prometheus_external_url] : []
     content {
       name  = "prometheus.prometheusSpec.externalUrl"
+      value = set.value
+    }
+  }
+
+  dynamic "set" {
+    for_each = var.alertmanager_external_url != null && var.alertmanager_enabled ? [var.alertmanager_external_url] : []
+    content {
+      name  = "alertmanager.alertmanagerSpec.externalUrl"
       value = set.value
     }
   }

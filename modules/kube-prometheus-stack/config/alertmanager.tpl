@@ -28,16 +28,17 @@ alertmanager:
       group_by: ['cluster', 'namespace']
       group_wait: 30s
       group_interval: 5m
-      repeat_interval: 12h
+      repeat_interval: 6h
       receiver: 'slack'
       routes:
-      - receiver: 'slack'
+      - receiver: 'null'
         matchers:
           - alertname =~ "InfoInhibitor|Watchdog"
       - receiver: 'slack'
         matchers:
             - severity =~ "warning|critical"
     receivers:
+    - name: 'null'
     - name: 'slack'
       slack_configs:
       - channel: '#${slack_channel}'
@@ -80,19 +81,19 @@ alertmanager:
          
          {{ define "__alert_severity_prefix" -}}
              {{ if ne .Status "firing" -}}
-             :lgtm:
+             :ok:
              {{- else if eq .Labels.severity "critical" -}}
              :fire:
              {{- else if eq .Labels.severity "warning" -}}
              :warning:
              {{- else -}}
-             :question:
+             :question: 
              {{- end }}
          {{- end }}
          
          {{ define "__alert_severity_prefix_title" -}}
              {{ if ne .Status "firing" -}}
-             :lgtm:
+             :ok:
              {{- else if eq .CommonLabels.severity "critical" -}}
              :fire:
              {{- else if eq .CommonLabels.severity "warning" -}}
@@ -100,14 +101,14 @@ alertmanager:
              {{- else if eq .CommonLabels.severity "info" -}}
              :information_source:
              {{- else -}}
-             :question:
+             :question: {{ .CommonLabels.severity }}
              {{- end }}
          {{- end }}
          
          {{ define "slack.devops.title" -}}
              [{{ .Status | toUpper -}}
              {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
-             ] {{ template "__alert_severity_prefix_title" . }} {{ .CommonLabels.alertname }}
+             ] {{ template "__alert_severity_prefix_title" . }} {{ .Labels.cluster }} {{ .CommonLabels.alertname }}
          {{- end }}
          
          {{ define "slack.devops.color" -}}
@@ -127,12 +128,10 @@ alertmanager:
          {{ define "slack.devops.icon_emoji" }}:prometheus:{{ end }}
          
          {{ define "slack.devops.text" -}}
-             {{ range .Alerts }}
-                 {{- if .Annotations.message }}
-                     {{ .Annotations.message }}
-                 {{- end }}
-                 {{- if .Annotations.description }}
-                     {{ .Annotations.description }}
-                 {{- end }}
-             {{- end }}
+           *Alert:* {{ .Annotations.summary }} - `{{ .Labels.severity }}`
+           *Cluster:* {{ .Labels.cluster }}
+           *Description:* {{ .Annotations.description }}
+           *Details:*
+             {{ range .Labels.SortedPairs }} - *{{ .Name }}:* `{{ .Value }}`
+             {{ end }}
          {{- end }}

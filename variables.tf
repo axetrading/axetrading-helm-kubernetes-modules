@@ -295,3 +295,10 @@ variable "prometheus_external_url" {
   description = "The Prometheus external URL"
   default     = null
 }
+
+variable "alertmanager_external_url" {
+  type        = string
+  description = "The Alertmanager external URL"
+  default     = null
+}
+  
