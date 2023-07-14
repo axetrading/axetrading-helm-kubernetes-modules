@@ -127,11 +127,11 @@ alertmanager:
          
          {{ define "slack.devops.icon_emoji" }}:prometheus:{{ end }}
          
-        {{ define "slack.devops.text" -}}
-          *Alert:* {{ .CommonAnnotations.summary }} - `{{ .CommonLabels.severity }}`
-          *Cluster:* {{ .CommonLabels.cluster }}
-          *Description:* {{ .CommonAnnotations.description }}
-          *Details:*
-            {{ range .CommonLabels.SortedPairs }} - *{{ .Name }}:* `{{ .Value }}`
-            {{ end }}
-        {{- end }}
+         {{ define "slack.devops.text" -}}
+           *Alert:* {{ .CommonAnnotations.summary }} - `{{ .CommonLabels.severity }}`
+           *Cluster:* {{ .CommonLabels.cluster }}
+           *Description:* {{ .CommonAnnotations.description }}
+           *Details:*
+             {{ range .CommonLabels.SortedPairs }} - *{{ .Name }}:* `{{ .Value }}`
+             {{ end }}
+         {{- end }}
