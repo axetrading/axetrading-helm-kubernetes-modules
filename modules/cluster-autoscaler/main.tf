@@ -23,7 +23,7 @@ resource "helm_release" "cluster_autoscaler" {
   }
 
   set {
-    name = "additionalLabels.release"
+    name = "serviceMonitor.selector.release"
     value = "prometheus"
 
   }
