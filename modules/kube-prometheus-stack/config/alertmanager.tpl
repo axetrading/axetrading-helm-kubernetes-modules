@@ -108,7 +108,7 @@ alertmanager:
          {{ define "slack.devops.title" -}}
              [{{ .Status | toUpper -}}
              {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
-             ] {{ template "__alert_severity_prefix_title" . }} {{ .Labels.cluster }} {{ .CommonLabels.alertname }}
+             ] {{ template "__alert_severity_prefix_title" . }} {{ .CommonLabels.alertname }}
          {{- end }}
          
          {{ define "slack.devops.color" -}}
