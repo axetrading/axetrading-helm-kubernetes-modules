@@ -63,10 +63,6 @@ alertmanager:
           name: silence
           text: 'Silence :no_bell:'
           url: '{{ template "__alert_silence_link" . }}'
-        - type: button
-          name: link
-          text: '{{ template "slack.devops.link_button_text" . }}'
-          url: '{{ .CommonAnnotations.link_url }}'
     templates:
     - '/etc/alertmanager/config/*.tmpl'
 
