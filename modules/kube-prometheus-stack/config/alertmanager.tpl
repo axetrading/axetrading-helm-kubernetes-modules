@@ -71,72 +71,72 @@ alertmanager:
     - '/etc/alertmanager/config/*.tmpl'
 
   templateFiles: 
-    slack.tmpl: |-
-          {{ define "__alert_silence_link" -}}
-              {{ .ExternalURL }}/#/silences/new?filter=%7B
-              {{- range .CommonLabels.SortedPairs -}}
-                  {{- if ne .Name "alertname" -}}
-                      {{- .Name }}%3D"{{- .Value -}}"%2C%20
-                  {{- end -}}
-              {{- end -}}
-              alertname%3D"{{ .CommonLabels.alertname }}"%7D
-          {{- end }}
-          
-          {{ define "__alert_severity_prefix" -}}
-              {{ if ne .Status "firing" -}}
-              :lgtm:
-              {{- else if eq .Labels.severity "critical" -}}
-              :fire:
-              {{- else if eq .Labels.severity "warning" -}}
-              :warning:
-              {{- else -}}
-              :question:
-              {{- end }}
-          {{- end }}
-          
-          {{ define "__alert_severity_prefix_title" -}}
-              {{ if ne .Status "firing" -}}
-              :lgtm:
-              {{- else if eq .CommonLabels.severity "critical" -}}
-              :fire:
-              {{- else if eq .CommonLabels.severity "warning" -}}
-              :warning:
-              {{- else if eq .CommonLabels.severity "info" -}}
-              :information_source:
-              {{- else -}}
-              :question:
-              {{- end }}
-          {{- end }}
-          
-          {{ define "slack.devops.title" -}}
-              [{{ .Status | toUpper -}}
-              {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
-              ] {{ template "__alert_severity_prefix_title" . }} {{ .CommonLabels.alertname }}
-          {{- end }}
-          
-          {{ define "slack.devops.color" -}}
-              {{ if eq .Status "firing" -}}
-                  {{ if eq .CommonLabels.severity "warning" -}}
-                      warning
-                  {{- else if eq .CommonLabels.severity "critical" -}}
-                      danger
-                  {{- else -}}
-                      #439FE0
-                  {{- end -}}
-              {{ else -}}
-              good
-              {{- end }}
-          {{- end }}
-          
-          {{ define "slack.devops.icon_emoji" }}:prometheus:{{ end }}
-          
-          {{ define "slack.devops.text" -}}
-              {{ range .Alerts }}
-                  {{- if .Annotations.message }}
-                      {{ .Annotations.message }}
-                  {{- end }}
-                  {{- if .Annotations.description }}
-                      {{ .Annotations.description }}
-                  {{- end }}
-              {{- end }}
-          {{- end }}
+    alerts.tmpl: |-
+         {{ define "__alert_silence_link" -}}
+             {{ .ExternalURL }}/#/silences/new?filter=%7B
+             {{- range .CommonLabels.SortedPairs -}}
+                 {{- if ne .Name "alertname" -}}
+                     {{- .Name }}%3D"{{- .Value -}}"%2C%20
+                 {{- end -}}
+             {{- end -}}
+             alertname%3D"{{ .CommonLabels.alertname }}"%7D
+         {{- end }}
+         
+         {{ define "__alert_severity_prefix" -}}
+             {{ if ne .Status "firing" -}}
+             :lgtm:
+             {{- else if eq .Labels.severity "critical" -}}
+             :fire:
+             {{- else if eq .Labels.severity "warning" -}}
+             :warning:
+             {{- else -}}
+             :question:
+             {{- end }}
+         {{- end }}
+         
+         {{ define "__alert_severity_prefix_title" -}}
+             {{ if ne .Status "firing" -}}
+             :lgtm:
+             {{- else if eq .CommonLabels.severity "critical" -}}
+             :fire:
+             {{- else if eq .CommonLabels.severity "warning" -}}
+             :warning:
+             {{- else if eq .CommonLabels.severity "info" -}}
+             :information_source:
+             {{- else -}}
+             :question:
+             {{- end }}
+         {{- end }}
+         
+         {{ define "slack.devops.title" -}}
+             [{{ .Status | toUpper -}}
+             {{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{- end -}}
+             ] {{ template "__alert_severity_prefix_title" . }} {{ .CommonLabels.alertname }}
+         {{- end }}
+         
+         {{ define "slack.devops.color" -}}
+             {{ if eq .Status "firing" -}}
+                 {{ if eq .CommonLabels.severity "warning" -}}
+                     warning
+                 {{- else if eq .CommonLabels.severity "critical" -}}
+                     danger
+                 {{- else -}}
+                     #439FE0
+                 {{- end -}}
+             {{ else -}}
+             good
+             {{- end }}
+         {{- end }}
+         
+         {{ define "slack.devops.icon_emoji" }}:prometheus:{{ end }}
+         
+         {{ define "slack.devops.text" -}}
+             {{ range .Alerts }}
+                 {{- if .Annotations.message }}
+                     {{ .Annotations.message }}
+                 {{- end }}
+                 {{- if .Annotations.description }}
+                     {{ .Annotations.description }}
+                 {{- end }}
+             {{- end }}
+         {{- end }}
