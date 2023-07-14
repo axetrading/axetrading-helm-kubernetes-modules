@@ -23,6 +23,12 @@ resource "helm_release" "cluster_autoscaler" {
   }
 
   set {
+    name = "additionalLabels.release"
+    value = "prometheus"
+
+  }
+
+  set {
     name  = "autoDiscovery.tags"
     value = "kubernetes.io/cluster/${var.cluster_name}"
   }
@@ -44,7 +50,7 @@ resource "helm_release" "cluster_autoscaler" {
 
   set {
     name  = "extraArgs.skip-nodes-with-system-pods"
-    value = "false"
+    value = false
   }
 
   set {
@@ -54,17 +60,17 @@ resource "helm_release" "cluster_autoscaler" {
 
   set {
     name  = "extraArgs.scale-down-enabled"
-    value = "true"
+    value = true
   }
 
   set {
     name  = "extraArgs.skip-nodes-with-local-storage"
-    value = "false"
+    value = false
   }
 
   set {
     name  = "serviceMonitor.enabled"
-    value = "true"
+    value = true
   }
 
   set {
