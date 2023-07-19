@@ -73,8 +73,17 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_thanos_bucket_region"></a> [thanos\_bucket\_region](#input\_thanos\_bucket\_region) | S3 Region of the Thanos bucket | `string` | `"eu-west-2"` | no |
 | <a name="input_thanos_existing_bucket_name"></a> [thanos\_existing\_bucket\_name](#input\_thanos\_existing\_bucket\_name) | Name of an existing S3 bucket for Thanos | `string` | `null` | no |
 | <a name="input_thanos_gateway_target_group_arn"></a> [thanos\_gateway\_target\_group\_arn](#input\_thanos\_gateway\_target\_group\_arn) | ARN of the target group for Thanos Gateway | `string` | `null` | no |
+| <a name="input_thanos_query_autoscaling_enabled"></a> [thanos\_query\_autoscaling\_enabled](#input\_thanos\_query\_autoscaling\_enabled) | Whether to enable autoscaling for Thanos Query | `bool` | `false` | no |
+| <a name="input_thanos_query_autoscaling_max_replicas"></a> [thanos\_query\_autoscaling\_max\_replicas](#input\_thanos\_query\_autoscaling\_max\_replicas) | Maximum number of replicas for Thanos Query autoscaling | `number` | `10` | no |
+| <a name="input_thanos_query_autoscaling_min_replicas"></a> [thanos\_query\_autoscaling\_min\_replicas](#input\_thanos\_query\_autoscaling\_min\_replicas) | Minimum number of replicas for Thanos Query autoscaling | `number` | `2` | no |
+| <a name="input_thanos_query_autoscaling_target_cpu_utilization_percentage"></a> [thanos\_query\_autoscaling\_target\_cpu\_utilization\_percentage](#input\_thanos\_query\_autoscaling\_target\_cpu\_utilization\_percentage) | Target CPU utilization percentage for Thanos Query autoscaling | `number` | `80` | no |
+| <a name="input_thanos_query_autoscaling_target_memory_utilization_percentage"></a> [thanos\_query\_autoscaling\_target\_memory\_utilization\_percentage](#input\_thanos\_query\_autoscaling\_target\_memory\_utilization\_percentage) | Target memory utilization percentage for Thanos Query autoscaling | `number` | `80` | no |
+| <a name="input_thanos_query_resources_limits_memory"></a> [thanos\_query\_resources\_limits\_memory](#input\_thanos\_query\_resources\_limits\_memory) | Memory limits for Thanos Query | `string` | `"128Mi"` | no |
+| <a name="input_thanos_query_resources_requests_cpu"></a> [thanos\_query\_resources\_requests\_cpu](#input\_thanos\_query\_resources\_requests\_cpu) | CPU requests for Thanos Query | `string` | `"100m"` | no |
+| <a name="input_thanos_query_resources_requests_memory"></a> [thanos\_query\_resources\_requests\_memory](#input\_thanos\_query\_resources\_requests\_memory) | Memory requests for Thanos Query | `string` | `"128Mi"` | no |
 | <a name="input_thanos_sidecar_secret_name"></a> [thanos\_sidecar\_secret\_name](#input\_thanos\_sidecar\_secret\_name) | Name of the Thanos sidecar secret | `string` | `null` | no |
 | <a name="input_thanos_sidecar_target_group_arn"></a> [thanos\_sidecar\_target\_group\_arn](#input\_thanos\_sidecar\_target\_group\_arn) | ARN of the target group for Thanos Sidecar | `string` | `null` | no |
+| <a name="input_thanos_storegateway_replica_count"></a> [thanos\_storegateway\_replica\_count](#input\_thanos\_storegateway\_replica\_count) | Number of replicas for Thanos Store Gateway | `number` | `2` | no |
 | <a name="input_thanos_stores_endpoints"></a> [thanos\_stores\_endpoints](#input\_thanos\_stores\_endpoints) | The endpoints of the Thanos stores | `list(string)` | `null` | no |
 
 ## Outputs

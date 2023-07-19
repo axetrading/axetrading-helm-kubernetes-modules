@@ -45,6 +45,47 @@ resource "helm_release" "thanos" {
   }
 
   set {
+    name  = "query.autoscaling.enabled"
+    value = var.thanos_query_autoscaling_enabled
+  }
+
+  set {
+    name  = "query.autoscaling.minReplicas"
+    value = var.thanos_query_autoscaling_min_replicas
+  }
+
+  set {
+    name  = "query.autoscaling.maxReplicas"
+    value = var.thanos_query_autoscaling_max_replicas
+  }
+
+  set {
+    name  = "query.autoscaling.targetCPU"
+    value = var.thanos_query_autoscaling_target_cpu_utilization_percentage
+  }
+
+  set {
+    name  = "query.autoscaling.targetMemory"
+    value = var.thanos_query_autoscaling_target_memory_utilization_percentage
+  }
+
+  set {
+    name  = "query.resources.request.cpu"
+    value = var.thanos_query_resources_requests_cpu
+  }
+
+  set {
+    name  = "query.resources.request.memory"
+    value = var.thanos_query_resources_requests_memory
+  }
+
+  set {
+    name  = "query.resources.limit.memory"
+    value = var.thanos_query_resources_limits_memory
+  }
+
+
+  set {
     name  = "compactor.enabled"
     value = true
   }
@@ -64,6 +105,10 @@ resource "helm_release" "thanos" {
     value = true
   }
 
+  set {
+    name  = "storegateway.replicaCount"
+    value = var.thanos_storegateway_replica_count
+  }
 
   dynamic "set" {
     for_each = var.create_role ? [aws_iam_role.this[0].arn] : [var.role_arn]

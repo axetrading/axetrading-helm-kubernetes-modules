@@ -301,4 +301,58 @@ variable "alertmanager_external_url" {
   description = "The Alertmanager external URL"
   default     = null
 }
-  
+
+
+variable "thanos_query_autoscaling_enabled" {
+  description = "Whether to enable autoscaling for Thanos Query"
+  type        = bool
+  default     = false
+}
+
+variable "thanos_query_autoscaling_min_replicas" {
+  description = "Minimum number of replicas for Thanos Query autoscaling"
+  type        = number
+  default     = 2
+}
+
+variable "thanos_query_autoscaling_max_replicas" {
+  description = "Maximum number of replicas for Thanos Query autoscaling"
+  type        = number
+  default     = 10
+}
+
+variable "thanos_query_autoscaling_target_cpu_utilization_percentage" {
+  description = "Target CPU utilization percentage for Thanos Query autoscaling"
+  type        = number
+  default     = 80
+}
+
+variable "thanos_query_autoscaling_target_memory_utilization_percentage" {
+  description = "Target memory utilization percentage for Thanos Query autoscaling"
+  type        = number
+  default     = 80
+}
+
+variable "thanos_query_resources_requests_cpu" {
+  description = "CPU requests for Thanos Query"
+  type        = string
+  default     = "100m"
+}
+
+variable "thanos_query_resources_requests_memory" {
+  description = "Memory requests for Thanos Query"
+  type        = string
+  default     = "128Mi"
+}
+
+variable "thanos_query_resources_limits_memory" {
+  description = "Memory limits for Thanos Query"
+  type        = string
+  default     = "128Mi"
+}
+
+variable "thanos_storegateway_replica_count" {
+  description = "Number of replicas for Thanos Store Gateway"
+  type        = number
+  default     = 2
+}
