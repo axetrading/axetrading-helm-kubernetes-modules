@@ -70,17 +70,17 @@ resource "helm_release" "thanos" {
   }
 
   set {
-    name  = "query.resources.request.cpu"
+    name  = "query.resources.requests.cpu"
     value = var.thanos_query_resources_requests_cpu
   }
 
   set {
-    name  = "query.resources.request.memory"
+    name  = "query.resources.requests.memory"
     value = var.thanos_query_resources_requests_memory
   }
 
   set {
-    name  = "query.resources.limit.memory"
+    name  = "query.resources.limits.memory"
     value = var.thanos_query_resources_limits_memory
   }
 
