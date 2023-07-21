@@ -342,13 +342,13 @@ variable "thanos_query_resources_requests_cpu" {
 variable "thanos_query_resources_requests_memory" {
   description = "Memory requests for Thanos Query"
   type        = string
-  default     = "128Mi"
+  default     = "256Mi"
 }
 
 variable "thanos_query_resources_limits_memory" {
   description = "Memory limits for Thanos Query"
   type        = string
-  default     = "128Mi"
+  default     = "256Mi"
 }
 
 variable "thanos_storegateway_replica_count" {
