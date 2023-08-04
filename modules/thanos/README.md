@@ -30,6 +30,7 @@
 | [aws_iam_role_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_s3_bucket.thanos](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [helm_release.thanos](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.thanos_receiver_targetgroupbinding_crds](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [helm_release.thanos_targetgroupbinding_crds](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [aws_iam_policy_document.thanos](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -73,6 +74,9 @@
 | <a name="input_thanos_query_resources_limits_memory"></a> [thanos\_query\_resources\_limits\_memory](#input\_thanos\_query\_resources\_limits\_memory) | Memory limits for Thanos Query | `string` | `"256Mi"` | no |
 | <a name="input_thanos_query_resources_requests_cpu"></a> [thanos\_query\_resources\_requests\_cpu](#input\_thanos\_query\_resources\_requests\_cpu) | CPU requests for Thanos Query | `string` | `"100m"` | no |
 | <a name="input_thanos_query_resources_requests_memory"></a> [thanos\_query\_resources\_requests\_memory](#input\_thanos\_query\_resources\_requests\_memory) | Memory requests for Thanos Query | `string` | `"256Mi"` | no |
+| <a name="input_thanos_receiver_enabled"></a> [thanos\_receiver\_enabled](#input\_thanos\_receiver\_enabled) | Whether to enable Thanos Receiver | `bool` | `false` | no |
+| <a name="input_thanos_receiver_remote_write_port"></a> [thanos\_receiver\_remote\_write\_port](#input\_thanos\_receiver\_remote\_write\_port) | Port for Thanos Receiver remote write | `number` | `19291` | no |
+| <a name="input_thanos_receiver_target_group_arn"></a> [thanos\_receiver\_target\_group\_arn](#input\_thanos\_receiver\_target\_group\_arn) | ARN of the target group for Thanos Receiver | `string` | `null` | no |
 | <a name="input_thanos_storegateway_replica_count"></a> [thanos\_storegateway\_replica\_count](#input\_thanos\_storegateway\_replica\_count) | Number of replicas for Thanos Store Gateway | `number` | `2` | no |
 | <a name="input_thanos_stores_endpoints"></a> [thanos\_stores\_endpoints](#input\_thanos\_stores\_endpoints) | Endpoints of Thanos Stores (Gateways or SideCars, Rulers) that will be attached to Thanos Query | `list(string)` | `null` | no |
 | <a name="input_thanos_version"></a> [thanos\_version](#input\_thanos\_version) | Thanos-stack helm chart version | `string` | `"5.8.6"` | no |

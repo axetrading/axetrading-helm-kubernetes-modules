@@ -52,6 +52,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_enable_thanos"></a> [enable\_thanos](#input\_enable\_thanos) | Whether to enable the thanos module | `bool` | `false` | no |
 | <a name="input_enable_thanos_external_service"></a> [enable\_thanos\_external\_service](#input\_enable\_thanos\_external\_service) | Whether to enable the thanos sidecar external service | `bool` | `false` | no |
 | <a name="input_enable_thanos_gateway"></a> [enable\_thanos\_gateway](#input\_enable\_thanos\_gateway) | Whether to enable the thanos gateway module | `bool` | `false` | no |
+| <a name="input_enable_thanos_receiver"></a> [enable\_thanos\_receiver](#input\_enable\_thanos\_receiver) | Whether to enable the thanos receiver module | `bool` | `false` | no |
 | <a name="input_enable_thanos_sidecar"></a> [enable\_thanos\_sidecar](#input\_enable\_thanos\_sidecar) | Whether to enable the thanos sidecar module | `bool` | `false` | no |
 | <a name="input_ingress_nginx_target_group_arn"></a> [ingress\_nginx\_target\_group\_arn](#input\_ingress\_nginx\_target\_group\_arn) | ARN of the target group to bind the ingress controller to | `string` | `null` | no |
 | <a name="input_kubernetes_cluster_name"></a> [kubernetes\_cluster\_name](#input\_kubernetes\_cluster\_name) | Name of the Kubernetes cluster where Prometheus Stack is going to be deployed | `string` | n/a | yes |
@@ -81,6 +82,8 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_thanos_query_resources_limits_memory"></a> [thanos\_query\_resources\_limits\_memory](#input\_thanos\_query\_resources\_limits\_memory) | Memory limits for Thanos Query | `string` | `"256Mi"` | no |
 | <a name="input_thanos_query_resources_requests_cpu"></a> [thanos\_query\_resources\_requests\_cpu](#input\_thanos\_query\_resources\_requests\_cpu) | CPU requests for Thanos Query | `string` | `"100m"` | no |
 | <a name="input_thanos_query_resources_requests_memory"></a> [thanos\_query\_resources\_requests\_memory](#input\_thanos\_query\_resources\_requests\_memory) | Memory requests for Thanos Query | `string` | `"256Mi"` | no |
+| <a name="input_thanos_receiver_remote_write_port"></a> [thanos\_receiver\_remote\_write\_port](#input\_thanos\_receiver\_remote\_write\_port) | Port for Thanos Receiver remote write | `number` | `19291` | no |
+| <a name="input_thanos_receiver_target_group_arn"></a> [thanos\_receiver\_target\_group\_arn](#input\_thanos\_receiver\_target\_group\_arn) | ARN of the target group for Thanos Receiver | `string` | `null` | no |
 | <a name="input_thanos_sidecar_secret_name"></a> [thanos\_sidecar\_secret\_name](#input\_thanos\_sidecar\_secret\_name) | Name of the Thanos sidecar secret | `string` | `null` | no |
 | <a name="input_thanos_sidecar_target_group_arn"></a> [thanos\_sidecar\_target\_group\_arn](#input\_thanos\_sidecar\_target\_group\_arn) | ARN of the target group for Thanos Sidecar | `string` | `null` | no |
 | <a name="input_thanos_storegateway_replica_count"></a> [thanos\_storegateway\_replica\_count](#input\_thanos\_storegateway\_replica\_count) | Number of replicas for Thanos Store Gateway | `number` | `2` | no |

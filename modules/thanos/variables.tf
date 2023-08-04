@@ -225,3 +225,21 @@ variable "thanos_storegateway_replica_count" {
   type        = number
   default     = 2
 }
+
+variable "thanos_receiver_enabled" {
+  description = "Whether to enable Thanos Receiver"
+  type        = bool
+  default     = false
+}
+
+variable "thanos_receiver_target_group_arn" {
+  type        = string
+  description = "ARN of the target group for Thanos Receiver"
+  default     = null
+}
+
+variable "thanos_receiver_remote_write_port" {
+  description = "Port for Thanos Receiver remote write"
+  type        = number
+  default     = 19291
+}

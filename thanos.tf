@@ -19,16 +19,20 @@ module "thanos" {
   thanos_query_resources_requests_cpu                           = var.thanos_query_resources_requests_cpu
   thanos_query_resources_requests_memory                        = var.thanos_query_resources_requests_memory
   thanos_stores_endpoints                                       = var.thanos_stores_endpoints
+  thanos_receiver_enabled                                       = var.enable_thanos_receiver
+  thanos_receiver_target_group_arn                              = var.thanos_receiver_target_group_arn
+  thanos_receiver_remote_write_port                             = var.thanos_receiver_remote_write_port
 
   oidc_providers = {
     main = {
       provider_arn = var.eks_oidc_provider_arn
       namespace_service_accounts = [
         "monitoring:thanos-query",
-        "thanos-query-frontend",
+        "monitoring:thanos-query-frontend",
         "monitoring:thanos-storegateway",
         "monitoring:thanos-compactor",
-        "monitoring:thanos-ruler"
+        "monitoring:thanos-ruler",
+        "monitoring:thanos-receive"
       ]
     }
   }

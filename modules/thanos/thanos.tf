@@ -136,6 +136,19 @@ resource "helm_release" "thanos" {
       value = set_list.value
     }
   }
+
+  set {
+    name  = "receive.enabled"
+    value = var.thanos_receiver_enabled
+  }
+
+  set {
+    name  = "receive.tsdbRetention"
+    value = "2d"
+  }
+
+
+
 }
 
 resource "helm_release" "thanos_targetgroupbinding_crds" {
@@ -162,6 +175,37 @@ resource "helm_release" "thanos_targetgroupbinding_crds" {
   set {
     name  = "targetGroupBinding.targetGroupARN"
     value = var.thanos_gateway_target_group_arn
+  }
+
+  depends_on = [
+    helm_release.thanos
+  ]
+}
+
+resource "helm_release" "thanos_receiver_targetgroupbinding_crds" {
+  count     = var.enabled && var.thanos_receiver_enabled ? 1 : 0
+  name      = "thanos-receiver"
+  chart     = "${path.module}/../helm-template/crds"
+  namespace = "monitoring"
+
+  set {
+    name  = "fullnameOverride"
+    value = "thanos-receiver"
+  }
+
+  set {
+    name  = "targetGroupBinding.service.name"
+    value = "thanos-receive"
+  }
+
+  set {
+    name  = "targetGroupBinding.port"
+    value = var.thanos_receiver_remote_write_port
+  }
+
+  set {
+    name  = "targetGroupBinding.targetGroupARN"
+    value = var.thanos_receiver_target_group_arn
   }
 
   depends_on = [
