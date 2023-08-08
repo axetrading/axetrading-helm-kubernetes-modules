@@ -1,7 +1,7 @@
 locals {
-  blackbox_exporter_config = templatefile("${path.module}/config/blackbox.tpl", {
+  blackbox_exporter_config = [templatefile("${path.module}/config/blackbox.tpl", {
     monitored_endpoints = var.monitored_endpoints
-  })
+  })]
 }
 resource "helm_release" "blackbox_exporter" {
   count = var.enabled ? 1 : 0
