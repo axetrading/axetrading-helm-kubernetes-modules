@@ -16,26 +16,26 @@ variable "monitored_endpoints" {
     http_endpoints = optional(list(object({
       name     = string
       url      = string
-      interval = optional(string, 15)
-      timeout  = optional(string, 10)
+      interval = optional(string, "15s")
+      timeout  = optional(string, "10s")
     })), null)
     tcp_endpoints = optional(list(object({
       name     = string
       url      = string
-      interval = optional(string, 15)
-      timeout  = optional(string, 10)
+      interval = optional(string, "15s")
+      timeout  = optional(string, "10s")
     })), null)
     icmp_endpoints = optional(list(object({
       name     = string
       url      = string
-      interval = optional(string, 15)
-      timeout  = optional(string, 10)
+      interval = optional(string, "15s")
+      timeout  = optional(string, "10s")
     })), null)
     ssh_endpoints = optional(list(object({
       name     = string
       url      = string
-      interval = optional(string, 15)
-      timeout  = optional(string, 10)
+      interval = optional(string, "15s")
+      timeout  = optional(string, "10s")
     })), null)
   })
   default = {
