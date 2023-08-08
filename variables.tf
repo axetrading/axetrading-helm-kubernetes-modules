@@ -374,3 +374,39 @@ variable "thanos_receiver_remote_write_port" {
   type        = number
   default     = 19291
 }
+
+variable "blackbox_monitored_endpoints" {
+  description = "The endpoints to be monitored by Prometheus"
+  type = object({
+    http_endpoints = optional(list(object({
+      name     = string
+      url      = string
+      interval = optional(string, 15)
+      timeout  = optional(string, 10)
+    })), null)
+    tcp_endpoints = optional(list(object({
+      name     = string
+      url      = string
+      interval = optional(string, 15)
+      timeout  = optional(string, 10)
+    })), null)
+    icmp_endpoints = optional(list(object({
+      name     = string
+      url      = string
+      interval = optional(string, 15)
+      timeout  = optional(string, 10)
+    })), null)
+    ssh_endpoints = optional(list(object({
+      name     = string
+      url      = string
+      interval = optional(string, 15)
+      timeout  = optional(string, 10)
+    })), null)
+  })
+  default = {
+    http_endpoints = null
+    tcp_endpoints  = null
+    icmp_endpoints = null
+    ssh_endpoints  = null
+  }
+}

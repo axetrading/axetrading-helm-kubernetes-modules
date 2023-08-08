@@ -25,6 +25,7 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_blackbox_exporter_version"></a> [blackbox\_exporter\_version](#input\_blackbox\_exporter\_version) | Version of the blackbox-exporter Helm chart | `string` | `"7.10.0"` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Enable blackbox-exporter | `bool` | `true` | no |
+| <a name="input_monitored_endpoints"></a> [monitored\_endpoints](#input\_monitored\_endpoints) | The endpoints to be monitored by Prometheus | <pre>object({<br>    http_endpoints = optional(list(object({<br>      name     = string<br>      url      = string<br>      interval = optional(string, 15)<br>      timeout  = optional(string, 10)<br>    })), null)<br>    tcp_endpoints = optional(list(object({<br>      name     = string<br>      url      = string<br>      interval = optional(string, 15)<br>      timeout  = optional(string, 10)<br>    })), null)<br>    icmp_endpoints = optional(list(object({<br>      name     = string<br>      url      = string<br>      interval = optional(string, 15)<br>      timeout  = optional(string, 10)<br>    })), null)<br>    ssh_endpoints = optional(list(object({<br>      name     = string<br>      url      = string<br>      interval = optional(string, 15)<br>      timeout  = optional(string, 10)<br>    })), null)<br>  })</pre> | <pre>{<br>  "http_endpoints": null,<br>  "icmp_endpoints": null,<br>  "ssh_endpoints": null,<br>  "tcp_endpoints": null<br>}</pre> | no |
 
 ## Outputs
 

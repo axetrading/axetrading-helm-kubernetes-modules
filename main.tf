@@ -56,6 +56,7 @@ module "blackbox_exporter" {
 
   enabled                   = var.enable_blackbox_exporter
   blackbox_exporter_version = "7.10.0"
+  monitored_endpoints       = var.blackbox_monitored_endpoints
 }
 
 module "nginx_ingress_controller" {

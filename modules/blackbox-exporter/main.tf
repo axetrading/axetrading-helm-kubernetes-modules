@@ -1,3 +1,8 @@
+locals {
+  blackbox_exporter_config = templatefile("${path.module}/config/blackbox.tpl", {
+    monitored_endpoints = var.monitored_endpoints
+  })
+}
 resource "helm_release" "blackbox_exporter" {
   count = var.enabled ? 1 : 0
 
@@ -6,7 +11,7 @@ resource "helm_release" "blackbox_exporter" {
   chart      = "prometheus-blackbox-exporter"
   version    = var.blackbox_exporter_version
   namespace  = "monitoring"
-  values     = [file("${path.module}/blackbox.yml")]
+  values     = local.blackbox_exporter_config
 
   set {
     name  = "fullnameOverride"
