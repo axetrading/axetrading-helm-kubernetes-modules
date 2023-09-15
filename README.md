@@ -37,7 +37,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the EKS cluster | `string` | n/a | yes |
 | <a name="input_create_loki_bucket"></a> [create\_loki\_bucket](#input\_create\_loki\_bucket) | Whether to create the Loki bucket | `bool` | `true` | no |
 | <a name="input_create_thanos_bucket"></a> [create\_thanos\_bucket](#input\_create\_thanos\_bucket) | Whether to create the Thanos bucket | `bool` | `false` | no |
-| <a name="input_datasource_secrets"></a> [datasource\_secrets](#input\_datasource\_secrets) | The secrets for the Prometheus Postgres Exporter datasource | `map(string)` | n/a | yes |
+| <a name="input_datasource_secrets"></a> [datasource\_secrets](#input\_datasource\_secrets) | The secrets for the Prometheus Postgres Exporter datasource | `map(string)` | `null` | no |
 | <a name="input_eks_oidc_provider_arn"></a> [eks\_oidc\_provider\_arn](#input\_eks\_oidc\_provider\_arn) | ARN of the OIDC provider associated with the EKS cluster | `string` | n/a | yes |
 | <a name="input_enable_alertmanager"></a> [enable\_alertmanager](#input\_enable\_alertmanager) | Whether to enable the alertmanager module | `bool` | `false` | no |
 | <a name="input_enable_blackbox_exporter"></a> [enable\_blackbox\_exporter](#input\_enable\_blackbox\_exporter) | Whether to enable the blackbox exporter module | `bool` | `false` | no |
