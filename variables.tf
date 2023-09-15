@@ -420,4 +420,5 @@ variable "enable_postgres_exporter" {
 variable "datasource_secrets" {
   type        = map(string)
   description = "The secrets for the Prometheus Postgres Exporter datasource"
+  default = null
 }

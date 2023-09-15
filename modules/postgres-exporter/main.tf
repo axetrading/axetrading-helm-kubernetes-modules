@@ -11,7 +11,7 @@ locals {
 resource "helm_release" "postgres_exporter" {
   count = var.enabled ? 1 : 0
 
-  name      = "statsd-exporter"
+  name      = "postgres-exporter"
   chart     = "${path.module}/helm/prometheus-postgres-exporter"
   version   = var.postgres_exporter_version
   namespace = "monitoring"
@@ -30,6 +30,5 @@ resource "helm_release" "postgres_exporter" {
     name  = "serviceMonitor.enabled"
     value = true
   }
-
 
 }
