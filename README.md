@@ -19,6 +19,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="module_kube-prometheus-stack"></a> [kube-prometheus-stack](#module\_kube-prometheus-stack) | ./modules/kube-prometheus-stack | n/a |
 | <a name="module_loki_stack"></a> [loki\_stack](#module\_loki\_stack) | ./modules/loki-stack | n/a |
 | <a name="module_nginx_ingress_controller"></a> [nginx\_ingress\_controller](#module\_nginx\_ingress\_controller) | ./modules/nginx-ingress-controller | n/a |
+| <a name="module_postgres_exporter"></a> [postgres\_exporter](#module\_postgres\_exporter) | ./modules/postgres-exporter | n/a |
 | <a name="module_prometheus"></a> [prometheus](#module\_prometheus) | ./modules/prometheus | n/a |
 | <a name="module_statsd_exporter"></a> [statsd\_exporter](#module\_statsd\_exporter) | ./modules/statsd-exporter | n/a |
 | <a name="module_thanos"></a> [thanos](#module\_thanos) | ./modules/thanos | n/a |

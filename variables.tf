@@ -411,6 +411,12 @@ variable "blackbox_monitored_endpoints" {
   }
 }
 
+variable "enable_postgres_exporter" {
+  default     = false
+  description = "Whether to enable postgres exporter"
+  type        = bool
+}
+
 variable "datasource_secrets" {
   type        = map(string)
   description = "The secrets for the Prometheus Postgres Exporter datasource"

@@ -124,6 +124,51 @@ resource "helm_release" "loki" {
   }
 
   set {
+    name  = "read.autoscaling.maxReplicas"
+    value = "5"
+  }
+
+  set {
+    name  = "backend.autoscaling.maxReplicas"
+    value = "5"
+  }
+
+  set {
+    name  = "write.autoscaling.maxReplicas"
+    value = "5"
+  }
+
+  set {
+    name  = "read.resources.requests.cpu"
+    value = "1000m"
+  }
+
+  set {
+    name  = "read.resources.requests.memory"
+    value = "1000Mi"
+  }
+
+  set {
+    name  = "read.resources.limits.memory"
+    value = "1000Mi"
+  }
+
+  set {
+    name  = "write.resources.requests.cpu"
+    value = "500m"
+  }
+
+  set {
+    name  = "write.resources.requests.memory"
+    value = "1000Mi"
+  }
+
+  set {
+    name  = "write.resources.limits.memory"
+    value = "1000Mi"
+  }
+
+  set {
     name  = "loki.commonConfig.replication_factor"
     value = "1"
   }
@@ -140,7 +185,7 @@ resource "helm_release" "loki" {
 
   set {
     name  = "loki.limits_config.split_queries_by_interval"
-    value = "24h"
+    value = "1h"
   }
 
   set {

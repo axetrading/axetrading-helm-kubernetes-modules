@@ -66,3 +66,11 @@ module "nginx_ingress_controller" {
   nginx_ingress_controller_version = "4.7.0"
   ingress_nginx_target_group_arn   = var.ingress_nginx_target_group_arn
 }
+
+module "postgres_exporter" {
+  source                    = "./modules/postgres-exporter"
+  enabled                   = var.enable_postgres_exporter
+  postgres_exporter_version = "5.1.0"
+  datasources_secret_key    = var.datasource_secrets["secret_key"]
+  datasources_secret_name   = var.datasource_secrets["secret_name"]
+}
