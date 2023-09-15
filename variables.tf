@@ -410,3 +410,8 @@ variable "blackbox_monitored_endpoints" {
     ssh_endpoints  = null
   }
 }
+
+variable "datasource_secrets" {
+  type        = map(string)
+  description = "The secrets for the Prometheus Postgres Exporter datasource"
+}

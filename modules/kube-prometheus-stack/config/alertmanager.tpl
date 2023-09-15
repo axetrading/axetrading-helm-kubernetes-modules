@@ -3,6 +3,7 @@ alertmanager:
     global:
       resolve_timeout: 1m
       slack_api_url: ${slack_api_url}
+      pagerduty_url: ${pagerduty_url}
     inhibit_rules:
       - source_matchers:
           - 'severity = critical'
@@ -37,8 +38,14 @@ alertmanager:
       - receiver: 'slack'
         matchers:
             - severity =~ "warning|critical"
+      - receiver: 'pagerduty'
+        matchers:
+            - severity =~ "warning|critical"
     receivers:
     - name: 'null'
+    - name: 'pagerduty'
+      pagerduty_configs:
+      - service_key: ${pagerduty_service_key}
     - name: 'slack'
       slack_configs:
       - channel: '#${slack_channel}'

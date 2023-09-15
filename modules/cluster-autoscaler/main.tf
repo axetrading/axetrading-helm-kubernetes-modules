@@ -25,7 +25,6 @@ resource "helm_release" "cluster_autoscaler" {
   set {
     name  = "serviceMonitor.selector.release"
     value = "prometheus"
-
   }
 
   set {

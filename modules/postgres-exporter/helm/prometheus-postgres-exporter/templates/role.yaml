@@ -1,0 +1,9 @@
+{{- include "prometheus-postgres-exporter.validateValues" . }}
+{{- if .Values.rbac.create }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ template "prometheus-postgres-exporter.fullname" . }}
+  labels:
+    {{- include "prometheus-postgres-exporter.labels" . | nindent 4 }}
+{{- end }}
