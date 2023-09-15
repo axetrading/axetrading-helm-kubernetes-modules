@@ -47,6 +47,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_enable_loki"></a> [enable\_loki](#input\_enable\_loki) | Whether to enable the loki stack module | `bool` | `false` | no |
 | <a name="input_enable_loki_gateway"></a> [enable\_loki\_gateway](#input\_enable\_loki\_gateway) | Whether to enable the Loki gateway module | `bool` | `false` | no |
 | <a name="input_enable_nginx_ingress_controller"></a> [enable\_nginx\_ingress\_controller](#input\_enable\_nginx\_ingress\_controller) | Whether to enable the nginx ingress controller module | `bool` | `false` | no |
+| <a name="input_enable_postgres_exporter"></a> [enable\_postgres\_exporter](#input\_enable\_postgres\_exporter) | Whether to enable postgres exporter | `bool` | `false` | no |
 | <a name="input_enable_prometheus"></a> [enable\_prometheus](#input\_enable\_prometheus) | Whether to enable the prometheus module | `bool` | `false` | no |
 | <a name="input_enable_prometheus_alertmanager"></a> [enable\_prometheus\_alertmanager](#input\_enable\_prometheus\_alertmanager) | Whether to enable the prometheus alertmanager module | `bool` | `false` | no |
 | <a name="input_enable_prometheus_gateway"></a> [enable\_prometheus\_gateway](#input\_enable\_prometheus\_gateway) | Whether to enable the prometheus gateway module | `bool` | `false` | no |
