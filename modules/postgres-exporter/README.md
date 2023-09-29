@@ -41,8 +41,8 @@
 | <a name="input_attach_secrets_policy"></a> [attach\_secrets\_policy](#input\_attach\_secrets\_policy) | Attach a policy that will allow the role to get secrets from AWS Secrets Manager or AWS SSM | `bool` | `true` | no |
 | <a name="input_create_role"></a> [create\_role](#input\_create\_role) | Whether to create a role | `bool` | `true` | no |
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Whether to create a service account for Kubernetes Deployment | `bool` | `true` | no |
-| <a name="input_datasources_secret_key"></a> [datasources\_secret\_key](#input\_datasources\_secret\_key) | Key of the secret containing the datasource configuration | `string` | n/a | yes |
-| <a name="input_datasources_secret_name"></a> [datasources\_secret\_name](#input\_datasources\_secret\_name) | Name of the secret containing the datasource configuration | `string` | n/a | yes |
+| <a name="input_datasources_secret_key"></a> [datasources\_secret\_key](#input\_datasources\_secret\_key) | Key of the secret containing the datasource configuration | `string` | `""` | no |
+| <a name="input_datasources_secret_name"></a> [datasources\_secret\_name](#input\_datasources\_secret\_name) | Name of the secret containing the datasource configuration | `string` | `""` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Whether to create the prometheus-postgres-exporter resources | `bool` | `false` | no |
 | <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Whether policies should be detached from this role when destroying | `bool` | `true` | no |
 | <a name="input_max_session_duration"></a> [max\_session\_duration](#input\_max\_session\_duration) | Maximum CLI/API session duration in seconds between 3600 and 43200 | `number` | `null` | no |
