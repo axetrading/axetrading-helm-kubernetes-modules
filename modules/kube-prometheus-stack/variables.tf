@@ -226,6 +226,12 @@ variable "slack_channel" {
   default     = "monitoring"
 }
 
+variable "pagerduty_url" {
+  type        = string
+  description = "The PagerDuty URL to send alerts to"
+  default     = null
+  sensitive   = true
+}
 
 variable "prometheus_external_url" {
   type        = string

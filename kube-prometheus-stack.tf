@@ -14,6 +14,7 @@ module "kube-prometheus-stack" {
   prometheus_gateway_target_group_arn = var.prometheus_gateway_target_group_arn
   slack_api_url                       = var.slack_api_url
   slack_channel                       = var.slack_channel
+  pagerduty_url                       = var.pagerduty_url
   thanos_bucket_name                  = var.thanos_bucket_name
   thanos_sidecar_enabled              = var.enable_thanos_sidecar
   thanos_sidecar_secret_name          = var.thanos_sidecar_secret_name

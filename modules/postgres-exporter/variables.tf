@@ -121,11 +121,11 @@ variable "region" {
 variable "datasources_secret_name" {
   description = "Name of the secret containing the datasource configuration"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "datasources_secret_key" {
   description = "Key of the secret containing the datasource configuration"
   type        = string
-  default = ""
+  default     = ""
 }

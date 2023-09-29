@@ -3,7 +3,9 @@ alertmanager:
     global:
       resolve_timeout: 1m
       slack_api_url: ${slack_api_url}
+      %{~ if pagerduty_url != null ~}
       pagerduty_url: ${pagerduty_url}
+      %{~ endif ~}
     inhibit_rules:
       - source_matchers:
           - 'severity = critical'

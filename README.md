@@ -37,7 +37,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the EKS cluster | `string` | n/a | yes |
 | <a name="input_create_loki_bucket"></a> [create\_loki\_bucket](#input\_create\_loki\_bucket) | Whether to create the Loki bucket | `bool` | `true` | no |
 | <a name="input_create_thanos_bucket"></a> [create\_thanos\_bucket](#input\_create\_thanos\_bucket) | Whether to create the Thanos bucket | `bool` | `false` | no |
-| <a name="input_datasource_secrets"></a> [datasource\_secrets](#input\_datasource\_secrets) | The secrets for the Prometheus Postgres Exporter datasource | `map(string)` | `{}` | no |
+| <a name="input_datasource_secrets"></a> [datasource\_secrets](#input\_datasource\_secrets) | The secrets for the Prometheus Postgres Exporter datasource | `map(string)` | <pre>{<br>  "secret_key": "",<br>  "secret_name": ""<br>}</pre> | no |
 | <a name="input_eks_oidc_provider_arn"></a> [eks\_oidc\_provider\_arn](#input\_eks\_oidc\_provider\_arn) | ARN of the OIDC provider associated with the EKS cluster | `string` | n/a | yes |
 | <a name="input_enable_alertmanager"></a> [enable\_alertmanager](#input\_enable\_alertmanager) | Whether to enable the alertmanager module | `bool` | `false` | no |
 | <a name="input_enable_blackbox_exporter"></a> [enable\_blackbox\_exporter](#input\_enable\_blackbox\_exporter) | Whether to enable the blackbox exporter module | `bool` | `false` | no |
@@ -65,6 +65,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_loki_gateway_target_group_arn"></a> [loki\_gateway\_target\_group\_arn](#input\_loki\_gateway\_target\_group\_arn) | ARN of the target group for Loki Gateway | `string` | `null` | no |
 | <a name="input_monitored_endpoints"></a> [monitored\_endpoints](#input\_monitored\_endpoints) | The endpoints to be monitored by Prometheus | <pre>object({<br>    http_endpoints = optional(list(string), null)<br>    tcp_endpoints  = optional(list(string), null)<br>    icmp_endpoints = optional(list(string), null)<br>    ssh_endpoints  = optional(list(string), null)<br>  })</pre> | <pre>{<br>  "http_endpoints": null,<br>  "icmp_endpoints": null,<br>  "ssh_endpoints": null,<br>  "tcp_endpoints": null<br>}</pre> | no |
 | <a name="input_monitoring_aws_account_id"></a> [monitoring\_aws\_account\_id](#input\_monitoring\_aws\_account\_id) | AWS account ID where the monitoring stack is deployed | `string` | n/a | yes |
+| <a name="input_pagerduty_url"></a> [pagerduty\_url](#input\_pagerduty\_url) | The PagerDuty URL where the alerts will be sent | `string` | `null` | no |
 | <a name="input_prometheus_default_rules"></a> [prometheus\_default\_rules](#input\_prometheus\_default\_rules) | A map of Prometheus default rules | `map(any)` | `null` | no |
 | <a name="input_prometheus_endpoint"></a> [prometheus\_endpoint](#input\_prometheus\_endpoint) | AWS Managed Prometheus endpoint URL | `string` | n/a | yes |
 | <a name="input_prometheus_evaluation_interval"></a> [prometheus\_evaluation\_interval](#input\_prometheus\_evaluation\_interval) | The evaluation interval for Prometheus | `string` | `"1m"` | no |

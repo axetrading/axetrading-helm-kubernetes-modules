@@ -12,6 +12,7 @@ locals {
     var.alertmanager_enabled ? templatefile("${path.module}/config/alertmanager.tpl", {
       slack_api_url = var.slack_api_url,
       slack_channel = var.slack_channel
+      pagerduty_url = var.pagerduty_url
     }) : null
   ]
   prometheus_config = compact(local.prometheus_config_files)

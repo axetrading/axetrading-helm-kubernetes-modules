@@ -289,6 +289,12 @@ variable "slack_channel" {
   default     = "monitoring"
 }
 
+variable "pagerduty_url" {
+  type        = string
+  description = "The PagerDuty URL where the alerts will be sent"
+  default     = null
+  sensitive   = true
+}
 
 variable "prometheus_external_url" {
   type        = string
@@ -420,5 +426,8 @@ variable "enable_postgres_exporter" {
 variable "datasource_secrets" {
   type        = map(string)
   description = "The secrets for the Prometheus Postgres Exporter datasource"
-  default     = {}
+  default = {
+    secret_key  = ""
+    secret_name = ""
+  }
 }
