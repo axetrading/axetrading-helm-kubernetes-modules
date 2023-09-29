@@ -73,4 +73,12 @@ module "postgres_exporter" {
   postgres_exporter_version = "5.1.0"
   datasources_secret_key    = var.datasource_secrets["secret_key"]
   datasources_secret_name   = var.datasource_secrets["secret_name"]
+
+  oidc_providers = {
+    main = {
+      provider_arn               = var.eks_oidc_provider_arn
+      namespace_service_accounts = ["monitoring:postgres-exporter"]
+    }
+  }
+  role_name_prefix = "rds-postgres-exporter-"
 }
