@@ -31,4 +31,9 @@ resource "helm_release" "postgres_exporter" {
     value = true
   }
 
+  set {
+    name = "fullnameOverride"
+    value = "postgres-exporter"
+  }
+
 }

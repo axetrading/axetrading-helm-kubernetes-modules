@@ -1,4 +1,5 @@
 replicaCount: 1
+fullnameOverride: 
 
 image:
   repository: quay.io/prometheuscommunity/postgres-exporter
