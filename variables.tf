@@ -297,10 +297,10 @@ variable "pagerduty_url" {
 }
 
 variable "pagerduty_service_key" {
-  type = string
+  type        = string
   description = "The PagerDuty service key where the alerts will be sent"
-  default = null
-  sensitive = true
+  default     = null
+  sensitive   = true
 }
 
 variable "prometheus_external_url" {
