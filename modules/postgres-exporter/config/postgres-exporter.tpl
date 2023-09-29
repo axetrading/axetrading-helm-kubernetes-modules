@@ -14,5 +14,4 @@ config:
         parameters:
           objects: |
             - objectName: ${datasources_secret_name}
-              objectAlias: ${datasources_secret_name}
               objectType: "secretsmanager"
