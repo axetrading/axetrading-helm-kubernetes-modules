@@ -15,4 +15,4 @@ config:
           objects: |
             - objectName: ${datasources_secret_name}
               objectAlias: ${datasources_secret_name}
-              objectType: "secretmanager"
+              objectType: "secretsmanager"
