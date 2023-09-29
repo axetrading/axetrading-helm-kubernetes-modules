@@ -45,9 +45,11 @@ alertmanager:
             - severity =~ "warning|critical"
     receivers:
     - name: 'null'
+    %{~ if pagerduty_url != null ~}
     - name: 'pagerduty'
       pagerduty_configs:
       - service_key: ${pagerduty_service_key}
+    %{~ endif ~}
     - name: 'slack'
       slack_configs:
       - channel: '#${slack_channel}'

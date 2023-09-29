@@ -10,9 +10,10 @@ locals {
       thanos_sidecar_secret_name = var.thanos_sidecar_secret_name
     }),
     var.alertmanager_enabled ? templatefile("${path.module}/config/alertmanager.tpl", {
-      slack_api_url = var.slack_api_url,
-      slack_channel = var.slack_channel
-      pagerduty_url = var.pagerduty_url
+      slack_api_url         = var.slack_api_url,
+      slack_channel         = var.slack_channel,
+      pagerduty_url         = var.pagerduty_url,
+      pagerduty_service_key = var.pagerduty_service_key
     }) : null
   ]
   prometheus_config = compact(local.prometheus_config_files)
