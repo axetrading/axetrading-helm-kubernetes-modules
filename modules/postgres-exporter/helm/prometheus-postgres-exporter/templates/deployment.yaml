@@ -64,7 +64,7 @@ spec:
           - "--disable-settings-metrics"
           {{- end }}
           {{- if .Values.config.enableStatStatements }}
-          - "--collector.stat-statements"
+          - "--collector.stat_statements"
           {{- end}}
           {{- if .Values.config.logLevel }}
           - "--log.level={{ .Values.config.logLevel }}"
