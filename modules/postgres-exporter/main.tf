@@ -37,7 +37,7 @@ resource "helm_release" "postgres_exporter" {
   }
 
   set {
-    name  = "enableStatStatements"
+    name  = "config.enableStatStatements"
     value = var.enable_stat_statements
   }
 }
