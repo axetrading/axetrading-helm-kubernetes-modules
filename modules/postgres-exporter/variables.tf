@@ -129,3 +129,9 @@ variable "datasources_secret_key" {
   type        = string
   default     = ""
 }
+
+variable "enable_stat_statements" {
+  description = "Whether to enable stats collection of database queries"
+  type        = bool
+  default     = false
+}

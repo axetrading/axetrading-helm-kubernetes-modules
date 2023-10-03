@@ -168,6 +168,7 @@ config:
   disableCollectorBgwriter: false
   disableDefaultMetrics: false
   disableSettingsMetrics: false
+  enableStatStatements: false
 
   # possible values debug, info, warn, error, fatal
   logLevel: "error"

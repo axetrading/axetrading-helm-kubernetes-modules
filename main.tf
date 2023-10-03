@@ -73,6 +73,7 @@ module "postgres_exporter" {
   postgres_exporter_version = "5.1.0"
   datasources_secret_key    = var.datasource_secrets["secret_key"]
   datasources_secret_name   = var.datasource_secrets["secret_name"]
+  enable_stat_statements    = var.stat_staatements_enabled
 
   oidc_providers = {
     main = {

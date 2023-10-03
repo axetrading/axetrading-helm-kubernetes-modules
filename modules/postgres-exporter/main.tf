@@ -32,8 +32,12 @@ resource "helm_release" "postgres_exporter" {
   }
 
   set {
-    name = "fullnameOverride"
+    name  = "fullnameOverride"
     value = "postgres-exporter"
   }
 
+  set {
+    name  = "enableStatStatements"
+    value = var.enable_stat_statements
+  }
 }

@@ -438,3 +438,9 @@ variable "datasource_secrets" {
     secret_name = ""
   }
 }
+
+variable "stat_staatements_enabled" {
+  description = "Whether to enable collection of extended statistics from PostgreSQL"
+  type        = bool
+  default     = false
+}
