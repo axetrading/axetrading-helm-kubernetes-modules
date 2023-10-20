@@ -5,9 +5,9 @@ variable "enable_cluster_autoscaler" {
 }
 
 variable "cluster_autoscaler_scale_down_utilization_threshold" {
-  type = string
+  type        = string
   description = "Scale down if current usage is lower than this threshold"
-  default = "0.65"
+  default     = "0.65"
 }
 
 variable "enable_prometheus" {

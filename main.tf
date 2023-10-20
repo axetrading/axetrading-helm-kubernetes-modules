@@ -1,10 +1,10 @@
 module "eks_cluster_autoscaler" {
   source = "./modules/cluster-autoscaler"
 
-  enabled                    = var.enable_cluster_autoscaler
-  cluster_name               = var.cluster_name
-  cluster_autoscaler_version = "9.29.0"
-  region                     = var.region
+  enabled                          = var.enable_cluster_autoscaler
+  cluster_name                     = var.cluster_name
+  cluster_autoscaler_version       = "9.29.0"
+  region                           = var.region
   scale_down_utilization_threshold = var.cluster_autoscaler_scale_down_utilization_threshold
 
   oidc_providers = {
