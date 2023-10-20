@@ -87,6 +87,12 @@ variable "attach_secrets_policy" {
   default     = true
 }
 
+variable "scale_down_utilization_threshold" {
+  type = string
+  description = "Value between 0.1 and 1.0. The scaleDownUtilizationThreshold defines the proportion between requested resources and capacity, which under the value cluster-autoscaler will trigger the scaling down action."
+  default = "0.65"
+}
+
 variable "additional_value_files" {
   type        = list(any)
   description = "A list of additional value files. It will work in the same way as helm -f value1.yaml -f value2.yaml"
