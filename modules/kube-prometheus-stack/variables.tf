@@ -7,7 +7,7 @@ variable "enabled" {
 variable "kube_prometheus_stack_version" {
   description = "Version of the Prometheus Server Helm chart"
   type        = string
-  default     = "47.6.1"
+  default     = "52.1.0"
 }
 
 variable "create_role" {
