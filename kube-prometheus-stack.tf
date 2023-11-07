@@ -2,7 +2,7 @@ module "kube-prometheus-stack" {
   source = "./modules/kube-prometheus-stack"
 
   enabled                             = var.enable_kube_prometheus_stack
-  kube_prometheus_stack_version       = "52.1.0"
+  kube_prometheus_stack_version       = "50.3.1"
   alertmanager_enabled                = var.enable_prometheus_alertmanager
   alertmanager_external_url           = var.alertmanager_external_url
   alertmanager_target_group_arn       = var.alertmanager_target_group_arn
