@@ -58,7 +58,7 @@
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Whether to create the kube-prometheus-stack resources | `bool` | `false` | no |
 | <a name="input_eval_interval"></a> [eval\_interval](#input\_eval\_interval) | The evaluation interval for Prometheus | `string` | `"1m"` | no |
 | <a name="input_force_detach_policies"></a> [force\_detach\_policies](#input\_force\_detach\_policies) | Whether policies should be detached from this role when destroying | `bool` | `true` | no |
-| <a name="input_kube_prometheus_stack_version"></a> [kube\_prometheus\_stack\_version](#input\_kube\_prometheus\_stack\_version) | Version of the Prometheus Server Helm chart | `string` | `"52.1.0"` | no |
+| <a name="input_kube_prometheus_stack_version"></a> [kube\_prometheus\_stack\_version](#input\_kube\_prometheus\_stack\_version) | Version of the Prometheus Server Helm chart | `string` | `"50.3.1"` | no |
 | <a name="input_max_session_duration"></a> [max\_session\_duration](#input\_max\_session\_duration) | Maximum CLI/API session duration in seconds between 3600 and 43200 | `number` | `null` | no |
 | <a name="input_oidc_providers"></a> [oidc\_providers](#input\_oidc\_providers) | Map of OIDC providers where each provider map should contain the `provider`, `provider_arn`, and `namespace_service_accounts` | `any` | `{}` | no |
 | <a name="input_pagerduty_service_key"></a> [pagerduty\_service\_key](#input\_pagerduty\_service\_key) | The PagerDuty service key to authenticate and send alerts | `string` | `null` | no |
