@@ -40,9 +40,11 @@ alertmanager:
       - receiver: 'slack'
         matchers:
             - severity =~ "warning|critical"
+      %{~ if pagerduty_url != null ~}
       - receiver: 'pagerduty'
         matchers:
             - severity =~ "warning|critical"
+      %{~ endif ~}
     receivers:
     - name: 'null'
     %{~ if pagerduty_url != null ~}
