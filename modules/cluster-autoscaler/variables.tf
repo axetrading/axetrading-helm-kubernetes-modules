@@ -88,9 +88,9 @@ variable "attach_secrets_policy" {
 }
 
 variable "scale_down_utilization_threshold" {
-  type = string
+  type        = string
   description = "Value between 0.1 and 1.0. The scaleDownUtilizationThreshold defines the proportion between requested resources and capacity, which under the value cluster-autoscaler will trigger the scaling down action."
-  default = "0.65"
+  default     = "0.65"
 }
 
 variable "additional_value_files" {

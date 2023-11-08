@@ -83,6 +83,14 @@ resource "helm_release" "kube_prometheus_stack" {
   }
 
   dynamic "set" {
+    for_each = var.alertmanager_enabled ? [true] : [false]
+    content {
+      name  = "alertmanager.alertmanagerSpec.logLevel"
+      value = var.alertmanager_log_level
+    }
+  }
+
+  dynamic "set" {
     for_each = var.prometheus_external_url != null && var.alertmanager_enabled ? [var.prometheus_external_url] : []
     content {
       name  = "prometheus.prometheusSpec.externalUrl"

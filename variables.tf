@@ -450,3 +450,9 @@ variable "stat_statements_enabled" {
   type        = bool
   default     = false
 }
+
+variable "alertmanager_log_level" {
+  description = "Log level for Alertmanager"
+  type        = string
+  default     = "info"
+}

@@ -79,9 +79,9 @@ resource "helm_release" "cluster_autoscaler" {
   }
 
   set {
-    name = "extraArgs.scale-down-utilization-threshold"
+    name  = "extraArgs.scale-down-utilization-threshold"
     value = var.scale_down_utilization_threshold
-    type = "string"
+    type  = "string"
   }
 
   dynamic "set" {

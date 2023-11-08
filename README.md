@@ -29,6 +29,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_alertmanager_external_url"></a> [alertmanager\_external\_url](#input\_alertmanager\_external\_url) | The Alertmanager external URL | `string` | `null` | no |
+| <a name="input_alertmanager_log_level"></a> [alertmanager\_log\_level](#input\_alertmanager\_log\_level) | Log level for Alertmanager | `string` | `"info"` | no |
 | <a name="input_alertmanager_target_group_arn"></a> [alertmanager\_target\_group\_arn](#input\_alertmanager\_target\_group\_arn) | ARN of the target group for Alertmanager | `string` | `null` | no |
 | <a name="input_attach_grafana_cloudwatch_policy"></a> [attach\_grafana\_cloudwatch\_policy](#input\_attach\_grafana\_cloudwatch\_policy) | Whether to attach the Grafana CloudWatch policy to the IAM role | `bool` | `true` | no |
 | <a name="input_blackbox_exporter_host"></a> [blackbox\_exporter\_host](#input\_blackbox\_exporter\_host) | Prometheus Blackbox Exporter host | `string` | `"prometheus-blackbox-exporter.monitoring.svc.cluster.local"` | no |

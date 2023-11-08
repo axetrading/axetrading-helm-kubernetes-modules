@@ -154,6 +154,12 @@ variable "alertmanager_enabled" {
   default     = false
 }
 
+variable "alertmanager_log_level" {
+  type        = string
+  description = "Alertmanager log level"
+  default     = "info"
+}
+
 variable "prometheus_gateway_enabled" {
   type        = bool
   description = "Whether to enable Prometheus ALB Gateway"
