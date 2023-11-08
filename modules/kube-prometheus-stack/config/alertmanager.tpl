@@ -39,11 +39,13 @@ alertmanager:
           - alertname =~ "InfoInhibitor|Watchdog"
       - receiver: 'slack'
         matchers:
-            - severity =~ "warning|critical"
+            - severity =~ "warning|critical|error"
+        continue: true
       %{~ if pagerduty_url != null ~}
       - receiver: 'pagerduty'
         matchers:
-            - severity =~ "warning|critical"
+            - severity =~ "error|critical"
+        continue: true
       %{~ endif ~}
     receivers:
     - name: 'null'
