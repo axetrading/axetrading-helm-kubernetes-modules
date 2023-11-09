@@ -53,7 +53,7 @@ alertmanager:
     - name: 'pagerduty'
       pagerduty_configs:
       - service_key: ${pagerduty_service_key}
-        send_resolve: true
+        send_resolved: true
         description: '{{ template "pagerduty.devops.description" . }}'
     %{~ endif ~}
     - name: 'slack'
@@ -153,6 +153,19 @@ alertmanager:
              {{ end }}
          {{- end }}
     pagerduty.tmpl: |-
+         {{ define "__pd_alertmanager" }}Alertmanager{{ end }}
+         {{ define "__pd_alertmanagerURL" }}{{ .ExternalURL }}/#/alerts?receiver={{ .Receiver | urlquery }}{{ end }}
          {{ define "__pd_subject" }}{{ .CommonLabels.alertname }}{{ end }}
          {{ define "__pd_description" }}[{{ template "__pd_subject" . }}] {{ .CommonAnnotations.description }}{{ end }}
+         
+         {{ define "__pd_text_alert_list" }}{{ range . }}Labels:
+         {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }}
+         {{ end }}Annotations:
+         {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }}
+         {{ end }}Source: {{ .GeneratorURL }}
+         {{ end }}{{ end }}
+         
          {{ define "pagerduty.devops.description" }}{{ template "__pd_description" . }}{{ end }}
+         {{ define "pagerduty.devops.client" }}{{ template "__pd_alertmanager" . }}{{ end }}
+         {{ define "pagerduty.devops.clientURL" }}{{ template "__pd_alertmanagerURL" . }}{{ end }}
+         {{ define "pagerduty.devops.instances" }}{{ template "__pd_text_alert_list" . }}{{ end }}
