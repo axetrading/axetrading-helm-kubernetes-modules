@@ -155,8 +155,10 @@ alertmanager:
     pagerduty.tmpl: |-
          {{ define "__pd_alertmanager" }}Alertmanager{{ end }}
          {{ define "__pd_alertmanagerURL" }}{{ .ExternalURL }}/#/alerts?receiver={{ .Receiver | urlquery }}{{ end }}
-         {{ define "__pd_subject" }}{{ .CommonLabels.alertname }}{{ end }}
-         {{ define "__pd_description" }}[{{ template "__pd_subject" . }}] {{ .CommonAnnotations.description }}{{ end }}
+         {{ define "__pd_alertname" }}{{ .CommonLabels.alertname }}{{ end }}
+         {{ define "__pd_cluster" }}{{ .CommonLabels.cluster }}{{ end }}
+         {{ define "__pd_environment" }}{{ .CommonLabels.environment }}{{ end }}
+         {{ define "__pd_description" }} [{{ template "__pd_cluster" . }}][{{ template "__pd_environment" . }}][{{ template "__pd_alertname" . }}] {{ .CommonAnnotations.description }}{{ end }}
          
          {{ define "__pd_text_alert_list" }}{{ range . }}Labels:
          {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }}
