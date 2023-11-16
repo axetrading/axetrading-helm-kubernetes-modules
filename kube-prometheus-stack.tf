@@ -13,6 +13,8 @@ module "kube-prometheus-stack" {
   prometheus_external_url             = var.prometheus_external_url
   prometheus_gateway_enabled          = var.enable_prometheus_gateway
   prometheus_gateway_target_group_arn = var.prometheus_gateway_target_group_arn
+  prometheus_scrape_interval          = var.prometheus_scrape_interval
+  prometheus_scrape_timeout           = var.prometheus_scrape_timeout
   slack_api_url                       = var.slack_api_url
   slack_channel                       = var.slack_channel
   pagerduty_url                       = var.pagerduty_url

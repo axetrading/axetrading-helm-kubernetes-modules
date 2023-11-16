@@ -90,12 +90,6 @@ variable "prometheus_evaluation_interval" {
   default     = "1m"
 }
 
-variable "prometheus_scrape_interval" {
-  type        = string
-  description = "The scrape interval for Prometheus"
-  default     = "15s"
-}
-
 variable "enable_nginx_ingress_controller" {
   description = "Whether to enable the nginx ingress controller module"
   type        = bool
@@ -455,4 +449,16 @@ variable "alertmanager_log_level" {
   description = "Log level for Alertmanager"
   type        = string
   default     = "info"
+}
+
+variable "prometheus_scrape_interval" {
+  type        = number
+  description = "The Prometheus scrape interval in seconds"
+  default     = 30
+}
+
+variable "prometheus_scrape_timeout" {
+  type        = number
+  description = "The Prometheus scrape timeout interval in seconds"
+  default     = 10
 }

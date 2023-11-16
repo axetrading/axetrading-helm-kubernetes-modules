@@ -257,3 +257,15 @@ variable "alertmanager_external_url" {
   description = "The Alertmanager external URL"
   default     = null
 }
+
+variable "prometheus_scrape_interval" {
+  type        = number
+  description = "The Prometheus scrape interval in seconds"
+  default     = 30
+}
+
+variable "prometheus_scrape_timeout" {
+  type        = number
+  description = "The Prometheus scrape timeout interval in seconds"
+  default     = 10
+}

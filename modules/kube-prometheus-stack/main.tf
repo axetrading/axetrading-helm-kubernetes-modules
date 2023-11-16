@@ -63,6 +63,16 @@ resource "helm_release" "kube_prometheus_stack" {
   }
 
   set {
+    name  = "prometheus.prometheusSpec.scrapeInterval"
+    value = var.prometheus_scrape_interval
+  }
+
+  set {
+    name  = "prometheus.prometheusSpec.scrapeTimeout"
+    value = var.prometheus_scrape_timeout
+  }
+
+  set {
     name  = "prometheus.thanosService.enabled"
     value = true
   }
