@@ -452,13 +452,13 @@ variable "alertmanager_log_level" {
 }
 
 variable "prometheus_scrape_interval" {
-  type        = number
+  type        = string
   description = "The Prometheus scrape interval in seconds"
-  default     = 30
+  default     = "30"
 }
 
 variable "prometheus_scrape_timeout" {
-  type        = number
+  type        = string
   description = "The Prometheus scrape timeout interval in seconds"
-  default     = 10
+  default     = "10"
 }
