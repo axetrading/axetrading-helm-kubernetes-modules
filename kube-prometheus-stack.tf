@@ -15,6 +15,7 @@ module "kube-prometheus-stack" {
   prometheus_gateway_target_group_arn = var.prometheus_gateway_target_group_arn
   prometheus_scrape_interval          = var.prometheus_scrape_interval
   prometheus_scrape_timeout           = var.prometheus_scrape_timeout
+  prometheus_tsdb_retention           = var.prometheus_tsdb_retention
   slack_api_url                       = var.slack_api_url
   slack_channel                       = var.slack_channel
   pagerduty_url                       = var.pagerduty_url

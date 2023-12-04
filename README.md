@@ -76,6 +76,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_prometheus_gateway_target_group_arn"></a> [prometheus\_gateway\_target\_group\_arn](#input\_prometheus\_gateway\_target\_group\_arn) | ARN of the target group for Prometheus Gateway | `string` | `null` | no |
 | <a name="input_prometheus_scrape_interval"></a> [prometheus\_scrape\_interval](#input\_prometheus\_scrape\_interval) | The Prometheus scrape interval in seconds | `string` | `"30s"` | no |
 | <a name="input_prometheus_scrape_timeout"></a> [prometheus\_scrape\_timeout](#input\_prometheus\_scrape\_timeout) | The Prometheus scrape timeout interval in seconds | `string` | `"10s"` | no |
+| <a name="input_prometheus_tsdb_retention"></a> [prometheus\_tsdb\_retention](#input\_prometheus\_tsdb\_retention) | The Prometheus TSDB retention in days | `string` | `"5d"` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS region | `string` | `"eu-west-2"` | no |
 | <a name="input_slack_api_url"></a> [slack\_api\_url](#input\_slack\_api\_url) | The Slack Channel API URL where the alerts will be sent | `string` | `null` | no |
 | <a name="input_slack_channel"></a> [slack\_channel](#input\_slack\_channel) | The Slack Channel where the alerts will be sent | `string` | `"monitoring"` | no |

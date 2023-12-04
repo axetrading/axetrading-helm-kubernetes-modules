@@ -462,3 +462,9 @@ variable "prometheus_scrape_timeout" {
   description = "The Prometheus scrape timeout interval in seconds"
   default     = "10s"
 }
+
+variable "prometheus_tsdb_retention" {
+  type        = string
+  description = "The Prometheus TSDB retention in days"
+  default     = "5d"
+}

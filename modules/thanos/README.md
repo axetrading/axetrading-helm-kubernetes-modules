@@ -5,7 +5,7 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.2.5 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.36 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.10.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.16.0 |
 
 ## Providers
 

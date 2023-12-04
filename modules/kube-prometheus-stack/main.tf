@@ -68,6 +68,11 @@ resource "helm_release" "kube_prometheus_stack" {
   }
 
   set {
+    name  = "prometheus.prometheusSpec.retention"
+    value = var.prometheus_tsdb_retention
+  }
+
+  set {
     name  = "prometheus.prometheusSpec.scrapeTimeout"
     value = var.prometheus_scrape_timeout
   }
