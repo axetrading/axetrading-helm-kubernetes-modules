@@ -70,7 +70,7 @@ This repository contains modules terraform modules for cluster-autoscaler, load-
 | <a name="input_pagerduty_service_key"></a> [pagerduty\_service\_key](#input\_pagerduty\_service\_key) | The PagerDuty service key where the alerts will be sent | `string` | `null` | no |
 | <a name="input_pagerduty_url"></a> [pagerduty\_url](#input\_pagerduty\_url) | The PagerDuty URL where the alerts will be sent | `string` | `null` | no |
 | <a name="input_prometheus_default_rules"></a> [prometheus\_default\_rules](#input\_prometheus\_default\_rules) | A map of Prometheus default rules | `map(any)` | `null` | no |
-| <a name="input_prometheus_endpoint"></a> [prometheus\_endpoint](#input\_prometheus\_endpoint) | AWS Managed Prometheus endpoint URL | `string` | n/a | yes |
+| <a name="input_prometheus_endpoint"></a> [prometheus\_endpoint](#input\_prometheus\_endpoint) | AWS Managed Prometheus endpoint URL | `string` | `null` | no |
 | <a name="input_prometheus_evaluation_interval"></a> [prometheus\_evaluation\_interval](#input\_prometheus\_evaluation\_interval) | The evaluation interval for Prometheus | `string` | `"1m"` | no |
 | <a name="input_prometheus_external_url"></a> [prometheus\_external\_url](#input\_prometheus\_external\_url) | The Prometheus external URL | `string` | `null` | no |
 | <a name="input_prometheus_gateway_target_group_arn"></a> [prometheus\_gateway\_target\_group\_arn](#input\_prometheus\_gateway\_target\_group\_arn) | ARN of the target group for Prometheus Gateway | `string` | `null` | no |

@@ -31,6 +31,7 @@ variable "enable_blackbox_exporter" {
 variable "prometheus_endpoint" {
   type        = string
   description = "AWS Managed Prometheus endpoint URL"
+  default     = null
 }
 
 variable "cluster_name" {
