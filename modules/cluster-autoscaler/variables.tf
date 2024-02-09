@@ -7,7 +7,7 @@ variable "enabled" {
 variable "cluster_autoscaler_version" {
   description = "Version of the cluster autoscaler Helm chart"
   type        = string
-  default     = "9.29.0"
+  default     = "9.35.0"
 }
 
 variable "cluster_name" {

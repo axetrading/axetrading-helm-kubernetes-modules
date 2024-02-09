@@ -3,7 +3,7 @@ module "eks_cluster_autoscaler" {
 
   enabled                          = var.enable_cluster_autoscaler
   cluster_name                     = var.cluster_name
-  cluster_autoscaler_version       = "9.29.0"
+  cluster_autoscaler_version       = "9.35.0"
   region                           = var.region
   scale_down_utilization_threshold = var.cluster_autoscaler_scale_down_utilization_threshold
 
@@ -49,14 +49,14 @@ module "statsd_exporter" {
   source = "./modules/statsd-exporter"
 
   enabled                 = var.enable_statsd_exporter
-  statsd_exporter_version = "0.8.0"
+  statsd_exporter_version = "0.13.0"
 }
 
 module "blackbox_exporter" {
   source = "./modules/blackbox-exporter"
 
   enabled                   = var.enable_blackbox_exporter
-  blackbox_exporter_version = "7.10.0"
+  blackbox_exporter_version = "8.10.1"
   monitored_endpoints       = var.blackbox_monitored_endpoints
 }
 

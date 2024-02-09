@@ -24,7 +24,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Enable statsd-exporter | `bool` | `false` | no |
-| <a name="input_statsd_exporter_version"></a> [statsd\_exporter\_version](#input\_statsd\_exporter\_version) | Version of the statsd-exporter Helm chart | `string` | `"0.8.0"` | no |
+| <a name="input_statsd_exporter_version"></a> [statsd\_exporter\_version](#input\_statsd\_exporter\_version) | Version of the statsd-exporter Helm chart | `string` | `"0.13.0"` | no |
 
 ## Outputs
 
