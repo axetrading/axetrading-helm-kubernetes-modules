@@ -183,3 +183,9 @@ variable "loki_bucket_name" {
   type        = string
   default     = "axetrading-loki"
 }
+
+variable "loki_object_store_type" {
+  description = "Type of object store to use for Loki"
+  type        = string
+  default     = "s3"
+}

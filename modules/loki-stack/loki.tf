@@ -12,6 +12,9 @@
 
 locals {
   bucket_name = var.create_bucket ? aws_s3_bucket.loki[0].id : var.bucket_name
+  schema_config = var.enabled ? templatefile("${path.module}/configs/schema_config.tpl", {
+    loki_object_store_type = var.loki_object_store_type
+  }) : ""
 }
 
 resource "helm_release" "grafana_agent_operator" {
