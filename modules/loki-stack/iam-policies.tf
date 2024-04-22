@@ -23,6 +23,19 @@ data "aws_iam_policy_document" "loki" {
       "${aws_s3_bucket.loki[0].arn}/*",
     ]
   }
+
+  statement {
+    sid     = "AllowKMS"
+    actions = [
+      "kms:Encrypt*",
+      "kms:Decrypt*",
+      "kms:ReEncrypt*",
+      "kms:GenerateDataKey*",
+      "kms:Describe*"
+    ]
+    effect = "Allow"
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_policy" "loki" {
