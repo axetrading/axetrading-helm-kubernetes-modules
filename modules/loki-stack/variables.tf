@@ -189,3 +189,9 @@ variable "loki_object_store_type" {
   type        = string
   default     = "s3"
 }
+
+variable "loki_rules_enabled" {
+  description = "Whether to enable Loki rules"
+  type        = bool
+  default     = true
+}

@@ -481,3 +481,9 @@ variable "loki_write_persistence_size" {
   description = "Size of the Loki write persistence volume"
   default     = "10Gi"
 }
+
+variable "loki_rules_enabled" {
+  description = "Whether to enable Loki rules"
+  type        = bool
+  default     = true
+}

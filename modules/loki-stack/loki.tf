@@ -211,6 +211,21 @@ resource "helm_release" "loki" {
     value = "100"
   }
 
+  set {
+    name  = "monitoring.serviceMonitor.enabled"
+    value = true
+  }
+
+  set {
+    name  = "monitoring.serviceMonitor.labels.release"
+    value = "prometheus"
+  }
+
+  set {
+    name = "monitoring.rules.enabled"
+    value = var.loki_rules_enabled
+  }
+
   depends_on = [helm_release.grafana_agent_operator]
 }
 

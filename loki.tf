@@ -8,6 +8,7 @@ module "loki_stack" {
   loki_bucket_name               = var.loki_bucket_name
   loki_write_persistence_enabled = var.loki_write_persistence_enabled
   loki_write_persistence_size    = var.loki_write_persistence_size
+  loki_rules_enabled             = var.loki_rules_enabled
   create_bucket                  = var.create_loki_bucket
   region                         = var.bucket_region
   bucket_name                    = var.loki_existing_bucket_name
