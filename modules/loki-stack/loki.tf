@@ -61,6 +61,11 @@ resource "helm_release" "loki" {
   }
 
   set {
+    name = "loki.schemaConfig"
+    value = local.schema_config
+  }
+
+  set {
     name  = "loki.storage.s3.region"
     value = var.region
     type  = "string"
