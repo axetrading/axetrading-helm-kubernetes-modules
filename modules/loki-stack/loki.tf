@@ -12,9 +12,12 @@
 
 locals {
   bucket_name = var.create_bucket ? aws_s3_bucket.loki[0].id : var.bucket_name
-  schema_config = var.enabled ? templatefile("${path.module}/configs/schema_config.tpl", {
-    loki_object_store_type = var.loki_object_store_type
-  }) : ""
+  schema_config = [
+    templatefile("${path.module}/configs/schema_config.tpl", {
+      loki_object_store_type = var.loki_object_store_type
+    })
+  ]
+  loki_config = compact(local.schema_config)
 }
 
 resource "helm_release" "grafana_agent_operator" {
@@ -35,6 +38,8 @@ resource "helm_release" "loki" {
   chart      = "loki"
   version    = var.loki_version
   namespace  = "monitoring"
+
+  values = local.loki_config
 
   set {
     name  = "fullnameOverride"
@@ -58,11 +63,6 @@ resource "helm_release" "loki" {
   set {
     name  = "loki.storage.type"
     value = "s3"
-  }
-
-  set {
-    name = "loki.schemaConfig"
-    value = local.schema_config
   }
 
   set {

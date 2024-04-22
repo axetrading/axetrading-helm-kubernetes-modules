@@ -1,8 +1,10 @@
-configs:
-  - from: 2022-01-11
-    store: boltdb-shipper
-    object_store: ${loki_object_store_type}
-    schema: v12
-    index:
-      prefix: index_
-      period: 24h
+loki:
+  schemaConfig:
+    configs:
+      - from: 2024-04-01
+        store: tsdb
+        object_store: ${loki_object_store_type}
+        schema: v13
+        index:
+          prefix: index_
+          period: 24h

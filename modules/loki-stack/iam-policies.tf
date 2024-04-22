@@ -25,7 +25,7 @@ data "aws_iam_policy_document" "loki" {
   }
 
   statement {
-    sid     = "AllowKMS"
+    sid = "AllowKMS"
     actions = [
       "kms:Encrypt*",
       "kms:Decrypt*",
@@ -33,7 +33,7 @@ data "aws_iam_policy_document" "loki" {
       "kms:GenerateDataKey*",
       "kms:Describe*"
     ]
-    effect = "Allow"
+    effect    = "Allow"
     resources = ["*"]
   }
 }
