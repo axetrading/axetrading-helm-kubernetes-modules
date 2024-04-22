@@ -469,3 +469,15 @@ variable "prometheus_tsdb_retention" {
   description = "The Prometheus TSDB retention in days"
   default     = "5d"
 }
+
+variable "loki_write_persistence_enabled" {
+  type        = bool
+  description = "Whether to enable Loki write persistence"
+  default     = true
+}
+
+variable "loki_write_persistence_size" {
+  type        = string
+  description = "Size of the Loki write persistence volume"
+  default     = "10Gi"
+}
