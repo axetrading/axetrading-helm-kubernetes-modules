@@ -119,6 +119,16 @@ resource "helm_release" "loki" {
   }
 
   set {
+    name  = "write.persistence.volumeClaimsEnabled"
+    value = var.loki_write_persistence_enabled
+  }
+
+  set {
+    name  = "write.persistence.size"
+    value = var.loki_write_persistence_size
+  }
+
+  set {
     name  = "read.autoscaling.enabled"
     value = true
   }

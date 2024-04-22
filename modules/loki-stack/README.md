@@ -55,6 +55,8 @@
 | <a name="input_loki_gateway_enabled"></a> [loki\_gateway\_enabled](#input\_loki\_gateway\_enabled) | Whether to enable Loki Gateway | `bool` | `true` | no |
 | <a name="input_loki_gateway_target_group_arn"></a> [loki\_gateway\_target\_group\_arn](#input\_loki\_gateway\_target\_group\_arn) | ARN of the target group for Loki Gateway | `string` | `null` | no |
 | <a name="input_loki_version"></a> [loki\_version](#input\_loki\_version) | Loki-stack helm chart version | `string` | `"5.8.6"` | no |
+| <a name="input_loki_write_persistence_enabled"></a> [loki\_write\_persistence\_enabled](#input\_loki\_write\_persistence\_enabled) | Whether to enable Loki write persistence | `bool` | `true` | no |
+| <a name="input_loki_write_persistence_size"></a> [loki\_write\_persistence\_size](#input\_loki\_write\_persistence\_size) | Size of the Loki write persistence volume | `string` | `"10Gi"` | no |
 | <a name="input_max_session_duration"></a> [max\_session\_duration](#input\_max\_session\_duration) | Maximum CLI/API session duration in seconds between 3600 and 43200 | `number` | `null` | no |
 | <a name="input_oidc_providers"></a> [oidc\_providers](#input\_oidc\_providers) | Map of OIDC providers where each provider map should contain the `provider`, `provider_arn`, and `namespace_service_accounts` | `any` | `{}` | no |
 | <a name="input_policy_name_prefix"></a> [policy\_name\_prefix](#input\_policy\_name\_prefix) | IAM policy name prefix | `string` | `"eks-policy"` | no |

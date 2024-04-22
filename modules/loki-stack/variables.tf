@@ -160,6 +160,18 @@ variable "loki_gateway_target_group_arn" {
   default     = null
 }
 
+variable "loki_write_persistence_enabled" {
+  type        = bool
+  description = "Whether to enable Loki write persistence"
+  default     = true
+}
+
+variable "loki_write_persistence_size" {
+  type        = string
+  description = "Size of the Loki write persistence volume"
+  default     = "10Gi"
+}
+
 variable "promtail_version" {
   description = "Promtail helm chart version"
   type        = string

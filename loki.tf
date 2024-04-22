@@ -9,9 +9,9 @@ module "loki_stack" {
   create_bucket                  = var.create_loki_bucket
   region                         = var.bucket_region
   bucket_name                    = var.loki_existing_bucket_name
-  loki_version                   = "5.8.9"
-  grafana_agent_operator_version = "0.2.16"
-  promtail_version               = "6.11.5"
+  loki_version                   = "6.3.3"
+  grafana_agent_operator_version = "0.3.15"
+  promtail_version               = "6.15.5"
 
   oidc_providers = {
     main = {
