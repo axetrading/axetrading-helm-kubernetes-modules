@@ -81,4 +81,19 @@ data "aws_iam_policy_document" "secretsmanager_readonly" {
     ]
     resources = ["*"]
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "kms:Decrypt*",
+      "kms:Encrypt*",
+      "kms:ReEncrypt*",
+      "kms:GenerateDataKey*",
+      "kms:GetKeyRotationStatus*",
+      "kms:GetKeyPolicy*",
+      "kms:DescribeKey*",
+    ]
+    resources = ["*"]
+  }
+
 }
