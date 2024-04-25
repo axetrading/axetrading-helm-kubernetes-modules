@@ -23,6 +23,19 @@ data "aws_iam_policy_document" "thanos" {
       "${aws_s3_bucket.thanos[0].arn}/*",
     ]
   }
+
+  statement {
+    sid = "AllowKMS"
+    actions = [
+      "kms:Encrypt*",
+      "kms:Decrypt*",
+      "kms:ReEncrypt*",
+      "kms:GenerateDataKey*",
+      "kms:Describe*"
+    ]
+    effect    = "Allow"
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_policy" "thanos" {

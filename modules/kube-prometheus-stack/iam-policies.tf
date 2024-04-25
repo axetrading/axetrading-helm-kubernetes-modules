@@ -53,6 +53,19 @@ data "aws_iam_policy_document" "s3_access" {
     ]
   }
 
+  statement {
+    sid = "AllowKMS"
+    actions = [
+      "kms:Encrypt*",
+      "kms:Decrypt*",
+      "kms:ReEncrypt*",
+      "kms:GenerateDataKey*",
+      "kms:Describe*"
+    ]
+    effect    = "Allow"
+    resources = ["*"]
+  }
+
 }
 
 data "aws_iam_policy_document" "secretsmanager_readonly" {
