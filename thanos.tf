@@ -8,6 +8,9 @@ module "thanos" {
   existing_bucket_name                                          = var.thanos_existing_bucket_name
   thanos_bucket_name                                            = var.thanos_bucket_name
   thanos_bucket_region                                          = var.thanos_bucket_region
+  thanos_compactor_retention_resolution_1h                      = var.thanos_compactor_retention_resolution_1h
+  thanos_compactor_retention_resolution_5m                      = var.thanos_compactor_retention_resolution_5m
+  thanos_compactor_retention_resolution_raw                     = var.thanos_compactor_retention_resolution_raw
   thanos_gateway_enabled                                        = var.enable_thanos_gateway
   thanos_gateway_target_group_arn                               = var.thanos_gateway_target_group_arn
   thanos_query_autoscaling_enabled                              = var.thanos_query_autoscaling_enabled
@@ -18,10 +21,10 @@ module "thanos" {
   thanos_query_resources_limits_memory                          = var.thanos_query_resources_limits_memory
   thanos_query_resources_requests_cpu                           = var.thanos_query_resources_requests_cpu
   thanos_query_resources_requests_memory                        = var.thanos_query_resources_requests_memory
-  thanos_stores_endpoints                                       = var.thanos_stores_endpoints
   thanos_receiver_enabled                                       = var.enable_thanos_receiver
-  thanos_receiver_target_group_arn                              = var.thanos_receiver_target_group_arn
   thanos_receiver_remote_write_port                             = var.thanos_receiver_remote_write_port
+  thanos_receiver_target_group_arn                              = var.thanos_receiver_target_group_arn
+  thanos_stores_endpoints                                       = var.thanos_stores_endpoints
 
   oidc_providers = {
     main = {

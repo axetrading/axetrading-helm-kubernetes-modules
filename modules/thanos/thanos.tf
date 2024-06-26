@@ -90,6 +90,20 @@ resource "helm_release" "thanos" {
     value = true
   }
 
+  set {
+    name  = "compactor.retentionResolutionRaw"
+    value = var.thanos_compactor_retention_resolution_raw
+  }
+
+  set {
+    name  = "compactor.retentionResolution5m"
+    value = var.thanos_compactor_retention_resolution_5m
+  }
+
+  set {
+    name  = "compactor.retentionResolution1h"
+    value = var.thanos_compactor_retention_resolution_1h
+  }
 
   dynamic "set" {
     for_each = var.create_role ? [aws_iam_role.this[0].arn] : [var.role_arn]

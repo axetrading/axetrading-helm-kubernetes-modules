@@ -63,6 +63,9 @@
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add the the IAM role | `map(any)` | `{}` | no |
 | <a name="input_thanos_bucket_name"></a> [thanos\_bucket\_name](#input\_thanos\_bucket\_name) | Name of the S3 bucket that will be created for Thanos | `string` | `null` | no |
 | <a name="input_thanos_bucket_region"></a> [thanos\_bucket\_region](#input\_thanos\_bucket\_region) | Region of the S3 bucket that will be created for Thanos | `string` | `"eu-west-2"` | no |
+| <a name="input_thanos_compactor_retention_resolution_1h"></a> [thanos\_compactor\_retention\_resolution\_1h](#input\_thanos\_compactor\_retention\_resolution\_1h) | Retention resolution 1h for Thanos Compactor | `string` | `"180d"` | no |
+| <a name="input_thanos_compactor_retention_resolution_5m"></a> [thanos\_compactor\_retention\_resolution\_5m](#input\_thanos\_compactor\_retention\_resolution\_5m) | Retention resolution 5m for Thanos Compactor | `string` | `"30d"` | no |
+| <a name="input_thanos_compactor_retention_resolution_raw"></a> [thanos\_compactor\_retention\_resolution\_raw](#input\_thanos\_compactor\_retention\_resolution\_raw) | Retention resolution raw for Thanos Compactor | `string` | `"30d"` | no |
 | <a name="input_thanos_gateway_enabled"></a> [thanos\_gateway\_enabled](#input\_thanos\_gateway\_enabled) | Whether to enable Thanos Gateway | `bool` | `true` | no |
 | <a name="input_thanos_gateway_target_group_arn"></a> [thanos\_gateway\_target\_group\_arn](#input\_thanos\_gateway\_target\_group\_arn) | ARN of the target group for Thanos Gateway | `string` | `null` | no |
 | <a name="input_thanos_objstore_endpoint"></a> [thanos\_objstore\_endpoint](#input\_thanos\_objstore\_endpoint) | Endpoint of the S3 bucket that will be created for Thanos | `string` | `"s3.eu-west-2.amazonaws.com"` | no |

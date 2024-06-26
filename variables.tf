@@ -487,3 +487,21 @@ variable "loki_rules_enabled" {
   type        = bool
   default     = true
 }
+
+variable "thanos_compactor_retention_resolution_raw" {
+  description = "Retention resolution for raw data in the Thanos compactor"
+  type        = string
+  default     = "21d"
+}
+
+variable "thanos_compactor_retention_resolution_5m" {
+  description = "Retention resolution for 5m data in the Thanos compactor"
+  type        = string
+  default     = "30d"
+}
+
+variable "thanos_compactor_retention_resolution_1h" {
+  description = "Retention resolution for 1h data in the Thanos compactor"
+  type        = string
+  default     = "180d"
+}

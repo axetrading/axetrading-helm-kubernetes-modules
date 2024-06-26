@@ -195,3 +195,9 @@ variable "loki_rules_enabled" {
   type        = bool
   default     = true
 }
+
+variable "loki_read_persistence_size" {
+  description = "Size of the Loki read persistence volume"
+  type        = string
+  default     = "20Gi"
+}

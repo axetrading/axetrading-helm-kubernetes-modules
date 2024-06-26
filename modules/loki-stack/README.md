@@ -55,6 +55,7 @@
 | <a name="input_loki_gateway_enabled"></a> [loki\_gateway\_enabled](#input\_loki\_gateway\_enabled) | Whether to enable Loki Gateway | `bool` | `true` | no |
 | <a name="input_loki_gateway_target_group_arn"></a> [loki\_gateway\_target\_group\_arn](#input\_loki\_gateway\_target\_group\_arn) | ARN of the target group for Loki Gateway | `string` | `null` | no |
 | <a name="input_loki_object_store_type"></a> [loki\_object\_store\_type](#input\_loki\_object\_store\_type) | Type of object store to use for Loki | `string` | `"s3"` | no |
+| <a name="input_loki_read_persistence_size"></a> [loki\_read\_persistence\_size](#input\_loki\_read\_persistence\_size) | Size of the Loki read persistence volume | `string` | `"20Gi"` | no |
 | <a name="input_loki_rules_enabled"></a> [loki\_rules\_enabled](#input\_loki\_rules\_enabled) | Whether to enable Loki rules | `bool` | `true` | no |
 | <a name="input_loki_version"></a> [loki\_version](#input\_loki\_version) | Loki-stack helm chart version | `string` | `"5.8.6"` | no |
 | <a name="input_loki_write_persistence_enabled"></a> [loki\_write\_persistence\_enabled](#input\_loki\_write\_persistence\_enabled) | Whether to enable Loki write persistence | `bool` | `true` | no |

@@ -147,6 +147,11 @@ resource "helm_release" "loki" {
   }
 
   set {
+    name  = "read.persistence.size"
+    value = var.loki_read_persistence_size
+  }
+
+  set {
     name  = "backend.autoscaling.maxReplicas"
     value = "5"
   }
@@ -178,12 +183,12 @@ resource "helm_release" "loki" {
 
   set {
     name  = "write.resources.requests.memory"
-    value = "1000Mi"
+    value = "1500Mi"
   }
 
   set {
     name  = "write.resources.limits.memory"
-    value = "1000Mi"
+    value = "1500Mi"
   }
 
   set {
@@ -222,7 +227,7 @@ resource "helm_release" "loki" {
   }
 
   set {
-    name = "monitoring.rules.enabled"
+    name  = "monitoring.rules.enabled"
     value = var.loki_rules_enabled
   }
 

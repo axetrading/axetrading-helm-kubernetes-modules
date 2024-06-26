@@ -243,3 +243,21 @@ variable "thanos_receiver_remote_write_port" {
   type        = number
   default     = 19291
 }
+
+variable "thanos_compactor_retention_resolution_raw" {
+  description = "Retention resolution raw for Thanos Compactor"
+  type        = string
+  default     = "30d"
+}
+
+variable "thanos_compactor_retention_resolution_5m" {
+  description = "Retention resolution 5m for Thanos Compactor"
+  type        = string
+  default     = "30d"
+}
+
+variable "thanos_compactor_retention_resolution_1h" {
+  description = "Retention resolution 1h for Thanos Compactor"
+  type        = string
+  default     = "180d"
+}
