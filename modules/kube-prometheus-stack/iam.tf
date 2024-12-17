@@ -59,8 +59,7 @@ resource "aws_iam_role_policy_attachment" "secretsmanager_readonly" {
 
 module "short-name" {
   count      = var.role_name_prefix != null && var.enabled ? 1 : 0
-  source     = "axetrading/short-name/null"
-  version    = "1.0.0"
+  source     = "git@github.com:axetrading/terraform-null-short-name.git?ref=v1.0.0"
   max_length = 38
   value      = var.role_name_prefix
 }
